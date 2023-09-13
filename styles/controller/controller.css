@@ -1,0 +1,34 @@
+/*
+global__hrz-padding
+*/
+.global__hrz-padding {
+  padding-right: 21px;
+  padding-left: 21px;
+}
+
+@media (min-width: 1000px) {
+  .global__hrz-padding {
+    padding-right: 175px;
+    padding-left: 175px;
+  }
+}
+@media (min-width: 1700px) {
+  .global__hrz-padding {
+    padding-right: 490px;
+    padding-left: 490px;
+  }
+}
+/*
+global__font-size-controller
+*/
+h1.global__font-size-controller {
+  font-size: 35px;
+}
+
+@media (min-width: 1000px) {
+  h1.global__font-size-controller {
+    font-size: 48px;
+  }
+}
+
+/*# sourceMappingURL=controller.css.map */

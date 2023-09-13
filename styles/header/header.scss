@@ -1,0 +1,33 @@
+header {
+	div {
+		padding-top: 42px;
+		padding-bottom: 35px;
+
+		div {
+			max-width: 700px;
+
+			h1 {
+				&::after {
+					content: '';
+					width: 42%;
+					height: 7px;
+					background-image: var(--background);
+					position: absolute;
+					bottom: -35px;
+					left: 0px;
+				}
+
+				margin-bottom: 14px;
+				background-image: var(--background);
+				-webkit-background-clip: text;
+				background-clip: text;
+				color: transparent;
+				position: relative;
+
+				i {
+					font-style: normal;
+				}
+			}
+		}
+	}
+}

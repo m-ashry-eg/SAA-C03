@@ -1,0 +1,103 @@
+div.forms-container {
+  display: flex;
+  flex-direction: column;
+  gap: 70px;
+}
+div.forms-container > div {
+  border-radius: 7px;
+  border: 2px solid var(--gray);
+  padding: 35px 21px;
+}
+div.forms-container > div > form p {
+  font-weight: 600;
+  font-size: 17.5px;
+}
+div.forms-container > div > form span {
+  display: block;
+  border-top: 2px solid var(--gray);
+  margin: 35px 0px;
+}
+div.forms-container > div > form > div:first-of-type {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+div.forms-container > div > form > div:first-of-type div {
+  display: flex;
+  gap: 7px;
+  justify-content: left;
+  align-items: center;
+  padding: 17.5px;
+  transition: ease-in-out 0.35s;
+  border: 2px solid transparent;
+  border-radius: 7px;
+}
+div.forms-container > div > form > div:first-of-type div.--right {
+  border: 2px solid var(--gray);
+}
+div.forms-container > div > form > div:last-of-type {
+  display: flex;
+  justify-content: center;
+  padding-top: 49px;
+}
+div.forms-container > div > form > div:last-of-type button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: min-content;
+  background-image: var(--background);
+  padding: 17.5px 42px;
+  border-radius: 70px;
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  white-space: nowrap;
+  transition: ease-in-out 0.7s;
+}
+div.forms-container > div > div:last-of-type {
+  height: 0px;
+  overflow: hidden;
+  transition: ease-in-out 1s;
+}
+div.forms-container > div > div:last-of-type > div {
+  border-radius: 7px;
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 49px 35px;
+}
+div.forms-container > div > div:last-of-type > div > div:first-of-type {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 35px;
+}
+div.forms-container > div > div:last-of-type > div > div:first-of-type span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  width: 70px;
+  height: 70px;
+}
+div.forms-container > div > div:last-of-type > div > div:first-of-type span.--right > i:last-of-type {
+  display: none;
+}
+div.forms-container > div > div:last-of-type > div > div:first-of-type span.--wrong > i:first-of-type {
+  display: none;
+}
+div.forms-container > div > div:last-of-type > div ul {
+  list-style-type: circle;
+}
+div.forms-container > div > div:last-of-type > div ul li {
+  padding: 7px 0px;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+@media (min-width: 1300px) {
+  div.forms-container > div {
+    padding: 70px;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */
