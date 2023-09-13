@@ -67,6 +67,126 @@ const builder = [
 			'Use Amazon EventBridge to subscribe to the SNS topic and save messages to the S3 bucket.',
 		],
 	},
+	{
+		question:
+			'A user is implementing resources for batch processes that will run on a set of instances in the US East (N. Virginia) region during non-business hours. The process should take approximately 6 hours to complete and cannot be interrupted. These batch processes will require different size instances within the compute- optimized instance family. These batch processes will be run every night for the next twelve months. The company uses other instances types within in its other environments. Which choice will offer the greatest cost savings for these batch process instances?',
+		options: [
+			'Instances on a Compute Savings Plan',
+			'Spot instances',
+			'Convertible Reserved instances',
+			'Instances on an EC2 instance savings plan',
+		],
+		answer: [3],
+		explanation: [
+			'A spot instance is not the right instance type for this scenario because they would very likely be interrupted before a 6 hour job would be complete.',
+			'A convertible instance and a compute savings plan both offer up to 66 percent off. However, an EC2 instance savings plan offers up to 72 percent discount.',
+		],
+	},
+	{
+		question:
+			"You are in charge of a web application which is running on EC2 instances. Your site occasionally experiences spikes in traffic that cause your EC2 instances' resources to become overwhelmed. During these spikes, the application may freeze up and lose recently-submitted requests from users. You have implemented Auto Scaling to deploy additional EC2 instances to handle spikes, but the new instances are not deploying fast enough to prevent the existing application servers from freezing. Which of the following is likely to provide the cheapest solution to avoid losing recently submitted requests, assuming that you cannot find a pattern to when these spikes are occurring?",
+		options: [
+			'Deploy additional EC2 spot instances when needed.',
+			'Set up another Availability Zone with the same resources and use that when the spikes occur.',
+			'Use Amazon SQS to delete acknowledged messages and redeliver failed messages.',
+			'Implement caching to store recent requests in-memory and remove workload from the EC2 instances.',
+		],
+		answer: [2],
+		explanation: [
+			'The use of an SQS queue allows submitted requests to be retained as messages in the SQS queue until the application resumes normal operation and can process the requests. Using Amazon SQS to delete acknowledged messages and delivery failed messages is decoupling the application components.',
+			'Using EC2 resources, whether you use reserved or spot instances, is not cost-effective owing to the infrequency of the spikes in traffic.',
+			'SQS queues are preferable to in-memory cache because in-emory storage will operate at all times and can be fairly expensive to address an issue that only comes up during spikes.',
+		],
+	},
+	{
+		question:
+			'A company that provides an online auction site for customers to buy and sell products uses Amazon Simple Queue Service (SQS) to process incoming product bids. Each organization auctioning products has its own FIFO queue, and there is a messaging group for each product offered by the organization. The development team supporting this application has noticed that some queues have lower than expected throughput. What can the solutions architect suggest to increase throughput for these queues?',
+		options: [
+			'Convert to a LIFO (last-in-first-out) queue.',
+			'Enable short polling.',
+			'Use SQS batch actions.',
+			'Increase the message retention period.',
+		],
+		answer: [2],
+		explanation: [
+			'There are two queue types to choose from when using Amazon SQS. The first one is Standard queue, when the message order is not essential, and you need high throughput. The second one is, FIFO queue, when message order is essential. Throughput is not as high as with a standard queue, but you can improve throughput if you use batch actions.',
+			'In the scenario presented for this question, the message order is important, so using a FIFO queue is the appropriate solution. Also, Amazon SQS does not provide a LIFO queue type. Adding batch actions to a FIFO queue can increase its capacity from 300 transactions per second to 3,000 per API method. Batching, in tandem with adding more producers and consumers, results in higher throughput.',
+			'The other options to enable short polling and increase the message retention period would not improve throughput.',
+		],
+	},
+	{
+		question:
+			'Two companies are joining their assets; both have AWS accounts. The first company has a large user base in AWS Directory Service Managed Active Directory. The second company has a very dynamic application to provide to users from the first company. How can you easily and securely share the identity store of the first company with the second company?',
+		options: [
+			'Use AWS KMS to create handshakings between the two accounts.',
+			'Export the users information from the first company account to the second company account.',
+			'Bring both accounts under the same AWS organization and allow the second account access to the identity store of the first account.',
+			'Use AWS Config to create handshaking between the two accounts.',
+		],
+		answer: [2],
+		explanation: [
+			'With AWS Organizations, you can share account resources. In this scenario, you can share the AWS Directory Service Managed AD as a central identity store. This enables applications in other accounts to have access to a central identity store. You can always share your directory with other trusted AWS accounts within the same organization.',
+			'AWS Key Management Service (KMS) provides you with a centrally managed control over cryptographic keys that you manage and securely store them in Hardware Security Modules (HSM).',
+			'Exporting the user information is a security and management challenge as the user directory will be changing and regular exports are not secure and practical solutions.',
+			"AWS Config provides a centralized view of your AWS resources' configurations while Guard Rail from AWS Control Tower enables ongoing governance over your overall AWS environment.",
+		],
+	},
+	{
+		question:
+			'A department using Amazon EFS has configured a lifecycle policy that transfers files from EFS Standard Storage to EFS Standard-IA with Intelligent Tiering disabled.A group of files has been moved to the infrequent access storage class after not being accessed in over 30 days. These files will be accessed more frequently moving forward, and the system administrator would like to move these files immediately to the standard storage class. What should the administrator do to move these files to the EFS standard storage class?',
+		options: [
+			'Copy the files to another location on the file system.',
+			'Use the Amazon EFS console to move the files to standard storage.',
+			'No action is needed; as soon as the file is accessed, the system will automatically move the file to standard storage.',
+			'Disable lifecycle management for the file system.',
+		],
+		answer: [0],
+		explanation: [
+			'Amazon EFS provides two storage classes: standard storage and infrequent access. The system automatically moves files between these storage classes based on the Lifecycle Management policy you specify for the file system. Lifecycle policies apply to the entire filesystem, not just individual files or directories. When you turn on lifecycle management, you select a time interval after which a file is moved to the IA storage class if it has not been accessed. Once the system moves a file to the IA storage class, it remains there indefinitely; the only way to transition a file back to the standard storage class is to copy the file to a new location.',
+		],
+	},
+	{
+		question:
+			"To optimize the cost associated with your application's compute layer, your development team decided to integrate spot instances to support spikes in your workload. However, your auto scaling group should always contain eight (8) on-demand or reserved instances to process the normal amount of requests, and deploy a combination of spot and on-demand instances to manage spikes of activity requiring more than eight (8) instances. How can you ensure there are always eight (8) on-demand instances to support your compute layers' typical workload?",
+		options: [
+			"Within your launch template, set the auto scaling group's minimum capacity to eight (8) instances.",
+			"Within your launch template, set the auto scaling group's optional on-demand base to eight (8) instances.",
+			"Within your launch template, set the auto scaling group's desired capacity to eight (8) instances.",
+			'Within your launch template, set the instance weighting for on-demand instances to eight (8) instances.',
+		],
+		answer: [1],
+		explanation: [
+			'When you want to include instances with multiple purchase types in the same auto scaling group, you have the ability to maintain a set number of on-demand instances will be deployed at all times, and then split the remaining instances between multiple purchase types as you see fit. To configure this, set a number of instances as your "optional on-demand base" within your launch template. This is not possible using a launch configuration.',
+		],
+	},
+	{
+		question:
+			'You have designed a web application and deployed Amazon Inspector on all EC2 instances involved. You tested Amazon Inspector by running an assessment template; the results generated by the assessment run are reported in some logs. How can you find the list of these logs from Amazon Inspector?',
+		options: [
+			'Run ListFilters API.',
+			'Run ListMembers API.',
+			'Run ListUsageTotals API.',
+			'Run ListFindings API.',
+		],
+		answer: [3],
+		explanation: [
+			'Inside Amazon Inspector, a set of rules with different severity levels perform security checks against EC2 instances. The list of these instances forms an assessment target. The assessment template defines which set of rules (package) run on an assessment target. Results of running assessment templates are reported in assessment runs. These logs are called findings. To see the list of findings from Amazon Inspector assessment runs, you can call the ListFindings API or use the Amazon Inspector console.',
+		],
+	},
+	{
+		question:
+			'A company is developing a mission-critical API on AWS using a Lambda function that accesses data stored in Amazon DynamoDB. Once it is in production, the API should respond in microseconds. The database configuration needs to handle high throughput and be capable of withstanding spikes in CPU consumption. Which configuration options should the solutions architect choose to meet these requirements?',
+		options: [
+			'DynamoDB with DAX burstable instances.',
+			'DynamoDB on-demand capacity.',
+			'DynamoDB provisioned capacity.',
+			'DynamoDB with auto scaling.',
+		],
+		answer: [0],
+		explanation: [
+			'DAX is an in-memory cache specifically used for DynamoDB. It improves the database latency from milliseconds to microseconds for reads. DAX burstable instances are designed to provide on-demand high CPU performance.',
+		],
+	},
 ];
 
 export default builder;
