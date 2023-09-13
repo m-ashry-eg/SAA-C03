@@ -6,6 +6,14 @@ This repository contains a collection of quizzes to help you prepare for the AWS
 
 Access the [website](https://gabrielflores8227.github.io/SAA-C02-Quiz/) online by going to its URL or download the repository and open the index.html file
 
+## 👏🏼 Credits
+
+<ul>
+  <li>
+    <a href="https://www.youtube.com/@shapingpixel">ShapingPixel</a>
+  </li>
+</ul>
+
 ## 📖 License
 
 This script is licensed under the MIT License.
