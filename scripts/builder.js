@@ -187,6 +187,48 @@ const builder = [
 			'DAX is an in-memory cache specifically used for DynamoDB. It improves the database latency from milliseconds to microseconds for reads. DAX burstable instances are designed to provide on-demand high CPU performance.',
 		],
 	},
+	{
+		question:
+			"One AWS account owns an S3 bucket with objects that should be shared with another AWS account. The bucket owner wants to give full access to the second AWS account by granting permission via ACL, using the second AWS account's IAM user credentials. Using this method, what will be the end result?",
+		options: [
+			'The IAM user can now perform all operations on the bucket and objects within the bucket.',
+			'The IAM user now has read permissions for objects within the S3 bucket.',
+			'No change - S3 ACLS cannot grant access to an account via IAM credentials.',
+			'The IAM user now has write permissions for all objects within the S3 bucket.',
+		],
+		answer: [2],
+		explanation: [
+			'Each Amazon S3 bucket and object has an ACL (Access Control List) associated with it. An ACL is a list of grants identifying the grantee and the permission granted. The user can use ACLs to grant basic read/write permissions to other AWS accounts. ACLs use an Amazon S3-specific XML schema. The account owner cannot grant permissions to other accounts using IAM.',
+		],
+	},
+	{
+		question:
+			'A company is migrating a legacy application hosted on-premise to the AWS cloud. The process will include migrating application data currently stored in an on-premises Oracle database. The developers working on this migration are looking for a low-cost and low-maintenance approach to migrate and host the data in AWS.Which of the following should the solutions architect recommend?',
+		options: [
+			'Migrate the database to Amazon DynamoDB using AWS Database Migration Service (DMS) and AWS Schema Conversion Tool (SCT).',
+			'Procure a new license and launch an EC2 on-demand instance with Oracle installed.',
+			'Refactor the code to be Amazon DynamoDB compatible and migrate the database to DynamoDB using AWS Database Migration Service (DMS).',
+			'Migrate the database to Amazon RDS for PostgreSQL using AWS Database Migration Service (DMS) and AWS Schema Conversion Tool (SCT).',
+		],
+		answer: [3],
+		explanation: [
+			'The choice that uses Amazon RDS seems like a good choice because it would meet the low-cost and low- maintenance requirements. RDS for PostgreSQL an open-source database that is cheaper than purchasing new licenses, and it is less maintenance because RDS is a managed service. The team can use AWS Database Migration Service (DMS) and the AWS Schema Conversion Tool (SCT) to migrate the data from an Oracle database to a PostgreSQL.',
+		],
+	},
+	{
+		question:
+			"You are placed in charge of your company's cloud storage and need to deploy empty EBS volumes. You are concerned about an initial performance hit when the new volumes are first accessed. What steps should you take to ensure peak performance when the empty EBS volumes are first accessed?",
+		options: [
+			'Do nothing - empty EBS volumes do not require initialization',
+			'Force the immediate initialization of the entire volume',
+			'Enable fast snapshot restore',
+			'Creating a RAID O array',
+		],
+		answer: [0],
+		explanation: [
+			'Initializing volumes (formerly known as pre-warming) has changed from its prior functionality. Formerly, you would have to initialize (pre-warm) a newly created volume from scratch. This is no longer necessary. Newly created volumes created from snapshots still need to be pre-warmed by reading from the blocks that contain data.',
+		],
+	},
 ];
 
 export default builder;
