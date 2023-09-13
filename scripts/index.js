@@ -1,20 +1,8 @@
-(async () => {
-	let req = shuffleArray(await (await fetch('builder/builder.json')).json());
+import builder from './builder.js';
 
-	if (req.length > 30) {
-		req = req.slice(0, 30);
-	}
+//main
 
-	buildForms(req);
-})();
-
-(() => {
-	window.document.querySelectorAll('form').forEach((form) => {
-		form.addEventListener('submit', (e) => {
-			e.preventDefault();
-		});
-	});
-})();
+buildForms(shuffleArray(builder));
 
 //modules
 
@@ -23,13 +11,8 @@ function shuffleArray(arr) {
 		const j = Math.floor(Math.random() * (i + 1));
 		[arr[i], arr[j]] = [arr[j], arr[i]];
 	}
-	return arr;
-}
 
-function transformString(input) {
-	return input.replace(/-/g, ' ').replace(/\w\S*/g, function (txt) {
-		return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-	});
+	return arr;
 }
 
 function buildForms(builder) {
@@ -67,6 +50,70 @@ function buildForms(builder) {
 			label.setAttribute('for', id);
 
 			optionTemplate.parentNode.append(optionUsableTemplate);
+		});
+
+		const explanationItemTemplate = usableTemplate.querySelector(
+			'template[explanation-item-template]',
+		);
+
+		form.explanation.forEach((explanation) => {
+			const usableExplanationItemTemplate =
+				explanationItemTemplate.cloneNode(true).content.children[0];
+
+			usableExplanationItemTemplate.innerText = explanation;
+
+			explanationItemTemplate.parentNode.append(usableExplanationItemTemplate);
+		});
+
+		usableTemplate.querySelector('form').addEventListener('submit', (e) => {
+			e.preventDefault();
+
+			const inputs = usableTemplate.querySelectorAll('input');
+
+			const selectedInputs = [];
+
+			inputs.forEach((input, index) => {
+				input.setAttribute('disabled', '');
+
+				if (input.checked) {
+					selectedInputs.push(index);
+				}
+			});
+
+			const isRight =
+				JSON.stringify(selectedInputs) === JSON.stringify(form.answer);
+
+			inputs.forEach((input) => {
+				if (input.checked) {
+					input.parentNode.querySelector('label').style.color = isRight
+						? 'green'
+						: 'red';
+				}
+			});
+
+			usableTemplate
+				.querySelector('span[answer-status]')
+				.classList.add(isRight ? '--right' : '--wrong');
+
+			form.answer.forEach((answer) => {
+				inputs[answer].parentNode.classList.add('--right');
+			});
+
+			const submitButton = usableTemplate.querySelector('button');
+
+			submitButton.style.filter = 'opacity(0%)';
+			submitButton.style.height = window.getComputedStyle(submitButton).height;
+
+			setTimeout(() => {
+				submitButton.style.height = '0px';
+				submitButton.style.padding = '0px';
+
+				const explanationContainer = usableTemplate.querySelector(
+					'div[explanation-container]',
+				);
+				const contentHeight = explanationContainer.scrollHeight;
+				explanationContainer.style.height = `${contentHeight}px`;
+			}, 700);
 		});
 
 		template.parentNode.append(usableTemplate);

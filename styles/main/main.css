@@ -58,7 +58,7 @@ div.forms-container > div > form > div:last-of-type button {
 div.forms-container > div > div:last-of-type {
   height: 0px;
   overflow: hidden;
-  transition: ease-in-out 1s;
+  transition: ease-in-out 0.7s;
 }
 div.forms-container > div > div:last-of-type > div {
   border-radius: 7px;
