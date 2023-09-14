@@ -229,6 +229,35 @@ const builder = [
 			'Initializing volumes (formerly known as pre-warming) has changed from its prior functionality. Formerly, you would have to initialize (pre-warm) a newly created volume from scratch. This is no longer necessary. Newly created volumes created from snapshots still need to be pre-warmed by reading from the blocks that contain data.',
 		],
 	},
+	{
+		question:
+			'Your new client is a federal agency utilizing a hybrid cloud environment. The agency distributes large amounts of sensitive data through the whirl. Your task is to ensure that the data is secure using various encryption techniques as well as security groups and access control lists. One of the requirements is to distribute content utilizing CloudFront for optimal performance but completely restrict access from within certain disallow-list countries. What CloudFront feature can you enable to fulfill this requirement?',
+		options: [
+			'SSL encryption.',
+			'Server-Side encryption.',
+			'Geo-Restriction.',
+			'IAM roles.',
+		],
+		answer: [2],
+		explanation: [
+			'You can use Geo-Restriction, also known as geoblocking, to prevent users in specific geographic locations from accessing content that you are distributing through a CloudFront web distribution.',
+		],
+	},
+	{
+		question:
+			"A company’s container applications are managed with Kubernetes and hosted on Windows virtual servers. The company wants to migrate these applications to the AWS cloud, and needs a solution that supports Kunerts pods hosted on Windows server. It is essential that the solution manages the Kunertes API servers and the etcd cluster. The company’s development team would prefer that AWS manage the host instances and containers as much as possible, but is willing to manage them both if necessary. Which AWS service offers the best option for the developer's p[references and the company’s essential requirements for their container application? (Choose 2 answers)",
+		options: [
+			'Amazon Elastic Compute Cloud (EC2).',
+			'Amazon Elastic Kubernetes Service (EKS) with EKS-Managed node groups.',
+			'Amazon Elastic Kubernetes Service (EKS) with self-managed node groups.',
+			'Amazon Elastic Kubernetes Service (EKS) on AWS Fargate.',
+		],
+		answer: [2, 3],
+		explanation: [
+			'The self-managed node group would satisfy the requirement of hands-on container management, and AWS Fargate would provide a managed solution.',
+			'AWS Fargate is a serverless, pay-as-you-go compute engine that lets you focus on building applications without managing servers. AWS Fargate is compatible with both Amazon Elastic Container Service (Amazon ECS) and Amazon Elastic Kubernetes Service (Amazon EKS).',
+		],
+	},
 ];
 
 export default builder;
