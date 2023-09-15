@@ -321,6 +321,23 @@ const builder = [
 			"Redshift is a fully managed data warehousing service that allows you to analyze large datasets using SQL queries. It's optimized for Online Analytical Processing (OLAP) workloads, making it suitable for data analytics and business intelligence applications. Redshift is capable of handling large-scale data warehousing needs with high performance and scalability.",
 		],
 	},
+	{
+		question:
+			'A website that requires an international presence is deployed as follows: It is hosted on 30 EC2 instances. It is deployed in 15 regions around the globe. Each region has 2 instances. All the instances are in a public hosted zone. Which of the following are the best ways to configure your site to maintain availability with minimal downtime if one of the 15 regions lost network connectivity for an extended period of time? (choose 2 answers)',
+		options: [
+			'Create a Route 53 Weighted resource record set with two or more resource record sets that have the same combination of DNS name and type, and assign each resource record set a unique identifier and a relative weight.',
+			'Create a Route 53 Latency Based Routing Record set that resolves to an Elastic Load Balancer in each region and has the Evaluate Target Health flag set to true.',
+			'Create a Route 53 Geolocation Routing Policy that resolves to an Elastic Load Balancer in each region and has the Evaluate Target Health flag set to false.',
+			'Create a Route 53 failover routing policy and configure an active-passive failover.',
+		],
+		answer: [1, 3],
+		explanation: [
+			'Create a Route 53 Latency Based Routing Record. This configuration routes traffic to the region with the lowest latency, which helps ensure that users are directed to the region with the best performance. The Evaluate Target Health flag ensures that only healthy instances receive traffic.',
+			'Create a Route 53 failover routing policy and configure an active-passive failover. With this configuration, you can designate one region as the primary and another as the standby (passive). If the primary region experiences network connectivity issues, traffic is automatically redirected to the standby region. This provides a high level of availability in case of a region failure.',
+			"Weighted routing is useful for controlling the distribution of traffic between resources, but it wouldn't be as effective in maintaining availability in the event of an entire region losing connectivity. It distributes traffic based on configured weights, which might not guarantee availability in a region-specific outage.",
+			"Geolocation routing directs traffic based on the geographic location of the user, but it may not be as effective in this scenario. Additionally, setting Evaluate Target Health to false means that Route 53 doesn't consider the health of the targets, which may not be ideal for maintaining availability.",
+		],
+	},
 ];
 
 export default builder;
