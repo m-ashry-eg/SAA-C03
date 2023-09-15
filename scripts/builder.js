@@ -78,6 +78,7 @@ const builder = [
 		],
 		answer: [3],
 		explanation: [
+			'Compute Savings Plans provide a discount on usage in exchange for a commitment to a specific amount of usage (measured in $/hr) for a 1- or 3-year term. While Compute Savings Plans can offer significant savings, they do not provide a guarantee of capacity or specific instance types. This means they may not be suitable for processes that require a specific instance type and cannot be interrupted.',
 			'A spot instance is not the right instance type for this scenario because they would very likely be interrupted before a 6 hour job would be complete.',
 			'A convertible instance and a compute savings plan both offer up to 66 percent off. However, an EC2 instance savings plan offers up to 72 percent discount.',
 		],
@@ -143,6 +144,9 @@ const builder = [
 		answer: [0],
 		explanation: [
 			'Amazon EFS provides two storage classes: standard storage and infrequent access. The system automatically moves files between these storage classes based on the Lifecycle Management policy you specify for the file system. Lifecycle policies apply to the entire filesystem, not just individual files or directories. When you turn on lifecycle management, you select a time interval after which a file is moved to the IA storage class if it has not been accessed. Once the system moves a file to the IA storage class, it remains there indefinitely; the only way to transition a file back to the standard storage class is to copy the file to a new location.',
+			"The Amazon EFS console provides a user interface for managing files in your file system. However, it doesn't have a direct option to move files between storage classes. It primarily allows you to view, create, delete, and modify files and directories.",
+			"This statement is not accurate in this context. For Amazon EFS with the specified configuration (Standard Storage to Standard-IA with Intelligent Tiering disabled), once a file is moved to the IA storage class, it remains there indefinitely unless manually moved back. The system doesn't automatically move it back to standard storage upon access.",
+			'Disabling lifecycle management would prevent any further automatic transitions between storage classes. However, since the files are already in the IA storage class, disabling lifecycle management would not move them back to standard storage. It would simply prevent further transitions.',
 		],
 	},
 	{
@@ -156,7 +160,10 @@ const builder = [
 		],
 		answer: [1],
 		explanation: [
-			'When you want to include instances with multiple purchase types in the same auto scaling group, you have the ability to maintain a set number of on-demand instances will be deployed at all times, and then split the remaining instances between multiple purchase types as you see fit. To configure this, set a number of instances as your "optional on-demand base" within your launch template. This is not possible using a launch configuration.',
+			"Setting the minimum capacity to eight (8) instances. This would ensure that there are always at least eight instances in the auto scaling group, but it doesn't specifically guarantee that these will be on-demand instances. Spot instances might also be included in the group.",
+			"Setting the auto scaling group's optional on-demand base to eight (8) instances. This option allows you to set a specific number of on-demand instances as a base, which ensures that at least eight on-demand instances will always be part of the group. This aligns with the requirement specified in the scenario.",
+			"Setting the desired capacity to eight (8) instances. This would control the desired number of instances in the group, but it doesn't guarantee that at least eight of them will be on-demand. It's possible that they could all be spot instances if the spot price is low.",
+			"Setting the instance weighting for on-demand instances to eight (8) instances. This doesn't directly address the requirement for a minimum of eight on-demand instances. Instance weighting is used for distributing instances proportionally, but it doesn't enforce a minimum number of on-demand instances.",
 		],
 	},
 	{
@@ -170,21 +177,10 @@ const builder = [
 		],
 		answer: [3],
 		explanation: [
+			'The ListFilters API in Amazon Inspector is used to retrieve a list of Amazon Inspector assessment templates that have a specific set of attributes (filters) applied to them. This can be useful for organizing and managing assessment templates based on specific criteria.',
+			'The ListMembers API in Amazon Inspector is used in the context of Amazon Inspector assessment targets. It retrieves a list of assessment targets within an AWS account. Assessment targets are resources that are evaluated by Amazon Inspector.',
+			'The ListUsageTotals API in Amazon Inspector provides information about the usage of Amazon Inspector in terms of assessment runs, assessment templates, and agents. It can be used to get an overview of the resources and assessments used in an account.',
 			'Inside Amazon Inspector, a set of rules with different severity levels perform security checks against EC2 instances. The list of these instances forms an assessment target. The assessment template defines which set of rules (package) run on an assessment target. Results of running assessment templates are reported in assessment runs. These logs are called findings. To see the list of findings from Amazon Inspector assessment runs, you can call the ListFindings API or use the Amazon Inspector console.',
-		],
-	},
-	{
-		question:
-			'A company is developing a mission-critical API on AWS using a Lambda function that accesses data stored in Amazon DynamoDB. Once it is in production, the API should respond in microseconds. The database configuration needs to handle high throughput and be capable of withstanding spikes in CPU consumption. Which configuration options should the solutions architect choose to meet these requirements?',
-		options: [
-			'DynamoDB with DAX burstable instances.',
-			'DynamoDB on-demand capacity.',
-			'DynamoDB provisioned capacity.',
-			'DynamoDB with auto scaling.',
-		],
-		answer: [0],
-		explanation: [
-			'DAX is an in-memory cache specifically used for DynamoDB. It improves the database latency from milliseconds to microseconds for reads. DAX burstable instances are designed to provide on-demand high CPU performance.',
 		],
 	},
 	{
@@ -198,7 +194,10 @@ const builder = [
 		],
 		answer: [2],
 		explanation: [
+			"The IAM user can now perform all operations on the bucket and objects within the bucket. This statement is not accurate for the scenario described. ACLs (Access Control Lists) within S3 cannot grant access to another AWS account via IAM user credentials. To share objects or buckets across AWS accounts, you'd typically use Cross-Account IAM Roles or Bucket Policies.",
+			'The IAM user now has read permissions for objects within the S3 bucket. This statement is also not applicable based on the scenario. ACLs are not the mechanism to grant permissions between AWS accounts. ACLs in S3 are generally used within a single AWS account to manage access permissions.',
 			'Each Amazon S3 bucket and object has an ACL (Access Control List) associated with it. An ACL is a list of grants identifying the grantee and the permission granted. The user can use ACLs to grant basic read/write permissions to other AWS accounts. ACLs use an Amazon S3-specific XML schema. The account owner cannot grant permissions to other accounts using IAM.',
+			"This statement is also not relevant to the scenario described. It's important to note that ACLs alone cannot be used to grant permissions to objects or buckets in a different AWS account.",
 		],
 	},
 	{
@@ -212,21 +211,10 @@ const builder = [
 		],
 		answer: [3],
 		explanation: [
+			'While DynamoDB is a powerful and scalable NoSQL database service, it may not be suitable for all types of applications, especially if the legacy application relies on Oracle database features that are not easily replicated in DynamoDB. Additionally, migrating from Oracle to DynamoDB might require significant code refactoring.',
+			'This approach involves running Oracle on an EC2 instance. It can be expensive, especially if a new license is required. Additionally, it might require more maintenance compared to managed services like RDS.',
+			'Refactoring the code to make it compatible with DynamoDB might be a significant effort, and it may not be suitable for a low-cost and low-maintenance migration approach, especially if the application heavily relies on Oracle-specific features.',
 			'The choice that uses Amazon RDS seems like a good choice because it would meet the low-cost and low- maintenance requirements. RDS for PostgreSQL an open-source database that is cheaper than purchasing new licenses, and it is less maintenance because RDS is a managed service. The team can use AWS Database Migration Service (DMS) and the AWS Schema Conversion Tool (SCT) to migrate the data from an Oracle database to a PostgreSQL.',
-		],
-	},
-	{
-		question:
-			"You are placed in charge of your company's cloud storage and need to deploy empty EBS volumes. You are concerned about an initial performance hit when the new volumes are first accessed. What steps should you take to ensure peak performance when the empty EBS volumes are first accessed?",
-		options: [
-			'Do nothing - empty EBS volumes do not require initialization',
-			'Force the immediate initialization of the entire volume',
-			'Enable fast snapshot restore',
-			'Creating a RAID O array',
-		],
-		answer: [0],
-		explanation: [
-			'Initializing volumes (formerly known as pre-warming) has changed from its prior functionality. Formerly, you would have to initialize (pre-warm) a newly created volume from scratch. This is no longer necessary. Newly created volumes created from snapshots still need to be pre-warmed by reading from the blocks that contain data.',
 		],
 	},
 	{
@@ -240,7 +228,10 @@ const builder = [
 		],
 		answer: [2],
 		explanation: [
-			'You can use Geo-Restriction, also known as geoblocking, to prevent users in specific geographic locations from accessing content that you are distributing through a CloudFront web distribution.',
+			'SSL (Secure Sockets Layer) encryption is used to secure the communication between a client and a server. It ensures that the data transmitted between the two parties is encrypted and secure. While SSL encryption is crucial for protecting data in transit, it does not specifically address the requirement of restricting access based on geographic location.',
+			'Server-Side encryption refers to the practice of encrypting data at rest on the server or storage system. In the context of AWS services like S3, it means that the data stored in the S3 bucket is encrypted. While this is essential for data security, it also does not directly relate to restricting access based on geographic location.',
+			'Geo-Restriction in Amazon CloudFront allows you to control access to your content based on the geographic location of your viewers. You can either allow or disallow access to your content based on the countries from which users are attempting to access it. This directly addresses the requirement of restricting access based on geographic location.',
+			'IAM (Identity and Access Management) roles are used to delegate permissions to AWS services and resources. While IAM roles are important for managing access within an AWS environment, they do not specifically handle geographic restrictions or content distribution via CloudFront.',
 		],
 	},
 	{
@@ -252,10 +243,12 @@ const builder = [
 			'Amazon Elastic Kubernetes Service (EKS) with self-managed node groups.',
 			'Amazon Elastic Kubernetes Service (EKS) on AWS Fargate.',
 		],
-		answer: [2, 3],
+		answer: [1, 3],
 		explanation: [
-			'The self-managed node group would satisfy the requirement of hands-on container management, and AWS Fargate would provide a managed solution.',
-			'AWS Fargate is a serverless, pay-as-you-go compute engine that lets you focus on building applications without managing servers. AWS Fargate is compatible with both Amazon Elastic Container Service (Amazon ECS) and Amazon Elastic Kubernetes Service (Amazon EKS).',
+			"Amazon EC2 provides resizable compute capacity in the cloud. It allows you to run virtual servers, known as instances, on-demand. With EC2, you have full control over the underlying virtual machines, including the operating system, networking, and storage. You can install and manage your own Kubernetes clusters on EC2 instances. However, in this case, where the company's development team prefers AWS to manage the host instances and containers as much as possible, this may not be the most hands-off option.",
+			"Amazon EKS is a managed Kubernetes service that makes it easier to run, manage, and scale containerized applications using Kubernetes. EKS-Managed node groups are a feature of EKS that allow AWS to handle the provisioning, scaling, and termination of the EC2 instances in your cluster. This is a good option for the company's requirement as it allows AWS to manage the host instances, while you still manage the Kubernetes pods and applications.",
+			"With self-managed node groups in Amazon EKS, you are responsible for managing the underlying EC2 instances. This means you have to handle tasks like provisioning, scaling, and termination of nodes. While EKS provides a managed Kubernetes control plane, you still have to manage the nodes. This option might not align with the developer's preference for AWS to manage both host instances and containers.",
+			"AWS Fargate is a serverless compute engine for containers. It allows you to run containers without managing the underlying EC2 instances. When you run EKS on Fargate, AWS takes care of the infrastructure completely, including the host instances and containers. This aligns with the developer's preference for AWS to manage both host instances and containers.",
 		],
 	},
 	{
@@ -285,8 +278,10 @@ const builder = [
 		],
 		answer: [2],
 		explanation: [
-			'Amazon CloudFront is a web service that speeds up the distributing of your static and dynamic web content, such as videos, to your users. CloudFront delivers your content through a worldwide network of data centers called edge locations. When a user requests content that you are serving with CloudFront, the request is routed to the edge location that provides the lowest latency (time delay), so that content is delivered with the best possible performance.',
-			'Enabling S3 transfer Acceleration can help improve the speed of uploading and downloading objects to and from an S3 bucket. However, it may not be the most effective solution for addressing the specific issue of video buffering and lag experience by users when streaming.',
+			'S3 Transfer Acceleration is useful for accelerating uploads to S3, but it may not directly address the buffering and lag issues experienced by users when streaming video content. It focuses on improving upload times.',
+			'AWS Global Accelerator is used to improve the availability and performance of applications. While it can be beneficial for routing traffic across AWS regions, it may not directly address the video buffering and lag issues.',
+			'This option is the most suitable for improving the delivery of video content. CloudFront is a content delivery network (CDN) that caches content at edge locations closer to the users. This reduces the distance data has to travel, resulting in faster and more reliable streaming. Additionally, configuring Route 53 with an alias record ensures that users are directed to the CloudFront distribution.',
+			'While increasing the EC2 instance size and using Auto Scaling can help with scalability and performance, it may not directly address the buffering and lag issues related to video streaming. This solution focuses on server capacity, which may not be the primary bottleneck in this scenario.',
 		],
 	},
 	{
@@ -300,8 +295,10 @@ const builder = [
 		],
 		answer: [0],
 		explanation: [
-			'The primary approach to backup EBS storage is using EBS snapshots. EBS snapshots allow you to back up EBS data and store the snapshots in S3. This approach helps reduce storage costs by not duplicating data with each backup. However, the snapshot service does not alone have a way to build policies to create, retain, and delete snapshots automatically.',
-			'In This case, Amazon Data Lifecycle Manager (DLM) can automate AMI lifecycles. For example, you can use DLM to create an EBS-backed AMI and then make additional snapshots regularly.',
+			"Amazon Data Lifecycle Manager (DLM) allows you to automate the creation, retention, and deletion of EBS snapshots. With DLM, you can define lifecycle policies to create snapshots on a regular basis (e.g., daily) and specify the number of snapshots to retain. This aligns with the team's requirement to back up the system each day and retain a specific number of backups. Additionally, DLM can be used in conjunction with AWS Systems Manager Automation to launch a new instance and attach the associated EBS volumes automatically.",
+			"AWS Backup primarily focuses on managing backups of various AWS resources, including EBS volumes. While it provides automated backup capabilities, it doesn't directly handle the creation of Amazon Machine Images (AMIs) or launching new instances.",
+			"AWS File Gateway is used for hybrid cloud storage solutions, but it doesn't directly address the requirement for creating and managing AMIs or automating system recovery.",
+			"While you can use EBS snapshots to back up data, managing the creation, retention, and restoration of Amazon Machine Images (AMIs) would typically require additional scripting or automation. There isn't a direct service to automate AMI lifecycles using EBS snapshots alone.",
 		],
 	},
 	{
