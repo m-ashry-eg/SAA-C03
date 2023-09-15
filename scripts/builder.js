@@ -258,6 +258,69 @@ const builder = [
 			'AWS Fargate is a serverless, pay-as-you-go compute engine that lets you focus on building applications without managing servers. AWS Fargate is compatible with both Amazon Elastic Container Service (Amazon ECS) and Amazon Elastic Kubernetes Service (Amazon EKS).',
 		],
 	},
+	{
+		question:
+			'A solutions architect set up an AWS network load balancer (NLB) with cross-zone load balancing enabled. There are 12 instances in a single target group; 4 instances are in availability zone A and 8 instances in availability zone B. The target group has a health check that uses TCP, and two instances in availability zone B are marked unhealthy. Which of the following correctly describes how the load balancer routes traffic to the remaining healthy instances?',
+		options: [
+			'The traffic is distributed evenly between the remaining healthy target, with each target getting roughly 10% of the traffic.',
+			'Targets in availability zone A will get a slightly higher percentage of the traffic, with each target getting roughly 12.5% of the traffic.',
+			'Targets in availability zone B will get a slightly higher percentage of the traffic, with each target getting roughly 16.7% of the traffic.',
+			'Targets in availability zone B will receive no traffic, with 100% of the traffic ground to availability zone A.',
+		],
+		answer: [0],
+		explanation: [
+			'In this case, the solution architect has enabled cross-zone load balancing for the NLB. As a result, the load balancer will distribute the load evenly among the targets in all associated availability zones.',
+			'If cross-zone load balancing were disabled, the traffic would be split evenly between each availability zone. With cross-zone load balancing disabled, the targets in availability zone A would get 12.5% of the traffic, and in availability zone B would get 8.33%.',
+			'Keep in mind that with cross-zone load balancing disabled, each Availability Zone operated independently. This means that if one zone has more healthy instances than another, it will receive a larger share of the traffic.',
+		],
+	},
+	{
+		question:
+			'A company is running an online course platform hosted on m5.large EC2 instances behind Application Load Balancers (ALB) with video courses stored in an S3 bucket. Customers have complained about buffering and lag when watching videos.  When they begin to experience buffer or lag, they have to pause the videos to allow them to finish downloading to prevent the entire experience from becoming choppy. A Solutions Architect is asked to optimize the delivery of the video content to minimize the amount of issues users experience. What of the following solutions should be implemented?',
+		options: [
+			'Enable S3 Transfer Acceleration for the S3 bucket hosting the video content.',
+			'Configure AWS Global Accelerator for the VPCs ghosting the application’s m5.large instances.',
+			'Deploy a CloudFront distribution with the host S3 bucket as the origin, and configure Route 53 with an alias record point to your distribution.',
+			'Increase the EC2 instances size to m5.4xlarge and configure an Auto Scaling Group with a target tracking policy.',
+		],
+		answer: [2],
+		explanation: [
+			'Amazon CloudFront is a web service that speeds up the distributing of your static and dynamic web content, such as videos, to your users. CloudFront delivers your content through a worldwide network of data centers called edge locations. When a user requests content that you are serving with CloudFront, the request is routed to the edge location that provides the lowest latency (time delay), so that content is delivered with the best possible performance.',
+			'Enabling S3 transfer Acceleration can help improve the speed of uploading and downloading objects to and from an S3 bucket. However, it may not be the most effective solution for addressing the specific issue of video buffering and lag experience by users when streaming.',
+		],
+	},
+	{
+		question:
+			'A DevOps team manages an EBS-backed Amazon EC2 instance that hosts a staging environment for a web-based application. The group does not have a backup for the staging environment and would like to set up a process to automatically back it up. If needed, the team should be able to launch a new instance to restore the staging environment from a backup, with each associated EBS volume automatically attached to the instance. The system should be backed up each day and retain the last given backups. Which of the following solutions could the DevOps team use to automate their EC2 backups and allow system recovery as described?',
+		options: [
+			'Use Amazon Data Lifecycle Manager to automate Amazon Machine Image (AMI) lifecycles.',
+			'Use AWS Backup to automate Amazon Machine Image (AMI) lifecycles.',
+			'Use AWS File Gateway to create and manage snapshots for EBS boot device volumes and data volumes.',
+			'Use the EBS snapshot service to automate Amazon Machine Image (AMI) lifecycle.',
+		],
+		answer: [0],
+		explanation: [
+			'The primary approach to backup EBS storage is using EBS snapshots. EBS snapshots allow you to back up EBS data and store the snapshots in S3. This approach helps reduce storage costs by not duplicating data with each backup. However, the snapshot service does not alone have a way to build policies to create, retain, and delete snapshots automatically.',
+			'In This case, Amazon Data Lifecycle Manager (DLM) can automate AMI lifecycles. For example, you can use DLM to create an EBS-backed AMI and then make additional snapshots regularly.',
+		],
+	},
+	{
+		question:
+			'A gaming company comes to you and asks you to build infrastructure for their site. They are unsure how big they will be because, as with all startups, they have limited money and big ideas. What they do tell you is that if the game becomes successful, like one of their previous games, it may rapidly grow to millions of users and generate tens (or even hundreds) of thousands of writes and reads per second. After considering all of this, you decide that they need a fully managed NoSQL database service that provides fast and predictable performance with seamless scalability and persistent storage. Which of the following databases do you think would best fit their needs?',
+		options: [
+			'Amazon DynamoDB',
+			'Amazon RDS',
+			'Amazon Elasticache',
+			'Amazon Redshift',
+		],
+		answer: [0],
+		explanation: [
+			"DynamoDB is a fully managed NoSQL database service provided by AWS. It is designed for high availability, scalability, and low-latency performance. DynamoDB is suitable for applications that require fast and seamless access to large amounts of structured data. It's used for web and mobile applications, gaming, IoT, and more.",
+			'RDS is a managed relational database service that supports multiple database engines such as MySQL, PostgreSQL, MariaDB, Oracle, and Microsoft SQL Server. It handles routine database tasks like patch management, backups, and automatic failover, allowing developers to focus on application development rather than database management.',
+			'ElastiCache is a managed in-memory caching service provided by AWS. It supports popular caching engines like Redis and Memcached. ElastiCache helps improve application performance by caching frequently accessed data in memory, reducing the need to retrieve data from the database. This is especially beneficial for applications that require low-latency access to frequently accessed information.',
+			"Redshift is a fully managed data warehousing service that allows you to analyze large datasets using SQL queries. It's optimized for Online Analytical Processing (OLAP) workloads, making it suitable for data analytics and business intelligence applications. Redshift is capable of handling large-scale data warehousing needs with high performance and scalability.",
+		],
+	},
 ];
 
 export default builder;
