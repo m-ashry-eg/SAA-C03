@@ -12,6 +12,9 @@ Access the [website](https://gabrielflores8227.github.io/SAA-C03-Quiz/) online b
   <li>
     <a href="https://www.youtube.com/@shapingpixel">ShapingPixel</a>
   </li>
+    <li>
+    <a href="https://chat.openai.com">ChatGPT</a>
+  </li>
 </ul>
 
 ## 📖 License
