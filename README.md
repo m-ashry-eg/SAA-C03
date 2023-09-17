@@ -4,7 +4,7 @@ This repository houses a curated collection of study materials for the AWS Solut
 
 ## ⚡ Quiz
 
-Access the [website](https://gabrielflores8227.github.io/SAA-C03/) online by going to its URL or download the repository and open the index.html file
+Access the [website](https://gabrielflores8227.github.io/SAA-C03) online by going to its URL or download the repository and open the index.html file
 
 ## 👏🏼 Credits
 
