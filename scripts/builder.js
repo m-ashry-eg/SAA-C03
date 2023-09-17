@@ -184,6 +184,56 @@ const builder = [
 			'Simple Web Form (Incorrect): This is not the correct expansion of SWF. SWF stands for Simple Workflow, not "Simple Web Form". It is not related to web forms.',
 		],
 	},
+	{
+		question: 'What is the Reduced Redundancy option in Amazon S3?',
+		options: [
+			'A. Less redundancy for a lower cost.',
+			"B. It doesn't exist in Amazon S3, but in Amazon EBS.",
+			'C. It allows you to destroy any copy of your files outside a specific jurisdiction.',
+			"D. It doesn't exist at all",
+		],
+		answer: [0],
+		explanation: [
+			'(A). Reduced Redundancy Storage (RRS) was a storage option offered by Amazon S3 that provided a lower level of redundancy compared to Standard storage. It was designed for non-critical, reproducible data where durability was less critical. It was less expensive than Standard storage.',
+			'(B). Reduced Redundancy Storage (RRS) was indeed a storage option available in Amazon S3, not Amazon EBS (Elastic Block Store).',
+			'(C). This option does not accurately describe Reduced Redundancy Storage. RRS was about providing a lower level of redundancy for cost savings, not about jurisdictional control or data destruction.',
+			'(D). Reduced Redundancy Storage (RRS) did exist, but it has been deprecated. As of my last knowledge update in September 2021, AWS has announced the end of new RRS storage class objects. Existing RRS objects will continue to be supported.',
+		],
+	},
+	{
+		question:
+			'Fill in the blanks: Resources that are created in AWS are identified by a unique identifier called an _____.',
+		options: [
+			'A. Amazon Resource Number',
+			'B. Amazon Resource Name tag',
+			'C. Amazon Resource Name',
+			'D. Amazon Reesource Namespace',
+		],
+		answer: [2],
+		explanation: [
+			"(A). This is not a standard term or identifier used in AWS. It's not a recognized concept in AWS services.",
+			'(B). While AWS resources can have tags associated with them (key-value pairs for organizational purposes), the unique identifier for an AWS resource is not referred to as a "tag." Tags are used for metadata and management purposes, but they are not the primary identifier of a resource.',
+			"(C). This is the correct term. An Amazon Resource Name (ARN) is a unique identifier that is assigned to AWS resources. It's a string of characters that identifies a specific resource in AWS. ARNs are used to uniquely identify resources across AWS services and accounts.",
+			"(D). This term is not used in AWS to refer to the unique identifier of a resource. It's not a recognized term in the context of AWS resource identification.",
+		],
+	},
+	{
+		question:
+			"What does the command 'ec2-run-instances ami-e3a5408a -n 20 -g appserver' do?",
+		options: [
+			'A. Start twenty instances as members of appserver security group',
+			'B. Creates 20 rules in the security group named appserver',
+			'C. Terminate twenty instances as members of appserver group',
+			'D. Start 20 security groups',
+		],
+		answer: [0],
+		explanation: [
+			'(A). The ec2-run-instances command is used to launch EC2 instances. In the command provided, it specifies to launch 20 instances (-n 20) using the Amazon Machine Image (AMI) ami-e3a5408a. The -g appserver part indicates that these instances will be placed in the security group named appserver. Therefore, it is correct to say that the command is starting twenty instances as members of the appserver group.',
+			"(B). This interpretation is incorrect. The command ec2-run-instances is used for launching instances, not for creating rules in a security group. It doesn't create rules; instead, it associates instances with an existing security group (-g appserver) when launching them.",
+			'(C). This interpretation is incorrect. The ec2-run-instances command is used to launch instances, not to terminate them. It has no functionality for terminating instances.',
+			'(D). This interpretation is also incorrect. The command is not used to start security groups. Security groups are typically created and configured separately in AWS, and they are associated with instances when those instances are launched.',
+		],
+	},
 ];
 
 export default builder;
