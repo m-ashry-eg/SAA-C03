@@ -1,8 +1,8 @@
 # ⭐ Aws Certified Solutions Architect Quiz
 
-This repository contains a collection of quizzes to help you prepare for the AWS Certified Solutions Architect - Associate exam Resources - [click here to open](https://gabrielflores8227.github.io/SAA-C03-Quiz/)
+This repository houses a curated collection of study materials for the AWS Solutions Architect - Associate (SAA-C03) certification exam. Inside, you'll find my personal notes and a custom set of quizzes designed to aid in your preparation for the exam. These resources are tailored to reinforce your understanding of AWS services and architectural concepts. 
 
-## ⚡ How to Use
+## ⚡ Quiz
 
 Access the [website](https://gabrielflores8227.github.io/SAA-C03-Quiz/) online by going to its URL or download the repository and open the index.html file
 
