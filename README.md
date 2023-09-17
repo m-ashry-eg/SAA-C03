@@ -12,8 +12,10 @@ Access the [online quiz](https://gabrielflores8227.github.io/SAA-C03) and enjoy.
   <li>
     <a href="https://www.youtube.com/@shapingpixel">ShapingPixel</a>
   </li>
-    <li>
     <a href="https://chat.openai.com">ChatGPT</a>
+  </li>
+    </li>
+    <a href="https://quizlet.com/144321056/aws-certified-solutions-architect-associate-practice-questions-flash-cards">Quizlet</a>
   </li>
 </ul>
 
