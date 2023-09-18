@@ -319,6 +319,159 @@ const builder = [
 			'(D). This option is a very effective way to reduce database costs for a read-intensive workload. Amazon ElastiCache is a caching service that can be used to store frequently accessed data in-memory, reducing the need to query the database for the same information repeatedly. This can lead to significant cost savings and improved performance for read-heavy workloads.',
 		],
 	},
+	{
+		question:
+			'A company needs to maintain system access logs for a minimum of 2 years due to financial compliance policies. Logs are rarely accessed, and access must be requested at least 12 hours in advance. is the most cost-effective method to store logs that satisfies the compliance requirement and delivers log requested in a timely manner?',
+		options: [
+			'A. Store the logs in CloudWatch logs and configure a two-year retention period.',
+			'B. Store the logs in Amazon S3 in the Intelligent-Tiering storage class. Configure a lifecycle policy to delete the logs after two years.',
+			'C. Store the logs in Amazon S3 in the S3 Glacier Deep Archive storage class. Configure a lifecycle policy that deletes the logs after two years.',
+			'D. Store the logs in Amazon S3 in the S3 One Zone-IA storage class. Configure a lifecycle policy to delete the logs after two years.',
+		],
+		answer: [2],
+		explanation: [
+			'(A). While CloudWatch can store logs for an extended period, it may not be as cost-effective as other storage options, especially for logs that are rarely accessed.',
+			'(B). Intelligent-Tiering is optimized for objects with changing access patterns. Since the logs are rarely accessed in this scenario, it may not be the most cost-effective choice for long-term storage.',
+			'(C). This option is the most cost-effective because it is specifically designed for long-term archival of rarely accessed data. The lifecycle policy ensures compliance with the two-year retention requirement, and the lower cost of Glacier Deep Archive makes it an efficient choice.',
+			'(D). While One Zone-IA is designed for infrequently accessed data and is less expensive than standard S3 storage, it may not be the most cost-effective option for long-term archival, especially when compared to S3 Glacier Deep Archive which is specifically designed for archival and is even more cost-effective. Additionally, Glacier Deep Archive provides even lower costs for long-term storage.',
+		],
+	},
+	{
+		question:
+			'A company with a lot of AWS resources contracted you to protect a list of its resources and buckets The company would like to seamlessly change the subset of resources that are backed up on AWS Backup. What strategy will you implement to easily backup a subset of resources?',
+		options: [
+			'A. Create lists of resource names for each subset and associate the resource names before running new backup plans.',
+			'B. Find the resource ID of each resource to be protected and add the resource ID of each resource to the backup plan before a new run.',
+			'C. Add descriptions to each resource. To run new backup plans, specify the common descript to the targeted resources.',
+			'D. Add tags with key-value pairs to each resource. To run new backup plans, include targeted resources using tag key-value pair.',
+		],
+		answer: [3],
+		explanation: [
+			'(A). This approach could become unwieldy and difficult to manage as the number of resources grows. It also requires manual intervention every time the company wants to change the subset of resources being backed up.',
+			'(B). Similar to option 1, manually managing resource IDs can become impractical and error-prone, especially for a large number of resources.',
+			'(C). Descriptions may not be as flexible or robust for resource management compared to tags.',
+			'(D). Tags provide a flexible and scalable way to categorize and manage resources. This makes it easy to identify and select a subset of resources for backup without the need for manual intervention or management of resource lists or IDs.',
+		],
+	},
+	{
+		question:
+			'A company is migrating its on-premises data center to the AWS cloud. They need to transfer data AWS and require high bandwidth and consistent network connection. The team responsible for the migration is concerned about high data transfer costs associated with their current internet provider an looking for a cost-effective solution for this long-term project. Which of the following Amazon solution should the team choose to connect the on-premises network to AWS for this migration project?',
+		options: [
+			'A. Use AWS Direct Connect to connect AWS with the remote on-premises network.',
+			'B. Use an Amazon Site-to-site VPN connection to connect AWS with the remote on-premises network.',
+			'C. Use a transit gateway to connect AWS with the remote on-premises network.',
+			'D. Use Amazon S3 with Transfer Acceleration',
+		],
+		answer: [0],
+		explanation: [
+			'(A). AWS Direct Connect provides a dedicated network connection that bypasses the public internet. This ensures high bandwidth and consistent network performance, which is essential for a data migration project.',
+			'(B). Amazon Site-to-site VPN is also a viable option, but it may not provide the same level of performance and consistency as AWS Direct Connect. VPN connections rely on the public internet, which can introduce variability in network performance.',
+			'(C). Transit Gateway is a useful tool for managing multiple VPC connections, but it is not specifically designed for high-bandwidth, consistent connectivity between an on-premises network and AWS.',
+			'(D). Amazon S3 with Transfer Acceleration is not applicable in this scenario. It is a service optimized for fast transfers to and from Amazon S3 buckets, but it does not address the need for high-bandwidth, consistent connectivity between the on-premises network and AWS.',
+		],
+	},
+	{
+		question:
+			"You are an engineer at a large bank, responsible for managing your firm's AWS infrastructure. Your finance team has approached you, indicating their concern over the growing S3 budget. They have asked to identify strategies to reduce S3 storage costs without compromising data quality before the next mont billing cycle. What options below are the most efficient and effective at reducing object storage costs? (Choose 2 answers)",
+		options: [
+			'A. Develop a custom script to compress file S3 object files size.',
+			'B. Utilize S3 Standard-Infrequent Access (IA) storage class for objects that are infrequently requested.',
+			'C. Use Snowball for large data objects to avoid data transfer rates.',
+			'D. Implement lifecycle to archive older objects to the S3 Glacier Flexible Retrieval storage class.',
+		],
+		answer: [1, 3],
+		explanation: [
+			'(A). Compression might not be effective for all types of data, such as already compressed formats like images, videos, or binary data. Additionally, developing and maintaining custom compression scripts can be complex and time-consuming.',
+			'(B). S3 Standard-IA offers a lower storage cost compared to S3 Standard, making it a cost-effective choice for objects that are not frequently accessed. It allows you to reduce storage costs without compromising data quality, as the data is still readily available when needed.',
+			"(C). Snowball is designed for data transfer and migration, not for reducing storage costs of existing objects in S3. It's not a suitable solution for this specific cost optimization task.",
+			'(D). The S3 Glacier Flexible Retrieval storage class offers very low storage costs for archival data. By using a lifecycle policy, you can automatically move older, infrequently accessed data to this storage class, reducing storage costs significantly. It allows you to save on storage costs while maintaining data quality, as the data can still be retrieved when needed.',
+		],
+	},
+	{
+		question:
+			"You are leading a design meeting on security in your company's new AWS VPC. Your team is debating the merits of using security groups, Network Access Control Lists or both. It is important to be aware of the benefits of each and how that might interact if deployed together. What differences between security groups and Network Access Control Lists must you be aware of before deploying? (Choose 2 answers)",
+		options: [
+			'A. Security Groups are stateless, return traffic must be explicitly allowed by rules.',
+			'D. Security Groups are stateful, return traffic is allowed regardless of any rules.',
+			'C. NACLS are stateless, return traffic must be explicitly allowed by rules.',
+			'D. NACLS are stateful, return traffic is allowed regardless of any rules.',
+		],
+		answer: [1, 2],
+		explanation: [
+			"(A). This statement is incorrect. Security Groups in AWS are actually stateful. When you allow inbound traffic, the corresponding outbound traffic for responses is automatically allowed. This means you don't need to create separate rules for return traffic.",
+			'(B). This statement is correct. Security Groups are indeed stateful. If you allow inbound traffic from a certain source, the return traffic is automatically allowed, regardless of outbound rules.',
+			'(C). This statement is correct. Network Access Control Lists (NACLS) in AWS are stateless. This means that for each rule allowing inbound traffic, you need to create a corresponding outbound rule to allow return traffic. Unlike Security Groups, NACLS do not automatically permit return traffic based on inbound rules.',
+			'(D). This statement is incorrect. Network Access Control Lists (NACLS) are indeed stateless. They do not automatically allow return traffic like Security Groups do. Return traffic must be explicitly allowed through outbound rules.',
+		],
+	},
+	{
+		question:
+			"A DevOps team is deploying a new application to an Amazon EC2 instance with an EBS data volume. The team does not fully understand the application's EBS performance needs and does not wa to over-provision, so they have started with a general-purpose SSD volume (gp2). However, they woul like the option to modify the volume type without any downtime if they need to move to a Provisioned IOPS SSD (io1). What steps can the team take to change the volume type without any downtime for th EC2 instance?",
+		options: [
+			'A. Use the Amazon EBS Elastic Volumes feature to change the volume type.',
+			'B. Resize the EC2 instance and choose an EBS-backed instance with the appropriate volume type.',
+			'C. Take a snapshot of the current EBS volume and create a new io1 volume from the snapshot.',
+			'D. Modify the EC2 instance to use instance storage for the data volume.',
+		],
+		answer: [0],
+		explanation: [
+			'(A). The Amazon EBS Elastic Volumes feature allows you to modify the volume type of an existing EBS volume, including changing from gp2 to io1, without any downtime. This ensures continuous availability of the application while making necessary adjustments to the volume type.',
+			'(B). This option involves changing the entire EC2 instance type. While this would allow you to choose an EBS-backed instance with the desired volume type, it is a more drastic measure than simply modifying the volume type. It may not be necessary and could result in additional downtime.',
+			"(C). While this approach could create a new volume with the desired volume type, it would involve creating a new volume and potentially requiring downtime to switch the application to use the new volume. It doesn't meet the requirement of changing the volume type without any downtime.",
+			"(D). This option suggests using instance storage, which is not as flexible or persistent as EBS volumes. It may not be suitable for the application's requirements, especially if the team initially chose an EBS volume for data persistence.",
+		],
+	},
+	{
+		question:
+			'A company using PostgreSQL on-premise as the database for a customer-facing application is migra to the AWS cloud. The development team needs to select a high-performance Amazon database solution that offers increased throughput and minimal lock contention for this migration. Another obje of the migration is to minimize the resources needed to maintain the database server. The developmen team has designed the application to support concurrent queries and transactions and wants to ensure the database solution can support this workload. Which of the following database services would the te choose to meet these requirements?',
+		options: [
+			'A. Migrate to Amazon RDS for PostgreSQL',
+			'B. Migrate to Amazon Aurora for PostgreSQL',
+			'C. Migrate to Amazon DynamoDB',
+			'D. Migrate the PostgreSQL database to Amazon EC2',
+		],
+		answer: [1],
+		explanation: [
+			'(A). While RDS for PostgreSQL is a good choice for managed PostgreSQL databases, it may not offer the same level of performance optimization and scalability as Amazon Aurora. Aurora is specifically designed for high-performance applications and can provide higher throughput.',
+			"(B). Amazon Aurora for PostgreSQL is designed for applications that require high throughput and low latency. It provides increased throughput, minimal lock contention, and is compatible with PostgreSQL. Additionally, it's a fully managed service, which reduces the resources needed to maintain the database server.",
+			"(C). DynamoDB is a NoSQL database, which means it has a different data model compared to PostgreSQL. Migrating to DynamoDB would likely require significant changes to the application code and schema, which may not align with the team's migration goals.",
+			'(D). Migrating to Amazon EC2 would require the development team to manage the entire infrastructure, including the operating system, security, backups, and more. This option would likely result in higher operational overhead compared to using a managed service like Aurora.',
+		],
+	},
+	{
+		question:
+			'A video game company is developing a big project and needs to share its AWS resources with another company it recently acquired. The newly acquired company has its own AWS account but needs to access the parent company resources to participate in the hot project. How can the resources be shared with reduced operational overhead and without resource duplication?',
+		options: [
+			'A. Use AWS console or command line to make a copy of all resources needed for the project and provide the acquisition account access to the copy.',
+			'B. Use Amazon S3 console to share the resources with the acquisition account.',
+			'C. The parent company uses AWS RAM to allow the acquisition account access to resources needed to complete the project.',
+			'D. Use AWS SSO to sign into the parent resources from the acquisition AWS account.',
+		],
+		answer: [2],
+		explanation: [
+			"(A). This option involves manually duplicating resources and providing access to the copies in the acquisition account. Duplicating resources can lead to synchronization issues, increased management overhead, and potential discrepancies between the original and copied resources. This approach doesn't leverage AWS features designed for resource sharing.",
+			"(B). This option is specific to sharing objects in Amazon S3, which may not be suitable for sharing other types of AWS resources like EC2 instances, databases, etc. While this option is valid for sharing S3 objects, it doesn't address the broader requirement of sharing various types of AWS resources across accounts.",
+			'(C). AWS Resource Access Manager (RAM) is designed for sharing AWS resources across accounts within an organization. It enables controlled and secure sharing without resource duplication. This option is the most suitable for the scenario. It allows the parent company to share resources with the acquisition account, reducing operational overhead and avoiding resource duplication.',
+			"(D). AWS Single Sign-On (SSO) is a service that allows users to sign in to multiple AWS accounts using a single set of credentials. However, it's more focused on user authentication and access, rather than sharing resources directly between accounts. While AWS SSO is a useful service for managing user access, it doesn't directly address the requirement of sharing resources between the parent company and the acquisition account.",
+		],
+	},
+	{
+		question:
+			"An advertising company is running all of its websites, databases, and file storage in the AWS cloud. They are hiring hundreds of new employees to manage regional advertising campaigns to be launched on multiple continents. The permissions for each employee will vary based on the employee's location and job title within the company, and management is concerned about consistently applying access to resources as new users are rapidly added to existing AWS accounts. What is the most efficient way to maintain consistency with a minimal amount of reorganizing the existing corporate access and policy structure in AWS?",
+		options: [
+			'A. Attach IAM policies to each IAM user based on their location and job title.',
+			'B. Create IAM groups based on location and job title and attach an IAM role to each group. Assign IAM users to their corresponding group.',
+			'C. Create IAM groups based on location and job title and attach IAM policies to each group. Assign IAM users to their corresponding group.',
+			'D. Create Organizational Units (OU) for each location and apply Service Control Policies for each Organizational Unit.',
+		],
+		answer: [2],
+		explanation: [
+			'(A). This option suggests assigning policies directly to individual IAM users based on their location and job title. While technically possible, it is not the most efficient way to manage permissions, especially in a scenario with hundreds of new employees. This approach could lead to a complex and potentially error-prone management process, especially as the number of users grows. It would require manual assignment and potentially lead to inconsistency in permissions.',
+			'(B). This option involves creating IAM groups and attaching IAM roles to them. However, this approach is not ideal for managing permissions for individual employees, as roles are typically assumed by services or applications, not users. Using roles for individual employee permissions can lead to a more complex and potentially confusing setup. Additionally, roles are typically used for cross-account access or for services within an account, rather than for individual users.',
+			'(C). This option is the most efficient and effective way to manage permissions. It involves creating logical groupings based on location and job title, then attaching policies to these groups. Users are then assigned to the appropriate groups, inheriting the associated permissions. This approach provides a structured and organized way to manage permissions. It allows for efficient policy assignment and ensures consistency across users with similar roles and responsibilities.',
+			'(D). This option involves using AWS Organizations to create organizational units (OUs) and applying service control policies (SCPs) to control access at an organizational level. While useful for high-level access control, it may not provide the fine-grained control needed based on both location and job title. While useful for overall organizational control, this approach may not meet the specific requirements of assigning permissions based on both location and job title.',
+		],
+	},
 ];
 
 export default builder;
