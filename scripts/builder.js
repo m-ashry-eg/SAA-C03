@@ -234,6 +234,57 @@ const builder = [
 			'(D). This interpretation is also incorrect. The command is not used to start security groups. Security groups are typically created and configured separately in AWS, and they are associated with instances when those instances are launched.',
 		],
 	},
+	{
+		question:
+			'A solutions architect is in charge of configuring an AWS auto scaling group for an application that has an unpredictable load pattern. The DevOps team that supports this application has observed that when the average CPU utilization for the application servers exceeds 50%, users report slow response times. What steps should the solutions architect take to handle this variable load pattern while ensuring that the system performs well for customers and the organization is not paying for unused computing resources?',
+		options: [
+			"A. Add a target tracking scaling policy to the group to adjust the desired capacity needed to keep the auto scaling group's average CPU utilization at 50%.",
+			"B. Add a step scaling policy to the group to adjust the desired capacity needed to keep the auto scaling group's average CPU utilization at 50%.",
+			"C. Set a CloudWatch alarm to alert a system administrator when the average CPU utilization of the auto scaling group exceeds 50% and then manually adjust the group's desired capacity.",
+			'D. Configure the auto scaling group to maintain a fixed number of application servers that keep the average CPU utilization at 50% during peak traffic.',
+		],
+		answer: [0],
+		explanation: [
+			'(A). A target tracking scaling policy allows you to set a target value for a specific metric, such as average CPU utilization, and AWS Auto Scaling adjusts the desired capacity of the Auto Scaling group in response to changes in demand. In this case, the target should be set to 50% average CPU utilization. This way, when the CPU utilization exceeds 50%, Auto Scaling will automatically add more instances to handle the increased load. Conversely, if the CPU utilization drops below 50%, it will scale down the number of instances to save costs.',
+			'(B). Add a step scaling policy to the group might be suitable for more complex scaling scenarios, but it involves setting specific thresholds and actions for scaling, which may not be as responsive to the unpredictable load pattern described in the scenario.',
+			'(C). Set a CloudWatch alarm to alert a system administrator involves manual intervention, which is not ideal for handling variable workloads, as it may not respond quickly enough to meet performance requirements.',
+			'(D). Maintaining a fixed number of application servers does not align with the goal of optimizing resource usage based on demand.',
+		],
+	},
+	{
+		question:
+			'You run accounting software in the AWS US West (Oregon) region. This software needs to be available continuously on a large general-purpose instance during normal business hours, eight hours a day, every day of the week. You also have other unrelated batch jobs that need to run once per day at any time of your choosing. These batch jobs require a large general-purpose instance and take four hours a day to complete.How should you minimize cost?',
+		options: [
+			'A. Purchase two separate On-Demand Instances, one to host the online software during the fixed schedule and another to run the batch jobs.',
+			'B. Purchase a Convertible Reserved Instance to run the accounting software. Stop the accounting software instance after hours. Run the batch jobs on a separate instance with the same instance class, so the Reserved Instance credit is applied to the batch jobs.',
+			'C. Purchase a Standard Reserved Instance to run the accounting software. Stop the accounting software instance after hours. Run the batch jobs with an instance of the same instance class, so the Reserved Instance credit is applied to the batch jobs.',
+			'D. Purchase a Standard Reserved Instance to run the accounting software. Turn it off after hours. Purchase an On-Demand to run the batch jobs.',
+		],
+		answer: [2],
+		explanation: [
+			'(A). This option involves using two separate On-Demand instances, which means you would be paying the full, higher On-Demand price for both instances. This is likely to be more expensive than using Reserved Instances.',
+			'(B). This option involves using a Convertible Reserved Instance for the accounting software. While Convertible RIs offer flexibility, they are generally more expensive than Standard RIs. Additionally, stopping the accounting software instance does not make use of the Reserved Instance benefit, as RIs are billed for regardless of whether the instance is running or not.',
+			'(C). This is the correct option. It suggests purchasing a Standard Reserved Instance for the accounting software. Stopping the accounting software instance after hours helps minimize costs. Running the batch jobs with an instance of the same instance class ensures that the Reserved Instance credit is applied, further reducing costs. This option maximizes cost savings.',
+			"(D). While this option suggests using a Standard Reserved Instance for the accounting software, purchasing an On-Demand instance for the batch jobs is not as cost-effective. It's better to use Reserved Instances for both the accounting software and the batch jobs to maximize cost savings.",
+		],
+	},
+	{
+		question:
+			'You run accounting software in the AWS US West (Oregon) region. This software needs to be available continuously on a large general-purpose instance during normal business hours, eight hours a day, every day of the week. You also have other unrelated batch jobs that need to run once per day at any time of your choosing. These batch jobs require a large general-purpose instance and take four hours a day to complete.How should you minimize cost?',
+		options: [
+			'A. Multi-AZ deployment',
+			'B. Increased IOPS',
+			'C. Elastic Load Balancing',
+			'D. Sharding',
+		],
+		answer: [3],
+		explanation: [
+			"(A). While Multi-AZ improves availability, it doesn't inherently increase the capacity or scale of the database. It provides redundancy, but it doesn't distribute the workload across multiple instances.",
+			"(B). While increasing IOPS can improve the performance of the underlying storage for a single RDS instance, it doesn't directly address the need for horizontal scaling to handle a higher volume of requests. It's more about improving the performance of a single instance.",
+			"(C). ELB is used for distributing traffic across multiple EC2 instances or other resources. It's not directly applicable to horizontally scaling a database. It's more relevant for distributing requests to application servers.",
+			'(D). In the given scenario, where the client is receiving greater than expected traffic and there is a need to scale the database horizontally, sharding is the appropriate technique. It enables you to expand the database capacity by adding more shards as needed.',
+		],
+	},
 ];
 
 export default builder;
