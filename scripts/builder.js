@@ -285,6 +285,40 @@ const builder = [
 			'(D). In the given scenario, where the client is receiving greater than expected traffic and there is a need to scale the database horizontally, sharding is the appropriate technique. It enables you to expand the database capacity by adding more shards as needed.',
 		],
 	},
+	{
+		question:
+			"A system administrator is unable to connect via SSH into an EC2 instance in the company's VPC. You begin reviewing the configuration and see that he has tried to configure a custom access control list (ACL) and a security group. The instance security group allows SSH from a block of company IP addresses, but its outbound traffic rule has been removed. The ACL is configured to allow inbound traffic from the same block of IP addresses, and to deny all outbound traffic. What does the administrator need to change to enable SSH access?",
+		options: [
+			'A. Allow outbound traffic on the security group.',
+			'B. Allow outbound traffic on the ACL.',
+			'C. Connect via RDP to enable communication.',
+			'D. Create a NAT instance to enable communication.',
+		],
+		answer: [1],
+		explanation: [
+			'(A). This option suggests allowing outbound traffic on the security group. However, security groups are stateful, meaning that if you allow inbound traffic for a specific protocol and port, the corresponding outbound traffic for that connection is automatically allowed. Therefore, explicitly allowing outbound traffic in the security group is not necessary.',
+			'(B). The ACL (Access Control List) is a network-level filter that controls inbound and outbound traffic at the subnet level. In this scenario, the ACL is configured to deny all outbound traffic, which is preventing the instance from sending responses to the SSH connection. Allowing outbound traffic on the ACL will resolve the issue.',
+			'(C). Remote Desktop Protocol (RDP) is used to connect to Windows instances, whereas SSH is used for Linux instances. Since the administrator is trying to connect via SSH, using RDP is not applicable in this context.',
+			"(D). A NAT instance is used to allow instances in a private subnet to initiate outbound traffic to the internet, but it's not relevant to the scenario described. The issue here is related to the ACL and security group configuration for SSH access, and a NAT instance is not necessary to resolve the problem.",
+		],
+	},
+	{
+		question:
+			"An organization is using AWS to host the infrastructure for its WordPress site. For this deployment, WordPress uses Amazon Aurora for MySQL DB cluster for its database. As traffic to the website has increased and the database has scaled, costs for the DB have also risen. The organization wants to implement a more cost-efficient architecture for WordPress's read-intensive workload without sacrificing performance. Which of the following solutions can help reduce database costs without affecting performance?",
+		options: [
+			'A. Migrate to Amazon RDS for MySQL.',
+			'B. Change the database engine to PostgreSQL',
+			'C. Use Aurora Global Database for the deployment',
+			'D. Enable in-memory object caching using Amazon Elasticache',
+		],
+		answer: [3],
+		explanation: [
+			'(A). This would involve moving from Amazon Aurora (which is a high-performance database) to Amazon RDS for MySQL. However, this might not necessarily lead to cost savings, and performance may or may not be comparable depending on the specific workload.',
+			"(B). Switching the database engine from MySQL to PostgreSQL might have its benefits, but it's a significant migration effort and doesn't directly address cost efficiency.",
+			"(C). Aurora Global Database is designed for replicating a database across multiple AWS regions, which is typically used for disaster recovery and global deployments. While it's a useful feature, it's not primarily intended for cost reduction in a single-region deployment.",
+			'(D). This option is a very effective way to reduce database costs for a read-intensive workload. Amazon ElastiCache is a caching service that can be used to store frequently accessed data in-memory, reducing the need to query the database for the same information repeatedly. This can lead to significant cost savings and improved performance for read-heavy workloads.',
+		],
+	},
 ];
 
 export default builder;
