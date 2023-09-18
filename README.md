@@ -2,9 +2,13 @@
 
 This repository houses a curated collection of study materials for the AWS Solutions Architect - Associate (SAA-C03) certification exam. Inside, you'll find my personal notes and a custom set of quizzes designed to aid in your preparation for the exam. These resources are tailored to reinforce your understanding of AWS services and architectural concepts. 
 
+##  📝 My Notes
+
+A compilation of [notes](https://github.com/GabrielFlores8227/SAA-C03/tree/main/doc) for the SAA-C03 exam. These [notes](https://github.com/GabrielFlores8227/SAA-C03/tree/main/doc) are meticulously organized to provide you with a structured study guide.
+
 ## ⚡ Quiz
 
-Access the [online quiz](https://gabrielflores8227.github.io/SAA-C03/quiz/) and enjoy.
+Test your knowledge with our [interactive quiz](https://gabrielflores8227.github.io/SAA-C03/quiz/), covering a wide range of topics relevant to the SAA-C03 exam. This quiz is a great way to reinforce your understanding and identify areas that may need further review.
 
 ## 👏🏼 Credits
 
