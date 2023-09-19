@@ -62,6 +62,8 @@ Compute Cloud (EC2) instances. It offers durable and scalable block-level storag
    
       - Cold HDD volumes, also known as sc1, are designed for less frequently accessed workloads with large, sequential read and write. They offer the lowest storage cost but with
         the trade-off of lower performance compared to other volume types.
+
+      - Cold (HDD) storage is typically the lowest-cost option among Amazon Web Services (AWS) EBS volume types.
   
       - Cold volumes are suitable for scenarios where cost-effectiveness is a priority, and occasional access to the data is sufficient, such as infrequently accessed archives or
         backup storage.
