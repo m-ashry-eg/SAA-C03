@@ -158,9 +158,9 @@ Compute Cloud (EC2) instances. It offers durable and scalable block-level storag
 
 Amazon Elastic File System (Amazon EFS) is a scalable and fully managed file storage service provided by AWS. It's designed to provide shared access to a file system, allowing multiple EC2 instances to read and write to the same file system at the same time. 
 
-  - ### EFS Tiers
+  - ### EFS Classes
 
-    -  #### EFS Standard
+    - #### EFS Standard
       
       - **Designed for**: Frequently accessed data requiring the highest durability and availability.
       
@@ -168,7 +168,7 @@ Amazon Elastic File System (Amazon EFS) is a scalable and fully managed file sto
       
       - **Availability**: Up to 99.99% availability.
          
-    -  #### EFS Standard–Infrequent Access (IA)
+    - #### EFS Standard–Infrequent Access (IA)
       
       - **Designed for**: Long lived, infrequently accessed data requiring the highest durability and availability.
       
@@ -194,5 +194,50 @@ Amazon Elastic File System (Amazon EFS) is a scalable and fully managed file sto
     
     - **Encryption**: Amazon Elastic File System (EFS) provides encryption at rest by default. When you create a new Amazon EFS file system, the data and metadata
     are automatically encrypted using an AWS Key Management Service (KMS) key.
-  
-  
+
+## Amazon FSx for Windows
+
+Amazon FSx for Windows File Server is a fully managed file storage service provided by AWS. It is designed to provide a fully compatible, native Windows 
+file system experience to applications and workloads that require shared file storage.
+
+  - ### FSx for Windows Characteristics
+    
+    - **Fully Managed Service**: Amazon FSx for Windows File Server is a fully managed service, which means AWS handles the underlying infrastructure,
+      maintenance, and updates for the file system.
+
+    - **Windows Native File System**: It provides a native Windows file system, making it compatible with Windows applications and workloads without
+      requiring any modifications.
+    
+    - **SMB Protocol Support**: Amazon FSx supports the Server Message Block (SMB) protocol versions 2.0, 2.1, 3.0, and 3.1.1, allowing seamless integration
+      with Windows environments.
+
+  ## Amazon FSx for Lustre
+
+Amazon FSx for Lustre is a high-performance, fully managed file system designed for compute-intensive workloads. It provides scalable and parallel file 
+storage that is optimized for applications that require fast access to large amounts of data.
+
+  - ### FSx for Lustre Characteristics
+    
+    - **High Performance**: FSx for Lustre is optimized for high-performance computing (HPC) and other demanding workloads. It provides low-latency
+      access to data, making it ideal for applications like machine learning, analytics, and simulations.
+
+    - **Fully Managed Service**: Like other FSx offerings, Amazon FSx for Lustre is a fully managed service. AWS takes care of the infrastructure,
+      maintenance, and updates, allowing you to focus on your applications.
+
+    - **Lustre File System**: FSx for Lustre is built on the Lustre file system, a widely used open-source parallel file system. It is designed for
+      high-speed access to data across multiple nodes.
+
+    - **Integration with S3**: You can seamlessly integrate FSx for Lustre with Amazon S3, allowing you to efficiently move data between the two services.
+      This is useful for data processing workflows that require both high-speed processing and long-term storage.
+
+## Amazon EFS vs. Amazon FSx for Windows vs. Amazon FSx for Lustre
+
+  - **Amazon EFS**: Distributed and highly resilient storage for Linux instances and Linux-based applications.
+
+  - **Amazon FSx for Windows**: entralized storage for Windows-based applications, including Microsoft SQL Server, Workspaces, IIS Web Server, and other
+    native Microsoft applications.
+
+  - **Amazon FSx for Lustre**: High-speed, high-capacity distributed storage, ideal for high-performance computing (HPC), financial modeling,
+    and more. It can also directly store data on Amazon S3.
+
+
