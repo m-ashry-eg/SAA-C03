@@ -14,9 +14,9 @@
   <img src="https://img.shields.io/badge/state-in_development-blue" alt="version">
 </p>
 
-##  📝 My Notes
+## 📝 My Notes
 
-A compilation of [notes](https://github.com/GabrielFlores8227/SAA-C03/tree/main/doc) for the SAA-C03 exam. These [notes](https://github.com/GabrielFlores8227/SAA-C03/tree/main/doc) are meticulously organized to provide a structured study guide.
+A compilation of [notes](https://github.com/GabrielFlores8227/SAA-C03/tree/main/notes) for the SAA-C03 exam. These [notes](https://github.com/GabrielFlores8227/SAA-C03/tree/main/notes) are meticulously organized to provide a structured study guide.
 
 ## ⚡ Quiz
 
@@ -43,4 +43,3 @@ This script is licensed under the MIT License.
 Feel free to use, modify, and distribute this script as per the terms of the license.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
