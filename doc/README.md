@@ -59,8 +59,6 @@ Compute Cloud (EC2) instances. It offers durable and scalable block-level storag
           high-throughput performance.
           
           - Throughput Optimized volumes are suitable for data warehouses, log processing, and other workloads that require high-volume, sequential read and write operations.
-          
-          - A Throughput Optimized volume cannot be a boot volume.
        
           - Up to 99.9% durability. 
 
@@ -73,8 +71,6 @@ Compute Cloud (EC2) instances. It offers durable and scalable block-level storag
           
           - Cold volumes are suitable for scenarios where cost-effectiveness is a priority, and occasional access to the data is sufficient, such as infrequently accessed archives or
           backup storage.
-          
-          - A Cold volume cannot be a boot volume.
        
           - Up to 99.9% durability.
 
