@@ -16,9 +16,9 @@ A compilation of notes for the SAA-C03 exam. These notes are meticulously organi
 
 ## Table of Content 
 
-<a href="#amaon-elastic-block-store-(ebs)">Amaon Elastic Block Store (EBS)</a>
+<a href="#amazon-elastic-block-store-(ebs)">Amazon Elastic Block Store (EBS)</a>
 
-## Amaon Elastic Block Store (EBS)
+## Amazon Elastic Block Store (EBS)
 
 Amazon Elastic Block Store (Amazon EBS) is a block-level storage service provided by Amazon Web Services (AWS) for use with Amazon Elastic 
 Compute Cloud (EC2) instances. It offers durable and scalable block-level storage that you can attach to your EC2 instances.
