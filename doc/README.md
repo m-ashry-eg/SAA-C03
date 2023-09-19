@@ -14,6 +14,27 @@ A compilation of notes for the SAA-C03 exam. These notes are meticulously organi
   <img src="https://img.shields.io/badge/state-in_development-blue" alt="version">
 </p>
 
+## Amazon Instance Store
+
+Amazon Instance Store, also known as ephemeral storage, provides temporary block-level storage for Amazon EC2 Instance. It is physically 
+attached to the host computer on which your instance runs and is ideal for temporary storage of data that changes frequently.
+
+  - ### Amazon Instance Store Characteristics
+    
+    - Instance Store volumes are directly attached to the physical hardware of the host machine.
+   
+    - They provide very high input/output operations per second (IOPS) performance.
+   
+    - Data on an Instance Store volume is not persisted beyond the life of the associated instance. If the instance is stopped or terminated, all data on the instance store is lost.
+   
+    - Not all EC2 instance types come with Instance Store. When selecting an instance type, you need to choose one that specifies an "Instance Store" under the "Storage" section.
+   
+    - When an instance is stopped (but not terminated), the data on the Instance Store is preserved. However, it's important to note that if the underlying hardware fails, you may lose data.
+   
+    - Unlike Instance Store, Amazon Elastic Block Store (EBS) volumes provide persistent, network-attached block storage that can be detached from one instance and attached to another.
+   
+    - Instance store volumes do not support snapshots, so you cannot create backups or migrate data easily.
+
 ## Amazon Elastic Block Store (EBS)
 
 Amazon Elastic Block Store (Amazon EBS) is a block-level storage service provided by Amazon Web Services (AWS) for use with Amazon Elastic 
@@ -32,7 +53,7 @@ Compute Cloud (EC2) instances. It offers durable and scalable block-level storag
 
   - ### EBS Volume Types
 
-    -  **General Purpose (SSD)**
+    -  #### General Purpose (SSD)
      
         - General Purpose SSD volumes, also known as gp2, provide a balance of price and performance for a wide range of workloads, They are designed to deliver consistent baseline
         performance and burst performance for applications with varying I/O needs.
@@ -41,7 +62,7 @@ Compute Cloud (EC2) instances. It offers durable and scalable block-level storag
      
         - Up to 99.9% durability.
     
-    -  **Provisioned IOPS (SSD)**
+    -  #### Provisioned IOPS (SSD)
      
           - Provisioned IOPS SSD volumes, also known as io1, are designed for I/O-intensive workloads that require consistently high performance. You specify the desired number
           of IOPS when you create the volume.
@@ -53,7 +74,7 @@ Compute Cloud (EC2) instances. It offers durable and scalable block-level storag
 
           - Up to 99.9% durability.
     
-      -  **Throughput Optimized (HDD)**
+      -  #### Throughput Optimized (HDD)
      
           - Throughput Optimized HDD volumes, also known as st1, are designed for frequently accessed, large, sequential workloads. They are optimized for consistency,
           high-throughput performance.
@@ -62,7 +83,7 @@ Compute Cloud (EC2) instances. It offers durable and scalable block-level storag
        
           - Up to 99.9% durability. 
 
-      -  **Cold (HDD)**
+      -  #### Cold (HDD)
    
           - Cold HDD volumes, also known as sc1, are designed for less frequently accessed workloads with large, sequential read and write. They offer the lowest storage cost but with
           the trade-off of lower performance compared to other volume types.
@@ -107,7 +128,7 @@ Compute Cloud (EC2) instances. It offers durable and scalable block-level storag
     - **Snapshots Sharing**: You can share snapshots of encrypted volumes with other AWS accounts, but the snapshots remain encrypted. The recipient account must have the necessary
     permissions to use the shared snapshot.
 
-  - #### How to encrypt EBS Volumes that are not encrypted
+  - ### How to encrypt EBS Volumes that are not encrypted
 
     - Create a snapshot of the unencrypted root EBS volume.
     
@@ -132,6 +153,35 @@ Compute Cloud (EC2) instances. It offers durable and scalable block-level storag
     started again.
     
     - **Instance Type**: Hibernation is only available for On-Demand and Reserved Instances.
+   
+## Amazon Elastic File System (EFS)
 
+Amazon Elastic File System (Amazon EFS) is a scalable and fully managed file storage service provided by AWS. It's designed to provide shared access to a file system, allowing multiple EC2 instances to read and write to the same file system at the same time. 
+
+  - ### EFS Tiers
+
+    -  #### EFS Standard
+   
+       - **Designed for**: Frequently accessed data requiring the highest durability and availability.
+     
+       - **Durability**: Up to 99.999999999% durability.
+         
+       - **Availability**: Up to 99.99% availability.
+         
+    -  #### EFS Standard–Infrequent Access (IA)
+      
+       - **Designed for**: Long lived, infrequently accessed data requiring the highest durability and availability.
+      
+       - **Durability**: Up to 99.999999999% durability.
+      
+       - **Availability**: Up to 99.99% availability.
+         
+  - ### EFS Characteristics
+    
+     - **Shared File Storage**: Amazon EFS provides a shared file system that can be accessed by multiple EC2 instances and services concurrently.
+
+     - **Scalable**: EFS can automatically scale to accommodate the storage needs of your applications. You can increase or decrease storage capacity as needed.
+   
+     - **Backup and Restore**: EFS can automatically scale to accommodate the storage needs of your applications. You can increase or decrease storage capacity as needed.
   
   
