@@ -472,6 +472,57 @@ const builder = [
 			'(D). This option involves using AWS Organizations to create organizational units (OUs) and applying service control policies (SCPs) to control access at an organizational level. While useful for high-level access control, it may not provide the fine-grained control needed based on both location and job title. While useful for overall organizational control, this approach may not meet the specific requirements of assigning permissions based on both location and job title.',
 		],
 	},
+	{
+		question:
+			'A customer has EC2 instances in two different VPCs and wants them to easily communicate with each other. VPC peering seems ideal without the need for a transit gateway, but there are some things you need to consider. Which two of the following do you need to ensure are correct for this to work? (Choose 2 answers)',
+		options: [
+			'A. The VPCs are directly connected with a single peering connection.',
+			"B. The VPCs' CIDR blocks cannot overlap.",
+			'C. The VPCs both need to have EC2 instances with the same operating system.',
+			'D. The VPCs both need to have only public subnets.',
+		],
+		answer: [0, 1],
+		explanation: [
+			'(A). This is a crucial requirement. VPCs involved in peering must have non-overlapping IP address ranges. If the CIDR blocks overlap, the peering connection cannot be established.',
+			'(B). VPC peering requires a direct connection between the VPCs. Each VPC must establish a peering connection to the other. This establishes a one-to-one relationship between the VPCs.',
+			'(C). The operating system of the instances in the VPCs is not a requirement for VPC peering. The instances can run different operating systems.',
+			"(D). The subnets in the VPCs can be public or private; it doesn't affect the feasibility of VPC peering.",
+		],
+	},
+	{
+		question:
+			"As part of your backup and restore initiative, your IT department is copying petabytes of on-premise data of many different types to Amazon S3. The on-premise data is organized by its related project, and in the event of a disaster, applications will be rerouted to connect with the objects stored in S3 to complete object-based workloads. As part of the data restoration plan, you need to implement a detailed metadata policy for all files stored on Amazon S3 that helps identify each object's related project. What is the best method to backup the data cost-effectively and apply the metadata policy to the S3 objects?",
+		options: [
+			'A. Use AWS Snowball to migrate the data to Amazon S3 buckets with the appropriate bucket tags, and which will be applied as object tags to objects as they are uploaded.',
+			'B. Upload objects to Amazon S3 using multipart uploads, and then use Amazon Athena to query data and organize objects by their project.',
+			'C. Use AWS Snowball to migrate the data to Amazon S3, and apply object tags using S3 batch operations.',
+			'D. Use AWS Storage Gateway tape gateways to migrate the files to Amazon S3, and apply object tags using S3 batch operations.',
+		],
+		answer: [2],
+		explanation: [
+			"(A). This option suggests using AWS Snowball to migrate data, which is a valid approach. However, it mentions using bucket tags, which are used to tag entire S3 buckets. Bucket tags do not automatically translate to object tags. While you can tag a bucket, it won't apply tags to the objects within the bucket automatically. Therefore, this option is incorrect in its assertion about the application of tags.",
+			'(B). This option suggests using Amazon S3 multipart uploads, which is a valid way to upload large objects. However, it then proposes using Amazon Athena for querying and organizing objects. While Amazon Athena is a powerful querying service, it is not primarily used for organizing or applying metadata to objects. It is used for querying and analyzing data stored in S3 using SQL-like queries. Therefore, this option is incorrect for the purpose stated.',
+			'(C). This option correctly suggests using AWS Snowball for data migration, which is a cost-effective method. It also mentions applying object tags, which can be done using S3 batch operations. This is an appropriate method for applying metadata policies to the S3 objects. Therefore, this option is correct for the scenario described.',
+			'(D). This option suggests using AWS Storage Gateway tape gateways, which are used for integrating on-premises applications with cloud storage. While it is a valid service, it may not be the most efficient or cost-effective solution for this specific scenario. Additionally, the mention of using S3 batch operations to apply object tags is correct, but the choice of using Storage Gateway tape gateways may not be the best fit for this context. Therefore, this option is less suitable for the described scenario compared to Option 3.',
+		],
+	},
+	{
+		question:
+			'A customer is using a NAT Gateway to allow a cluster of EC2 instances on a private subnet in their VPC to access an S3 bucket in the same region. After a recent uptick in usage, the customer noticed that data transfer charges rose beyond what they expected. The customer has requested that you find a solution that minimizes data transfer costs without exposing the EC2 instances to the Internet directly. Which option best meets the requirements?',
+		options: [
+			'A. Use a NAT Instance instead of the NAT Gateway and update the routing table for the private subnet to route traffic to the S3 bucket to the NAT Instance',
+			'B. Use CloudFront to cache frequently accessed data',
+			'C. Create a VPC Endpoint for the S3 bucket and update the routing table for the private subnet to route traffic to the S3 bucket to the VPC Endpoint',
+			'D. Create a DX connection between the S3 bucket and the private subnet',
+		],
+		answer: [2],
+		explanation: [
+			'(A). This option suggests using a NAT Instance, which would allow the EC2 instances in the private subnet to access the internet, including S3. However, it is not the most efficient solution for accessing S3, as NAT Instances can introduce additional complexities, require manual management, and might not be as cost-effective as other options.',
+			'(B). This option involves using CloudFront, which is a content delivery network (CDN) service. While CloudFront can cache frequently accessed data and reduce data transfer costs for content it serves, it is not a direct solution for accessing an S3 bucket from EC2 instances in a VPC. Additionally, this option may not be the most efficient for this specific use case.',
+			'(C). This option is the most suitable for the given scenario. A VPC Endpoint allows resources within the VPC to communicate with AWS services like S3 without going over the internet. It ensures that data transfer stays within the AWS network, minimizing costs and providing secure access to the S3 bucket.',
+			'(D). Direct Connect (DX) is used for establishing a dedicated network connection between your on-premises network and AWS. It is not used for VPC-to-service communication within AWS. This option is not relevant to the scenario described and does not address the requirement of minimizing data transfer costs for EC2 instances accessing an S3 bucket.',
+		],
+	},
 ];
 
 export default builder;
