@@ -40,6 +40,8 @@ Compute Cloud (EC2) instances. It offers durable and scalable block-level storag
         performance and burst performance for applications with varying I/O needs.
         
         - General-purpose SSD volumes are suitable for most types of workloads, including small to medium-sized databases, development and test environments, and boot volumes.
+     
+        - Up to 99.9% durability.
     
     -  **Provisioned IOPS (SSD)**
      
@@ -50,6 +52,8 @@ Compute Cloud (EC2) instances. It offers durable and scalable block-level storag
           
           - Provisioned IOPS volumes are ideal for applications that require low-latency, high-performance storage such as critical business applications, large databases,
           and high-transactional workloads.
+
+          - Up to 99.9% durability.
     
       -  **Throughput Optimized (HDD)**
      
@@ -58,7 +62,9 @@ Compute Cloud (EC2) instances. It offers durable and scalable block-level storag
           
           - Throughput Optimized volumes are suitable for data warehouses, log processing, and other workloads that require high-volume, sequential read and write operations.
           
-          - A Throughput Optimized volume cannot be a boot volume.      
+          - A Throughput Optimized volume cannot be a boot volume.
+       
+          - Up to 99.9% durability. 
 
       -  **Cold (HDD)**
    
@@ -71,6 +77,8 @@ Compute Cloud (EC2) instances. It offers durable and scalable block-level storag
           backup storage.
           
           - A Cold volume cannot be a boot volume.
+       
+          - Up to 99.9% durability.
 
   - #### EBS Snapshots
 
