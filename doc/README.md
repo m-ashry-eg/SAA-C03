@@ -1,8 +1,18 @@
+<div align="center">
+  <img src='https://d1.awsstatic.com/training-and-certification/certification-badges/AWS-Certified-Solutions-Architect-Associate_badge.3419559c682629072f1eb968d59dea0741772c0f.png' height='140'>
+</div>
+
 <h1 align="center">
   AWS Solutions Architect Associate - Notes
 </h1>
 
+<p align="center">
 A compilation of notes for the SAA-C03 exam. These notes are meticulously organized to provide a structured study guide.
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/state-in_development-blue" alt="version">
+</p>
 
 ## Storage Services
 
