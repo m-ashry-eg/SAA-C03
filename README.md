@@ -16,7 +16,7 @@
 
 ##  📝 My Notes
 
-A compilation of [notes](https://github.com/GabrielFlores8227/SAA-C03/tree/main/doc) for the SAA-C03 exam. These [notes](https://github.com/GabrielFlores8227/SAA-C03/tree/main/doc) are meticulously organized to provide you with a structured study guide.
+A compilation of [notes](https://github.com/GabrielFlores8227/SAA-C03/tree/main/doc) for the SAA-C03 exam. These [notes](https://github.com/GabrielFlores8227/SAA-C03/tree/main/doc) are meticulously organized to provide a structured study guide.
 
 ## ⚡ Quiz
 
