@@ -1,4 +1,4 @@
-<div align="center">
+z<div align="center">
   <img src='https://d1.awsstatic.com/training-and-certification/certification-badges/AWS-Certified-Solutions-Architect-Associate_badge.3419559c682629072f1eb968d59dea0741772c0f.png' height='140'>
 </div>
 
@@ -187,7 +187,7 @@ Amazon Elastic File System (Amazon EFS) is a scalable and fully managed file sto
     - **Suppor**: Amazon Elastic File System (EFS) supports the Network File System version 4 (NFSv4)
    
     - **Cost Efficiency**: Amazon EFS offers a pay-as-you-go model, meaning you're billed only for the storage you use, without the need for pre-provisioning or upfront
-      commitments.
+    commitments.
 
     - **Encryption**: Amazon Elastic File System (EFS) provides encryption at rest by default. When you create a new Amazon EFS file system, the data and metadata
     are automatically encrypted using an AWS Key Management Service (KMS) key.
@@ -203,13 +203,13 @@ file system experience to applications and workloads that require shared file st
   - ### FSx for Windows Characteristics
     
     - **Fully Managed Service**: Amazon FSx for Windows File Server is a fully managed service, which means AWS handles the underlying infrastructure,
-      maintenance, and updates for the file system.
-
+    maintenance, and updates for the file system.
+    
     - **Windows Native File System**: It provides a native Windows file system, making it compatible with Windows applications and workloads without
-      requiring any modifications.
+    requiring any modifications.
     
     - **SMB Protocol Support**: Amazon FSx supports the Server Message Block (SMB) protocol versions 2.0, 2.1, 3.0, and 3.1.1, allowing seamless integration
-      with Windows environments.
+    with Windows environments.
 
   ## Amazon FSx for Lustre
 
@@ -219,25 +219,42 @@ storage that is optimized for applications that require fast access to large amo
   - ### FSx for Lustre Characteristics
     
     - **High Performance**: FSx for Lustre is optimized for high-performance computing (HPC) and other demanding workloads. It provides low-latency
-      access to data, making it ideal for applications like machine learning, analytics, and simulations.
-
+    access to data, making it ideal for applications like machine learning, analytics, and simulations.
+    
     - **Fully Managed Service**: Like other FSx offerings, Amazon FSx for Lustre is a fully managed service. AWS takes care of the infrastructure,
-      maintenance, and updates, allowing you to focus on your applications.
-
+    maintenance, and updates, allowing you to focus on your applications.
+    
     - **Lustre File System**: FSx for Lustre is built on the Lustre file system, a widely used open-source parallel file system. It is designed for
-      high-speed access to data across multiple nodes.
-
+    high-speed access to data across multiple nodes.
+    
     - **Integration with S3**: You can seamlessly integrate FSx for Lustre with Amazon S3, allowing you to efficiently move data between the two services.
-      This is useful for data processing workflows that require both high-speed processing and long-term storage.
+    This is useful for data processing workflows that require both high-speed processing and long-term storage.
 
 ## Amazon EFS vs. Amazon FSx for Windows vs. Amazon FSx for Lustre
 
   - **Amazon EFS**: Distributed and highly resilient storage for Linux instances and Linux-based applications.
-
+  
   - **Amazon FSx for Windows**: entralized storage for Windows-based applications, including Microsoft SQL Server, Workspaces, IIS Web Server, and other
-    native Microsoft applications.
-
+  native Microsoft applications.
+  
   - **Amazon FSx for Lustre**: High-speed, high-capacity distributed storage, ideal for high-performance computing (HPC), financial modeling,
-    and more. It can also directly store data on Amazon S3.
+  and more. It can also directly store data on Amazon S3.
 
+## Amazon Backup
 
+AWS Backup is a fully managed backup service provided by Amazon Web Services. It makes it easy for you to centralize and automate the backup 
+of your data across various AWS services and on-premises resources.
+
+  - ### Amazon Backup Characteristics
+    
+    - **Centralized Backup Management**: AWS Backup allows you to centralize the management of backups for your AWS resources, making it easier to
+    implement and manage backup policies.
+    
+    - **Supported AWS Services**: AWS Backup supports a wide range of AWS services, including Amazon EBS, Amazon RDS, Amazon DynamoDB,
+    AWS Storage Gateway, and more. This makes it versatile for backing up various types of data.
+    
+    - **Lifecycle Policies**: You can define backup retention policies and lifecycle rules to automatically transition backups to cold storage or
+    delete them after a specified period.
+
+    - **Integration with AWS Organizations**: AWS Backup can be integrated with AWS Organizations, making it easy to apply backup policies across
+    multiple AWS accounts.
