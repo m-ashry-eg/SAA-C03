@@ -183,5 +183,8 @@ Amazon Elastic File System (Amazon EFS) is a scalable and fully managed file sto
      - **Scalable**: EFS can automatically scale to accommodate the storage needs of your applications. You can increase or decrease storage capacity as needed.
    
      - **Backup and Restore**: EFS can automatically scale to accommodate the storage needs of your applications. You can increase or decrease storage capacity as needed.
+   
+     - **Encryption**: Amazon Elastic File System (EFS) provides encryption at rest by default. When you create a new Amazon EFS file system, the data and metadata
+       are automatically encrypted using an AWS Key Management Service (KMS) key.
   
   
