@@ -22,17 +22,17 @@ attached to the host computer on which your instance runs and is ideal for tempo
   - ### Amazon Instance Store Characteristics
     
     - Instance Store volumes are directly attached to the physical hardware of the host machine.
-   
+    
     - They provide very high input/output operations per second (IOPS) performance.
-   
+    
     - Data on an Instance Store volume is not persisted beyond the life of the associated instance. If the instance is stopped or terminated, all data on the instance store is lost.
-   
+    
     - Not all EC2 instance types come with Instance Store. When selecting an instance type, you need to choose one that specifies an "Instance Store" under the "Storage" section.
-   
+    
     - When an instance is stopped (but not terminated), the data on the Instance Store is preserved. However, it's important to note that if the underlying hardware fails, you may lose data.
-   
+    
     - Unlike Instance Store, Amazon Elastic Block Store (EBS) volumes provide persistent, network-attached block storage that can be detached from one instance and attached to another.
-   
+    
     - Instance store volumes do not support snapshots, so you cannot create backups or migrate data easily.
 
 ## Amazon Elastic Block Store (EBS)
@@ -53,47 +53,47 @@ Compute Cloud (EC2) instances. It offers durable and scalable block-level storag
 
   - ### EBS Volume Types
 
-    -  #### General Purpose (SSD)
+    - #### General Purpose (SSD)
      
-        - General Purpose SSD volumes, also known as gp2, provide a balance of price and performance for a wide range of workloads, They are designed to deliver consistent baseline
-        performance and burst performance for applications with varying I/O needs.
-        
-        - General-purpose SSD volumes are suitable for most types of workloads, including small to medium-sized databases, development and test environments, and boot volumes.
-     
-        - Up to 99.9% durability.
+      - General Purpose SSD volumes, also known as gp2, provide a balance of price and performance for a wide range of workloads, They are designed to deliver consistent baseline
+      performance and burst performance for applications with varying I/O needs.
+      
+      - General-purpose SSD volumes are suitable for most types of workloads, including small to medium-sized databases, development and test environments, and boot volumes.
+      
+      - Up to 99.9% durability.
     
-    -  #### Provisioned IOPS (SSD)
+    - #### Provisioned IOPS (SSD)
      
-          - Provisioned IOPS SSD volumes, also known as io1, are designed for I/O-intensive workloads that require consistently high performance. You specify the desired number
-          of IOPS when you create the volume.
-          
-          - While being the most expensive type, Provisioned IOPS volumes ensure top-tier performance for applications that demand low-latency and high-throughput storage. 
-          
-          - Provisioned IOPS volumes are ideal for applications that require low-latency, high-performance storage such as critical business applications, large databases,
-          and high-transactional workloads.
-
-          - Up to 99.9% durability.
+      - Provisioned IOPS SSD volumes, also known as io1, are designed for I/O-intensive workloads that require consistently high performance. You specify the desired number
+      of IOPS when you create the volume.
+      
+      - While being the most expensive type, Provisioned IOPS volumes ensure top-tier performance for applications that demand low-latency and high-throughput storage. 
+      
+      - Provisioned IOPS volumes are ideal for applications that require low-latency, high-performance storage such as critical business applications, large databases,
+      and high-transactional workloads.
+      
+      - Up to 99.9% durability.
     
-      -  #### Throughput Optimized (HDD)
+    - #### Throughput Optimized (HDD)
      
-          - Throughput Optimized HDD volumes, also known as st1, are designed for frequently accessed, large, sequential workloads. They are optimized for consistency,
-          high-throughput performance.
-          
-          - Throughput Optimized volumes are suitable for data warehouses, log processing, and other workloads that require high-volume, sequential read and write operations.
-       
-          - Up to 99.9% durability. 
+      - Throughput Optimized HDD volumes, also known as st1, are designed for frequently accessed, large, sequential workloads. They are optimized for consistency,
+      high-throughput performance.
+      
+      - Throughput Optimized volumes are suitable for data warehouses, log processing, and other workloads that require high-volume, sequential read and write operations.
+      
+      - Up to 99.9% durability. 
 
-      -  #### Cold (HDD)
+    - #### Cold (HDD)
    
-          - Cold HDD volumes, also known as sc1, are designed for less frequently accessed workloads with large, sequential read and write. They offer the lowest storage cost but with
-          the trade-off of lower performance compared to other volume types.
-          
-          - Cold Volumes is typically the lowest-cost option among Amazon Web Services (AWS) EBS volume types.
-          
-          - Cold volumes are suitable for scenarios where cost-effectiveness is a priority, and occasional access to the data is sufficient, such as infrequently accessed archives or
-          backup storage.
-       
-          - Up to 99.9% durability.
+      - Cold HDD volumes, also known as sc1, are designed for less frequently accessed workloads with large, sequential read and write. They offer the lowest storage cost but with
+      the trade-off of lower performance compared to other volume types.
+      
+      - Cold Volumes is typically the lowest-cost option among Amazon Web Services (AWS) EBS volume types.
+      
+      - Cold volumes are suitable for scenarios where cost-effectiveness is a priority, and occasional access to the data is sufficient, such as infrequently accessed archives or
+      backup storage.
+      
+      - Up to 99.9% durability.
 
   - ### EBS Snapshots
 
@@ -104,7 +104,7 @@ Compute Cloud (EC2) instances. It offers durable and scalable block-level storag
     associated with creating and storing backups.
     
     - **Stored in Amazon S3**: EBS Snapshots are stored in Amazon S3, a highly durable and redundant storage service. This ensures the durability and availability of your snapshots.
-   
+    
     - **Consistent Snapshot**: To ensure a consistent snapshot, it is advisable to stop the instance before taking a snapshot.
     
     - **Snapshot Lifecycle Policies**: AWS provides tools like Amazon Data Lifecycle Manager (DLM) that allow you to automate the creation and retention of EBS snapshots. This helps you
@@ -115,7 +115,7 @@ Compute Cloud (EC2) instances. It offers durable and scalable block-level storag
     - **Encrypted Snapshots**: You can choose to encrypt your EBS snapshots using AWS Key Management Service (KMS) keys for added security.
 
   - ### EBS Encryption
-
+    
     - **Data Security**: Amazon EBS Encryption is a feature that allows you to encrypt your Elastic Block Store (EBS) volumes at rest.
     
     - **AWS Key Management Service (KMS)**: EBS Encryption uses AWS Key Management Service (KMS) to manage the encryption keys. KMS is a fully managed encryption service that allows
@@ -129,7 +129,7 @@ Compute Cloud (EC2) instances. It offers durable and scalable block-level storag
     permissions to use the shared snapshot.
 
   - ### How to encrypt EBS Volumes that are not encrypted
-
+    
     - Create a snapshot of the unencrypted root EBS volume.
     
     - Create a copy of the snapshot and select the encryption option.
@@ -161,30 +161,38 @@ Amazon Elastic File System (Amazon EFS) is a scalable and fully managed file sto
   - ### EFS Tiers
 
     -  #### EFS Standard
-   
-       - **Designed for**: Frequently accessed data requiring the highest durability and availability.
-     
-       - **Durability**: Up to 99.999999999% durability.
-         
-       - **Availability**: Up to 99.99% availability.
+      
+      - **Designed for**: Frequently accessed data requiring the highest durability and availability.
+      
+      - **Durability**: Up to 99.999999999% durability.
+      
+      - **Availability**: Up to 99.99% availability.
          
     -  #### EFS Standard–Infrequent Access (IA)
       
-       - **Designed for**: Long lived, infrequently accessed data requiring the highest durability and availability.
+      - **Designed for**: Long lived, infrequently accessed data requiring the highest durability and availability.
       
-       - **Durability**: Up to 99.999999999% durability.
+      - **Durability**: Up to 99.999999999% durability.
       
-       - **Availability**: Up to 99.99% availability.
+      - **Availability**: Up to 99.99% availability.
          
   - ### EFS Characteristics
     
-     - **Shared File Storage**: Amazon EFS provides a shared file system that can be accessed by multiple EC2 instances and services concurrently.
+    - **Shared File Storage**: Amazon EFS provides a shared file system that can be accessed by multiple EC2 instances and services concurrently.
+    
+    - **Scalable**: EFS can automatically scale to accommodate the storage needs of your applications. You can increase or decrease storage capacity as needed.
+    
+    - **Backup and Restore**: EFS can automatically scale to accommodate the storage needs of your applications. You can increase or decrease storage capacity as needed.
 
-     - **Scalable**: EFS can automatically scale to accommodate the storage needs of your applications. You can increase or decrease storage capacity as needed.
+    - **Suppor**: Amazon Elastic File System (EFS) supports the Network File System version 4 (NFSv4)
    
-     - **Backup and Restore**: EFS can automatically scale to accommodate the storage needs of your applications. You can increase or decrease storage capacity as needed.
-   
-     - **Encryption**: Amazon Elastic File System (EFS) provides encryption at rest by default. When you create a new Amazon EFS file system, the data and metadata
-       are automatically encrypted using an AWS Key Management Service (KMS) key.
+    - **Cost Efficiency**: Amazon EFS offers a pay-as-you-go model, meaning you're billed only for the storage you use, without the need for pre-provisioning or upfront
+      commitments.
+
+    - **Encryption**: Amazon Elastic File System (EFS) provides encryption at rest by default. When you create a new Amazon EFS file system, the data and metadata
+    are automatically encrypted using an AWS Key Management Service (KMS) key.
+    
+    - **Encryption**: Amazon Elastic File System (EFS) provides encryption at rest by default. When you create a new Amazon EFS file system, the data and metadata
+    are automatically encrypted using an AWS Key Management Service (KMS) key.
   
   
