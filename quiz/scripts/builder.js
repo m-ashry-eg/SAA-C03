@@ -574,6 +574,40 @@ const builder = [
 			'(D). AWS Macie is a service that uses machine learning to automatically discover, classify, and protect sensitive data. It is focused on data discovery and classification, rather than providing dedicated HSMs. AWS Macie is not related to providing a dedicated HSM. It serves a different purpose in data security and privacy.',
 		],
 	},
+	{
+		question:
+			'You are designing an AWS cloud environment for a small company with a limited budget. They have decided to provision an Amazon RDS database with a single-AZ database deployment, to ensure the implementation remains within budget. You have convinced them of the benefits of configuring automatic backups of the RDS database and saving incremental backups to Amazon S3. What would be the best time to perform these automatic backups?',
+		options: [
+			'A. After midnight',
+			'B. Two hours before the work day starts',
+			'C. At the time of day when write IOPS is typically the lowest.',
+			'D. Amazon will determine the best time',
+		],
+		answer: [2],
+		explanation: [
+			"(A). After midnight is a specific time, but it doesn't necessarily correspond to a period of low database activity. Activity levels can vary widely depending on the company's operations. Therefore, scheduling backups at this fixed time might not optimize the process.",
+			'(B). Similar to the first option, this time is a fixed point that may not align with periods of low database activity. The start of the workday could have a high level of activity, depending on the nature of the business.',
+			"(C). This option is the best choice among the given alternatives. It suggests scheduling backups during periods when the database experiences the lowest write IOPS (Input/Output Operations Per Second). This ensures that the backup process has minimal impact on the database's performance during operational hours.",
+			"(D). This option means relying on AWS to automatically schedule the backups. While AWS is equipped to make informed decisions about when to perform backups based on its monitoring of the system, it's still important for the company to ensure that the chosen time aligns with their specific usage patterns. Additionally, they should monitor the backups to ensure they meet their recovery point objectives.",
+		],
+	},
+	{
+		question:
+			'An application that generates water quality reports for a government agency includes an ECS cluster that uses both Amazon EC2 and AWS Fargate. There are several computational steps involved in building a report, and each step generates intermediate data needed in the next step. The application requires a storage service that is accessible to all containers in the ECS cluster and would allow them to access the same files simultaneously. All data generated in this step-by-step process is given nearly identical filenames without applying delimiters or prefixes.Which storage solution can you add to each ECS task definition to provide shared access between all tasks in the cluster?',
+		options: [
+			'A. Elastic File System (EFS)',
+			'B. Elastic Block Storage (EBS)',
+			'C. Simple Storage Service (S3) ',
+			'D. ElastiCache',
+		],
+		answer: [0],
+		explanation: [
+			"(A). EFS is a fully managed NFS (Network File System) file storage service that allows multiple Amazon EC2 instances and AWS Fargate tasks to share files with consistent and low-latency performance. It's designed for scenarios where multiple resources need simultaneous access to the same files. In this case, it would be ideal for allowing all containers in the ECS cluster to access the same files simultaneously, even if they are generating intermediate data with similar filenames.",
+			"(B). EBS provides block-level storage volumes that can be attached to individual EC2 instances. While it's suitable for single-instance storage needs, it doesn't support shared access to files across multiple instances or tasks. Each EBS volume is attached to a single EC2 instance and cannot be directly shared.",
+			"(C). S3 is an object storage service that allows you to store and retrieve any amount of data at any time. While it is highly scalable and durable, it does not provide a traditional file system interface with simultaneous file access. It's designed for web-scale cloud storage and is not suitable for shared file access between multiple tasks or instances.",
+			"(D). ElastiCache is a managed in-memory cache service that is used to improve the performance of web applications by allowing frequently accessed data to be stored in memory. It's not a storage solution for files and does not provide a shared file system.",
+		],
+	},
 ];
 
 export default builder;
