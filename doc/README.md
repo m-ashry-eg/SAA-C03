@@ -89,6 +89,8 @@ Compute Cloud (EC2) instances. It offers durable and scalable block-level storag
     associated with creating and storing backups.
     
     - **Stored in Amazon S3**: EBS Snapshots are stored in Amazon S3, a highly durable and redundant storage service. This ensures the durability and availability of your snapshots.
+   
+    - **Consistent Snapshot**: To ensure a consistent snapshot, it is advisable to stop the instance before taking a snapshot.
     
     - **Snapshot Lifecycle Policies**: AWS provides tools like Amazon Data Lifecycle Manager (DLM) that allow you to automate the creation and retention of EBS snapshots. This helps you
     manage your backup strategy more effectively.
