@@ -27,10 +27,10 @@ const builder = [
 		],
 		answer: [0],
 		explanation: [
-			'Query the local instance metadata: EC2 instances have access to a special HTTP service called the "instance metadata service." This service provides a wealth of information about the instance, including its instance ID, region, security group, and importantly, its public and private IP addresses. By making a simple HTTP request to a well-known URL (http://169.254.169.254/latest/meta-data/), software running on the instance can retrieve this information.',
-			"Query the local instance userdata: User data is information that you can pass to an EC2 instance when it starts. While it can be used for various purposes, it doesn't provide information about the instance's public or private IP addresses.",
-			"Query the appropriate Amazon CloudWatch metric: CloudWatch metrics provide monitoring data for AWS resources, but they don't directly provide information about the IP addresses of the instance.",
-			'Use an ipconfig or ifconfig command: These commands are typically used in operating systems to view network configurations. However, they are not the preferred method for applications running on an EC2 instance to programmatically determine their own IP addresses.',
+			'(A). Query the local instance metadata: EC2 instances have access to a special HTTP service called the "instance metadata service." This service provides a wealth of information about the instance, including its instance ID, region, security group, and importantly, its public and private IP addresses. By making a simple HTTP request to a well-known URL (http://169.254.169.254/latest/meta-data/), software running on the instance can retrieve this information.',
+			"(B). Query the local instance userdata: User data is information that you can pass to an EC2 instance when it starts. While it can be used for various purposes, it doesn't provide information about the instance's public or private IP addresses.",
+			"(C). Query the appropriate Amazon CloudWatch metric: CloudWatch metrics provide monitoring data for AWS resources, but they don't directly provide information about the IP addresses of the instance.",
+			'(D). Use an ipconfig or ifconfig command: These commands are typically used in operating systems to view network configurations. However, they are not the preferred method for applications running on an EC2 instance to programmatically determine their own IP addresses.',
 		],
 	},
 	{
@@ -94,11 +94,11 @@ const builder = [
 		],
 		answer: [0],
 		explanation: [
-			'Enable S3 versioning on the bucket (Right): Enabling S3 versioning is the correct choice. It keeps multiple versions of an object in the same bucket. Even if an object is deleted or overwritten, you can still access previous versions, thus protecting against accidental deletion and overwriting.',
-			"Access S3 data using only signed URLs (Wrong): Using signed URLs is a way to control who can access your S3 objects, but it doesn't inherently prevent accidental deletion or overwriting. It's a security measure for controlling access, not for versioning or preventing accidental data changes.",
-			'Disable S3 delete using an IAM bucket policy (Right): Creating an IAM bucket policy that denies the "s3:DeleteObject" and "s3:DeleteObjectVersion" actions can prevent objects from being deleted. This is a valid method to protect against accidental deletion.',
-			"Enable S3 Reduced Redundancy Storage (Wrong): Enabling Reduced Redundancy Storage is about changing the storage class for your objects to a lower level of durability, and it does not protect against accidental deletion or overwriting. It's a cost-saving measure but doesn't enhance data protection.",
-			"Enable multi-factor authentication (MFA) protected access (Wrong): Enabling MFA for S3 access adds an extra layer of security to your AWS account, but it doesn't directly protect against accidental deletion or overwriting of S3 objects. It primarily helps secure access to the AWS account itself.",
+			'(A). Enabling S3 versioning is the correct choice. It keeps multiple versions of an object in the same bucket. Even if an object is deleted or overwritten, you can still access previous versions, thus protecting against accidental deletion and overwriting.',
+			"(B). Using signed URLs is a way to control who can access your S3 objects, but it doesn't inherently prevent accidental deletion or overwriting. It's a security measure for controlling access, not for versioning or preventing accidental data changes.",
+			'(C). Creating an IAM bucket policy that denies the "s3:DeleteObject" and "s3:DeleteObjectVersion" actions can prevent objects from being deleted. This is a valid method to protect against accidental deletion.',
+			"(D). Enabling Reduced Redundancy Storage is about changing the storage class for your objects to a lower level of durability, and it does not protect against accidental deletion or overwriting. It's a cost-saving measure but doesn't enhance data protection.",
+			"(E). Enabling MFA for S3 access adds an extra layer of security to your AWS account, but it doesn't directly protect against accidental deletion or overwriting of S3 objects. It primarily helps secure access to the AWS account itself.",
 		],
 	},
 	{
@@ -112,10 +112,10 @@ const builder = [
 		],
 		answer: [1],
 		explanation: [
-			"Creating a copy of the EBS volume without taking a snapshot means you're essentially duplicating the existing volume. This is useful if you want an identical copy of the volume for some reason. However, it doesn't provide the same level of data backup and recovery as a snapshot.",
-			"Storing a snapshot of the volume means you're creating a point-in-time backup of the data on the volume. This allows you to recreate the volume later from the snapshot if needed. Snapshots are a reliable way to back up and recover EBS volumes.",
-			"Downloading the content to an EC2 instance is an option, but it doesn't directly relate to recreating the EBS volume later. It's more about transferring data to an existing EC2 instance.",
-			"While backing up data to a physical disk is a valid approach, it's not specific to recreating an EBS volume. It involves copying data to an external storage device, which can be useful for offline backups, but it doesn't pertain to the process of recreating an EBS volume.",
+			"(A). Creating a copy of the EBS volume without taking a snapshot means you're essentially duplicating the existing volume. This is useful if you want an identical copy of the volume for some reason. However, it doesn't provide the same level of data backup and recovery as a snapshot.",
+			"(B). Storing a snapshot of the volume means you're creating a point-in-time backup of the data on the volume. This allows you to recreate the volume later from the snapshot if needed. Snapshots are a reliable way to back up and recover EBS volumes.",
+			"(C). Downloading the content to an EC2 instance is an option, but it doesn't directly relate to recreating the EBS volume later. It's more about transferring data to an existing EC2 instance.",
+			"(D). While backing up data to a physical disk is a valid approach, it's not specific to recreating an EBS volume. It involves copying data to an external storage device, which can be useful for offline backups, but it doesn't pertain to the process of recreating an EBS volume.",
 		],
 	},
 	{
@@ -129,10 +129,10 @@ const builder = [
 		],
 		answer: [1],
 		explanation: [
-			"Possible for EBS volumes (Wrong): This option is not accurate. /dev/sda1 is generally reserved for the root device, and it's not recommended to use it for additional EBS volumes.",
-			"Reserved for the root device (Right): This is the correct answer. In Amazon EC2, /dev/sda1 is typically reserved for the root device, which is where the operating system is installed. It's not recommended to use this device name for additional EBS volumes.",
-			"Recommended for EBS volumes (Wrong): Using /dev/sda1 is generally not recommended for additional EBS volumes. It's typically reserved for the root device.",
-			"Recommended for instance store volumes (Wrong): /dev/sda1 is typically used for the root device, whether it's backed by an EBS volume or an instance store. It's not specifically recommended for instance store volumes.",
+			"(A). This option is not accurate. /dev/sda1 is generally reserved for the root device, and it's not recommended to use it for additional EBS volumes.",
+			"(B). This is the correct answer. In Amazon EC2, /dev/sda1 is typically reserved for the root device, which is where the operating system is installed. It's not recommended to use this device name for additional EBS volumes.",
+			"(C). Using /dev/sda1 is generally not recommended for additional EBS volumes. It's typically reserved for the root device.",
+			"(D). /dev/sda1 is typically used for the root device, whether it's backed by an EBS volume or an instance store. It's not specifically recommended for instance store volumes.",
 		],
 	},
 	{
@@ -145,10 +145,10 @@ const builder = [
 		],
 		answer: [3],
 		explanation: [
-			'Redundancy Removal System (Wrong): This is not the correct expansion of RRS in the context of Amazon S3. RRS stands for Reduced Redundancy Storage, which is a specific storage option provided by Amazon S3.',
-			'Relational Rights Storage (Wrong): This is not the correct expansion for RRS. In the context of Amazon S3, RRS stands for Reduced Redundancy Storage, which is a storage class designed for non-critical, reproducible data.',
-			'Regional Rights Standard (Wrong): This is not the correct expansion of RRS in the context of Amazon S3. RRS stands for Reduced Redundancy Storage, which is a specific storage class offered by Amazon S3.',
-			'Reduced Redundancy Storage (Right): This is the correct answer. RRS stands for Reduced Redundancy Storage. It is a storage option provided by Amazon S3 designed for non-critical, reproducible data. Objects stored with RRS are replicated across fewer facilities than objects stored with Standard Storage, which makes it less durable but more cost-effective for certain use cases.',
+			'(A). This is not the correct expansion of RRS in the context of Amazon S3. RRS stands for Reduced Redundancy Storage, which is a specific storage option provided by Amazon S3.',
+			'(B). This is not the correct expansion of RRS in the context of Amazon S3, RRS stands for Reduced Redundancy Storage, which is a storage class designed for non-critical, reproducible data.',
+			'(C). This is not the correct expansion of RRS in the context of Amazon S3. RRS stands for Reduced Redundancy Storage, which is a specific storage class offered by Amazon S3.',
+			'(D). RRS stands for Reduced Redundancy Storage. It is a storage option provided by Amazon S3 designed for non-critical, reproducible data. Objects stored with RRS are replicated across fewer facilities than objects stored with Standard Storage, which makes it less durable but more cost-effective for certain use cases.',
 		],
 	},
 	{
@@ -162,10 +162,10 @@ const builder = [
 		],
 		answer: [2],
 		explanation: [
-			'Multiple IP address (Incorrect): This option is not specific enough. All Amazon EC2 instances are assigned multiple IP addresses, including both public and private addresses. This is not a distinct category of IP address.',
-			'Public IP address (Incorrect): The public IP address assigned to an Amazon EC2 instance is reachable from the public internet. It allows the instance to communicate with the internet, and external entities on the internet can reach the instance using this IP address. This option is not only reachable from within the Amazon EC2 network.',
-			"Private IP address (Correct): The private IP address is only reachable from within the Amazon EC2 network or from connected Virtual Private Clouds (VPCs) if applicable. It's used for communication within the AWS network.",
-			'Elastic IP Address (Incorrect): An Elastic IP address is a static, public IPv4 address that you can allocate to your AWS account and associate with your EC2 instances. While it can be remapped to different instances, it is also reachable from the public internet. Therefore, it can be accessed both within the Amazon EC2 network and from external sources on the internet.',
+			'(A). This option is not specific enough. All Amazon EC2 instances are assigned multiple IP addresses, including both public and private addresses. This is not a distinct category of IP address.',
+			'(B). The public IP address assigned to an Amazon EC2 instance is reachable from the public internet. It allows the instance to communicate with the internet, and external entities on the internet can reach the instance using this IP address. This option is not only reachable from within the Amazon EC2 network.',
+			"(C). The private IP address is only reachable from within the Amazon EC2 network or from connected Virtual Private Clouds (VPCs) if applicable. It's used for communication within the AWS network.",
+			'(D). Elastic IP Address (Incorrect): An Elastic IP address is a static, public IPv4 address that you can allocate to your AWS account and associate with your EC2 instances. While it can be remapped to different instances, it is also reachable from the public internet. Therefore, it can be accessed both within the Amazon EC2 network and from external sources on the internet.',
 		],
 	},
 	{
@@ -178,10 +178,10 @@ const builder = [
 		],
 		answer: [1],
 		explanation: [
-			'Simple Web Flow (Incorrect): This is not the correct expansion of SWF. SWF stands for Simple Workflow, not "Simple Web Flow". SWF is a fully managed workflow service provided by Amazon Web Services (AWS).',
-			'Simple Work Flow (Correct): This is the correct expansion of SWF. SWF stands for Simple Workflow. It is a fully managed service provided by AWS for building applications with distributed, asynchronous tasks.',
-			'Simple Wireless Forms (Incorrect): This is not the correct expansion of SWF. SWF stands for Simple Workflow, not "Simple Wireless Forms". It is not related to wireless forms.',
-			'Simple Web Form (Incorrect): This is not the correct expansion of SWF. SWF stands for Simple Workflow, not "Simple Web Form". It is not related to web forms.',
+			'(A). This is not the correct expansion of SWF. SWF stands for Simple Workflow, not "Simple Web Flow". SWF is a fully managed workflow service provided by Amazon Web Services (AWS).',
+			'(B). This is the correct expansion of SWF. SWF stands for Simple Workflow. It is a fully managed service provided by AWS for building applications with distributed, asynchronous tasks.',
+			'(C). This is not the correct expansion of SWF. SWF stands for Simple Workflow, not "Simple Wireless Forms". It is not related to wireless forms.',
+			'(D). This is not the correct expansion of SWF. SWF stands for Simple Workflow, not "Simple Web Form". It is not related to web forms.',
 		],
 	},
 	{
@@ -521,6 +521,57 @@ const builder = [
 			'(B). This option involves using CloudFront, which is a content delivery network (CDN) service. While CloudFront can cache frequently accessed data and reduce data transfer costs for content it serves, it is not a direct solution for accessing an S3 bucket from EC2 instances in a VPC. Additionally, this option may not be the most efficient for this specific use case.',
 			'(C). This option is the most suitable for the given scenario. A VPC Endpoint allows resources within the VPC to communicate with AWS services like S3 without going over the internet. It ensures that data transfer stays within the AWS network, minimizing costs and providing secure access to the S3 bucket.',
 			'(D). Direct Connect (DX) is used for establishing a dedicated network connection between your on-premises network and AWS. It is not used for VPC-to-service communication within AWS. This option is not relevant to the scenario described and does not address the requirement of minimizing data transfer costs for EC2 instances accessing an S3 bucket.',
+		],
+	},
+	{
+		question:
+			'A large company is expanding its AWS cloud infrastructure and expects to grow the number of VPCs managed by different IT departments. The technical team anticipates that resources within multiple VPCs will need access to resources in other VPCs and access to on-premises resources. Which of the following solutions should the technical team choose to enable connectivity between multiple VPCs and on-premises resources?',
+		options: [
+			'A. Connect the different VPCs to AWS Transit Gateway using VPC peering connections. Connect the on-premises network to the same AWS Transit Gateway using a VPN connection.',
+			'B. Create VPC peering connections between each VPC. Connect the VPC network to the on- premises resources using a VPN connection.',
+			'C. Create VPC peering connections between each VPC. Connect the VPC network to the on- premises resources using AWS Direct Connect.',
+			'D. Connect the multiple VPCs with VPN connections. Connect the VPC network to the on- premises resources using AWS Direct Connect.',
+		],
+		answer: [0],
+		explanation: [
+			'(A). This option correctly leverages AWS Transit Gateway, which acts as a hub for connecting multiple VPCs. VPC peering connections allow VPCs to communicate with each other. Connecting the on-premises network to the same AWS Transit Gateway using a VPN connection is the right approach for secure communication between on-premises resources and AWS.',
+			'(B). While VPC peering connections are used for communication between VPCs, this option lacks the central management provided by AWS Transit Gateway. Managing multiple VPC peering connections can become complex and less scalable.',
+			"(C). AWS Direct Connect provides a dedicated network connection between on-premises and AWS. However, using Direct Connect for VPC-to-VPC communication is not a standard approach. It's typically used for connecting on-premises resources directly to AWS. Similar to Option B, this option lacks the central management provided by AWS Transit Gateway, which can become complex as the number of VPCs increases.",
+			'(D). While VPN connections can be used for secure communication, connecting multiple VPCs using VPN connections can be complex and less scalable compared to using AWS Transit Gateway. AWS Direct Connect for on-premises resources is a correct approach for secure and reliable communication.',
+		],
+	},
+	{
+		question:
+			'A company is building a Machine Learning application hosted on EC2 Linux instances in the same VPC subnet. This application will require multiple instances to process jobs in parallel, so the network speed between instances in the subnet and CPU processing speed of single instances are both critical. Management currently authorizes general purpose, compute optimized and storage optimized instances, and dislikes the idea of purchasing other instance types such as accelerated computing for this specific application because it is too specialized. Instead, they would like for your team to use familiar instance types that developers have experience with, and find ways to optimize them for this application. Which solution would you implement to improve the compute and networking performance of the available EC2 instance types for this application?',
+		options: [
+			'A. Attach Elastic Network Adapters (ENA) to your instances.',
+			'B. Attach Elastic Fabric Adapters (EFA) to your instances.',
+			"C. Deploy the application's instances in a spread placements group.",
+			'D. Attach Elastic Network Interfaces (ENI) to your instances.',
+		],
+		answer: [0],
+		explanation: [
+			'(A). While attaching ENA can improve networking performance, it may not provide the specialized low-latency communication needed for machine learning workloads. ENA is more geared towards general networking improvements.',
+			'(B). This option is correct. EFA is specifically designed to optimize networking performance for specialized workloads like machine learning that require both high CPU processing speed and fast network communication between instances.',
+			"(C). This option doesn't directly address the compute and networking performance requirements mentioned in the scenario. It focuses more on availability and fault tolerance.",
+			"(D). ENIs are crucial for normal network connectivity, but they don't provide the specialized networking capabilities required for high-performance machine learning applications.",
+		],
+	},
+	{
+		question:
+			"A micro-finance startup awarded your team the security of their application built on AWS. You are tasked with enabling a dedicated, single tenancy Hardware Security Module (HSM) for this client's needs. Which AWS service will provide the required hardware-based encryption device?",
+		options: [
+			'A. AWS KMS',
+			'B. AWS Systems Manager',
+			'C. AWS CloudHSM',
+			'D. AWS Macie',
+		],
+		answer: [2],
+		explanation: [
+			'(A). AWS Key Management Service (KMS) is a managed service for key management. It provides a secure and convenient way to manage encryption keys for various AWS services and applications. While AWS KMS is a powerful service for key management, it does not provide dedicated, single tenancy HSMs. KMS uses multi-tenant HSMs managed by AWS, which means that the hardware is shared among multiple AWS customers.',
+			'(B). AWS Systems Manager does not provide hardware-based encryption devices like an HSM. It focuses on management and automation of operational tasks.',
+			'(C). AWS CloudHSM is a dedicated hardware security module for cryptographic operations and key storage. It offers a secure, single-tenant environment for key management and encryption. This option is correct. AWS CloudHSM aligns with the requirement for a dedicated, single tenancy HSM. It provides the required hardware-based encryption device.',
+			'(D). AWS Macie is a service that uses machine learning to automatically discover, classify, and protect sensitive data. It is focused on data discovery and classification, rather than providing dedicated HSMs. AWS Macie is not related to providing a dedicated HSM. It serves a different purpose in data security and privacy.',
 		],
 	},
 ];
