@@ -57,16 +57,20 @@ Compute Cloud (EC2) instances. It offers durable and scalable block-level storag
         high-throughput performance.
   
       - Throughput Optimized volumes are suitable for data warehouses, log processing, and other workloads that require high-volume, sequential read and write operations.
+   
+       - A Throughput Optimized volume cannot be a boot volume.      
 
   -  **Cold (HDD)**
    
       - Cold HDD volumes, also known as sc1, are designed for less frequently accessed workloads with large, sequential read and write. They offer the lowest storage cost but with
         the trade-off of lower performance compared to other volume types.
 
-      - Cold (HDD) storage is typically the lowest-cost option among Amazon Web Services (AWS) EBS volume types.
+      - Cold Volumes is typically the lowest-cost option among Amazon Web Services (AWS) EBS volume types.
   
       - Cold volumes are suitable for scenarios where cost-effectiveness is a priority, and occasional access to the data is sufficient, such as infrequently accessed archives or
         backup storage.
+
+       - A Cold volume cannot be a boot volume.
 
 #### EBS Snapshots
 
