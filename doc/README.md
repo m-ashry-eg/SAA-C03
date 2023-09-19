@@ -14,14 +14,12 @@ A compilation of notes for the SAA-C03 exam. These notes are meticulously organi
   <img src="https://img.shields.io/badge/state-in_development-blue" alt="version">
 </p>
 
-## Storage Services
-
-### Amaon Elastic Block Store (EBS)
+## Amaon Elastic Block Store (EBS)
 
 Amazon Elastic Block Store (Amazon EBS) is a block-level storage service provided by Amazon Web Services (AWS) for use with Amazon Elastic 
 Compute Cloud (EC2) instances. It offers durable and scalable block-level storage that you can attach to your EC2 instances.
 
-  - #### EBS Volumes
+  - ### EBS Volumes
 
     - **Block-Level Storage**: Amazon Elastic Block Store (EBS) provides raw storage volumes that can be directly attached to EC2 instances. This
     characteristic allows you to utilize EBS much like a physical hard drive, making it suitable for a wide array of applications.
@@ -32,7 +30,7 @@ Compute Cloud (EC2) instances. It offers durable and scalable block-level storag
     - **Resizable Volumes**: EBS volumes can be adjusted in size without the need to halt or restart the associated instance. However, it's
     important to note that the filesystem within the operating system must be extended in order for the OS to recognize the resized volume.
 
-  - #### EBS Volume Types
+  - ### EBS Volume Types
 
     -  **General Purpose (SSD)**
      
@@ -80,7 +78,7 @@ Compute Cloud (EC2) instances. It offers durable and scalable block-level storag
        
           - Up to 99.9% durability.
 
-  - #### EBS Snapshots
+  - ### EBS Snapshots
 
     - **Backup and Recovery**: EBS Snapshots allow you to create backups of your EBS volumes, providing a reliable way to recover your data in case of accidental deletion, corruption,
     or other data loss scenarios.
@@ -99,7 +97,7 @@ Compute Cloud (EC2) instances. It offers durable and scalable block-level storag
     
     - **Encrypted Snapshots**: You can choose to encrypt your EBS snapshots using AWS Key Management Service (KMS) keys for added security.
 
-  - #### EBS Encryption
+  - ### EBS Encryption
 
     - **Data Security**: Amazon EBS Encryption is a feature that allows you to encrypt your Elastic Block Store (EBS) volumes at rest.
     
@@ -123,7 +121,7 @@ Compute Cloud (EC2) instances. It offers durable and scalable block-level storag
     
     - Use that AMI to launch new encrypted instances.
 
-  - #### EBS Hibernation
+  - ### EBS Hibernation
 
     - **Preservation of In-Memory State**: Amazon EBS Hibernation is a feature that allows you to pause and resume Amazon EC2 instances, preserving their in-memory state. When 
     an instance is hibernated, the contents of its RAM are written to the associated EBS root volume. This enables you to quickly restart the instance in the same state it
