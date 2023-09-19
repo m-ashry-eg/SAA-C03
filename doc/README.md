@@ -14,6 +14,10 @@ A compilation of notes for the SAA-C03 exam. These notes are meticulously organi
   <img src="https://img.shields.io/badge/state-in_development-blue" alt="version">
 </p>
 
+## Table of Content 
+
+<a href="#amaon-elastic-block-store-(ebs)">Amaon Elastic Block Store (EBS)</a>
+
 ## Amaon Elastic Block Store (EBS)
 
 Amazon Elastic Block Store (Amazon EBS) is a block-level storage service provided by Amazon Web Services (AWS) for use with Amazon Elastic 
