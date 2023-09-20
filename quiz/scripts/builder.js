@@ -608,6 +608,74 @@ const builder = [
 			"(D). ElastiCache is a managed in-memory cache service that is used to improve the performance of web applications by allowing frequently accessed data to be stored in memory. It's not a storage solution for files and does not provide a shared file system.",
 		],
 	},
+	{
+		question:
+			'A company is hosting a web application on AWS using a single Amazon EC2 instance that stores user-uploaded documents in an Amazon EBS volume. For better scalability and availability, the company duplicated the architecture and created a second EC2 instance and EBS volume in another Availability Zone, placing both behind an Application Load Balancer. After completing this change, users reported that, each time they refreshed the website, they could see one subset of their documents or the other, but never all of the documents at the same time. What should a solutions architect propose to ensure users see all of their documents at once?',
+		options: [
+			'A. Copy the data so both EBS volumes contain all the documents',
+			'B. Configure the Application Load Balancer to direct a user to the server with the documents',
+			'C. Copy the data from both EBS volumes to Amazon EFS. Modify the application to save new documents to Amazon EFS',
+			'D. Configure the Application Load Balancer to send the request to both servers. Return each document from the correct server',
+		],
+		answer: [2],
+		explanation: [
+			'(A). While effective, this approach may require a process for periodic or real-time synchronization to ensure both EBS volumes stay consistent. This could potentially introduce complexity in managing data synchronization.',
+			"(B). This approach doesn't directly address the underlying issue of data synchronization. While it might improve performance by directing users to the server with the relevant documents, it doesn't guarantee that all documents will be accessible to users. It's more of a workaround than a solution to the synchronization problem.",
+			'(C). Migrating data from EBS to EFS involves a data transfer process, which can be time-consuming and may incur additional costs. Modifying the application to save new documents to Amazon EFS requires code changes, potentially introducing new complexities and potential points of failure.',
+			"(D). While this approach may technically work, it's less efficient and introduces complexity in handling responses from both servers and merging them. It could lead to potential issues in managing responses and could be less reliable than other solutions.",
+		],
+	},
+	{
+		question:
+			'An application runs on an Amazon EC2 instance in a VPC. The application processes logs that are stored in an Amazon S3 bucket. The EC2 instance needs to access the S3 bucket without connectivity to the internet. Which solution will provide private network connectivity to Amazon S3?',
+		options: [
+			'A. Create a gateway VPC endpoint to the S3 bucket.',
+			'B. Stream the logs to Amazon CloudWatch Logs. Export the logs to the S3 bucket.',
+			'C. Create an instance profile on Amazon EC2 to allow S3 access.',
+			'D. Create an Amazon API Gateway API with a private link to access the S3 endpoint.',
+		],
+		answer: [0],
+		explanation: [
+			'(A). This option establishes a private connection between your VPC and the Amazon S3 service. It allows resources within your VPC, like the EC2 instance in this case, to access the S3 bucket without requiring internet connectivity. This is the most suitable solution for the scenario described.',
+			"(B). While this solution could be useful for log management and analysis, it doesn't directly address the requirement of providing the EC2 instance with private network connectivity to the S3 bucket. It introduces an additional step of exporting logs to the S3 bucket from CloudWatch, but it doesn't establish a private connection between the EC2 instance and S3.",
+			'(C). Creating an instance profile is a necessary step for granting permissions to the EC2 instance to access the S3 bucket. However, this alone does not provide private network connectivity. It would still require a VPC endpoint or other network configurations to ensure that the traffic stays within the AWS network.',
+			"(D). This option involves setting up an API Gateway with a private link, which is used for securely accessing APIs. It is not relevant to accessing S3 buckets directly. This option does not align with the scenario's requirement of enabling the EC2 instance to access the S3 bucket.",
+		],
+	},
+	{
+		question:
+			'A company needs the ability to analyze the log files of its proprietary application. The logs are stored in JSON format in an Amazon S3 bucket. Queries will be simple and will run on-demand. A solutions architect needs to perform the analysis with minimal changes to the existing architecture. What should the solutions architect do to meet these requirements with the LEAST amount of operational overhead?',
+		options: [
+			'A. Use Amazon Redshift to load all the content into one place and run the SQL queries as needed.',
+			'B. Use Amazon CloudWatch Logs to store the logs. Run SQL queries as needed from the Amazon CloudWatch console.',
+			'C. Use Amazon Athena directly with Amazon S3 to run the queries as needed.',
+			'D. Use AWS Glue to catalog the logs. Use a transient Apache Spark cluster on Amazon EMR to run the SQL queries as needed.',
+		],
+		answer: [2],
+		explanation: [
+			"(A). Amazon Redshift is a powerful data warehousing solution. It's optimized for complex analytics and querying large datasets. However, in this scenario, the requirement is for simple, on-demand log analysis. Using Redshift would introduce more operational overhead as it requires provisioning and managing a cluster, which may be overkill for this use case. It's not the most efficient solution for simple, ad-hoc queries on JSON log files.",
+			'(B). CloudWatch Logs is designed primarily for managing and analyzing logs generated by AWS services. While it does provide some querying capabilities, it may not be the best fit for analyzing proprietary application logs stored in JSON format. Additionally, running SQL queries directly from the CloudWatch console for this scenario might not be as efficient or flexible as using a specialized tool like Athena.',
+			"(C). Amazon Athena is a serverless, interactive query service that allows you to analyze data directly in Amazon S3 using SQL. It's designed for on-demand querying of data in S3. This option aligns well with the scenario where the company needs to analyze JSON log files stored in an S3 bucket with simple queries. Athena doesn't require the company to provision or manage any infrastructure, which minimizes operational overhead.",
+			'(D). This option involves more complexity and operational overhead. AWS Glue is a service for ETL (Extract, Transform, Load) tasks, and it can catalog data for querying. It can be powerful for complex data transformations, but it may introduce more complexity than necessary for this scenario. Additionally, using Apache Spark on EMR for simple log analysis might be over-engineering the solution.',
+		],
+	},
+	{
+		question:
+			'A company collects data for temperature, humidity, and atmospheric pressure in cities across multiple continents. The average volume of data that the company collects from each site daily is 500 GB. Each site has a high-speed Internet connection. The company wants to aggregate the data from all these global sites as quickly as possible in a single Amazon S3 bucket. The solution must minimize operational complexity. Which solution meets these requirements?',
+		options: [
+			'A. Turn on S3 Transfer Acceleration on the destination S3 bucket. Use multipart uploads to directly upload site data to the destination S3 bucket.',
+			'B. Upload the data from each site to an S3 bucket in the closest Region. Use S3 Cross-Region Replication to copy objects to the destination S3 bucket. Then remove the data from the origin S3 bucket.',
+			'C. Schedule AWS Snowball Edge Storage Optimized device jobs daily to transfer data from each site to the closest Region. Use S3 Cross-Region Replication to copy objects to the destination S3 bucket.',
+			'D. Upload the data from each site to an Amazon EC2 instance in the closest Region. Store the data in an Amazon Elastic Block Store (Amazon EBS) volume. At regular intervals, take an EBS snapshot and copy it to the Region that contains the destination S3 bucket. Restore the EBS volume in that Region.',
+		],
+		answer: [0],
+		explanation: [
+			"(A). S3 Transfer Acceleration is designed to accelerate uploads to S3 by using Amazon CloudFront's globally distributed edge locations. It can significantly reduce the time it takes to upload objects, especially for large files or over long distances. In this scenario, where data is collected from multiple global sites, enabling S3 Transfer Acceleration can help optimize the upload process and minimize latency.",
+			'(B). This option involves uploading data to S3 buckets in the closest regions to the sites, which takes advantage of high-speed Internet connections and reduces latency. Cross-Region Replication is then used to automatically replicate objects to the destination S3 bucket. While this solution is effective, it introduces more steps and complexity compared to option A, which directly leverages S3 Transfer Acceleration.',
+			"(C). Using AWS Snowball Edge introduces additional hardware (Snowball devices) and potentially complex job scheduling. While it's a valid solution for large-scale data transfers, it may introduce more operational complexity than needed for this scenario. It might be overkill for aggregating data from multiple sites daily.",
+			"(D). This option involves setting up and managing EC2 instances, EBS volumes, and snapshots. While it's a technically feasible solution, it introduces a higher level of operational complexity compared to the other options. It may also be less efficient in terms of data transfer speed compared to option A.",
+		],
+	},
 ];
 
 export default builder;
