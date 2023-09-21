@@ -313,6 +313,10 @@ operate, and scale a relational database in the cloud.
     - **Multi-AZ Deployments**: In Multi-AZ deployments, RDS automatically creates backups from the standby replica, so there is no impact on
     the primary instance’s performance.
 
+    - **Amazon S3 Bucket**: When you create an RDS Backup, it is stored in an Amazon S3 bucket. Each AWS region has a default Amazon S3 bucket for RDS Backup
+    storage. It's important to note that users cannot directly view the Amazon S3 bucket used for storing Amazon RDS Backup using the AWS Management Console
+    or the AWS CLI. The RDS Backup is managed by AWS, and the bucket is typically not accessible or visible to AWS customers through standard AWS interfaces.
+
   - ### RDS Snapshots
 
     - **Manual Creating**: Unlike automated backups, which are taken automatically within a specific window, RDS snapshots are created manually by the user.
