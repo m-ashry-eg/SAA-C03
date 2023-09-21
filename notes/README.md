@@ -300,6 +300,32 @@ operate, and scale a relational database in the cloud.
     entry point. The ALB, with its content-based routing capabilities, efficiently distributes read traffic to the replicas,
     ensuring load is balanced and response times are optimized.
 
+  - ### RDS Proxy
+
+    - **What is**: Amazon RDS Proxy is a fully managed database proxy service. Provided by Amazon Web Services (AWS). It is designed
+    to improve the scalability and availability of applications using Amazon RDS databases.
+    
+    - **Connection Pooling**: RDS Proxy efficiently manages database connections, reducing the overhead of establishing and tearing
+    connections. This helps improve the performance and efficiency of your application.
+    
+    - **High Availability**:  RDS Proxy maintains a pool of database connections and automatically routes traffic to healthy database
+    instances. In the event of a database failure, it can quickly redirect connections to a healthy instance, reducing downtime.
+    
+    - **Query Caching**: RDS proxy can cache frequently executed queries, reducing the load of the database instances and improving response
+    time for those queries.
+    
+    - **Cost-Efficiency**: By reducing the number of connections to your RDS instances and optimizing resource utilization, RDS Proxy can potentially
+    lead to cost savings, especially in scenarios with a high number of short-lived connections.
+    
+    - **Compatible Databases**: RDS Proxy is compatible with Amazon RDS instances for MySQL, PostgreSQL, and Aurora databases. It supports both standard
+    and Multi-AZ deployments.
+    
+    - **Cross-Zone Deployment**:  When you deploy an RDS proxy in a Multi-AZ configuration, the proxy is placed in the same AWS Region as your RDS databases,
+    but it spans multiple Availability Zones. This provides availability and fault tolerance within a single AWS Region.
+    
+    - **Cross-Region Deployment**: RDS proxy also supports cross-region deployments. This means you can deploy an RDS Proxy in one AWS Region and have it
+    route traffic to RDS databases in different AWS Region. This allows you to scale your application globally while benefiting from the performance and security of RDS Proxy.
+    
   - ### RDS Automatic Backups
 
     - **Frequency**: RDS takes automated backups of your database instance daily during a user-defined 8-hours window. The default window is
