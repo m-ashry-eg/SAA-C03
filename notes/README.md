@@ -270,6 +270,36 @@ operate, and scale a relational database in the cloud.
     - **Standby Replica**: A standby replica of the primary database is created in a different Availability Zone. This replica is an exact
     copy of the primary database.
 
+  - ### RDS Read Replica
+    
+    - **What is**: An Amazon RDS Read Replica is a copy of a source database that is asynchronously updated in near
+    real-time. The purpose of a read replica is to offload read traffic from the primary database, which can
+    improve the overall performance and scalability.
+    
+    - **Read-Only**: Read replicas are read-only-instances. This means you can use the for SELECT queries but cannot
+    perform any write operations (INSERT, UPDATE, DELETE) on them.
+    
+    - **Asynchronous Replication**: Read replicas use asynchronous replication, which means that changes made to the primary
+    database are propagated to the replica with a small delay (lag).
+    
+    - **High Availability**: Read replicas can also be used to improve high availability. If the primary database experiences
+    a failure, you can promote one of the read replicas to become the new primary database.
+    
+    - **Different Availability Zones or Regions**: Read replicas can be created in the same AWS region as the primary database
+    or in a different region. This provides additional fault tolerance and disaster recovery options.
+    
+    - **Read Replicas from Read Replicas**: It is possible to create read replicas from existing read replicas in Amazon RDS.
+    This is known as creating a “multi-tier-replication”. The read replica you create from an existing read replica will have
+    additional replication lag compared to the original source database. This means there may be a delay in data replication.
+    
+    - **Example**: An Application Load Balancer (ALB) is a sophisticated traffic distributor provided by Amazon Web Services (AWS).
+    Operating at the application layer, it intelligently routes incoming requests based on their content, such as URTs, cookies,
+    and headers. When it comes to database management, ALBs play a pivotal role. Integrating ALBs with read replicas allows for
+    an even more refined approach. It grants you the ability to present a unified, unique DNS name to your applications. This
+    is paramount for seamless database access. Instead of managing individual DNS names for each read replica, you offer a singular
+    entry point. The ALB, with its content-based routing capabilities, efficiently distributes read traffic to the replicas,
+    ensuring load is balanced and response times are optimized.
+
   - ### RDS Automatic Backups
 
     - **Frequency**: RDS takes automated backups of your database instance daily during a user-defined 8-hours window. The default window is
@@ -312,36 +342,6 @@ operate, and scale a relational database in the cloud.
       - **Automated Backups**: Retained for a user-defined period (default is 7 days, can be extended up to 35 days).
       
       - **Snapshots**: Retained indefinitely until manually deleted.
-
-  - ### RDS Read Replica
-    
-    - **What is**: An Amazon RDS Read Replica is a copy of a source database that is asynchronously updated in near
-    real-time. The purpose of a read replica is to offload read traffic from the primary database, which can
-    improve the overall performance and scalability.
-    
-    - **Read-Only**: Read replicas are read-only-instances. This means you can use the for SELECT queries but cannot
-    perform any write operations (INSERT, UPDATE, DELETE) on them.
-    
-    - **Asynchronous Replication**: Read replicas use asynchronous replication, which means that changes made to the primary
-    database are propagated to the replica with a small delay (lag).
-    
-    - **High Availability**: Read replicas can also be used to improve high availability. If the primary database experiences
-    a failure, you can promote one of the read replicas to become the new primary database.
-    
-    - **Different Availability Zones or Regions**: Read replicas can be created in the same AWS region as the primary database
-    or in a different region. This provides additional fault tolerance and disaster recovery options.
-    
-    - **Read Replicas from Read Replicas**: It is possible to create read replicas from existing read replicas in Amazon RDS.
-    This is known as creating a “multi-tier-replication”. The read replica you create from an existing read replica will have
-    additional replication lag compared to the original source database. This means there may be a delay in data replication.
-    
-    - **Example**: An Application Load Balancer (ALB) is a sophisticated traffic distributor provided by Amazon Web Services (AWS).
-    Operating at the application layer, it intelligently routes incoming requests based on their content, such as URTs, cookies,
-    and headers. When it comes to database management, ALBs play a pivotal role. Integrating ALBs with read replicas allows for
-    an even more refined approach. It grants you the ability to present a unified, unique DNS name to your applications. This
-    is paramount for seamless database access. Instead of managing individual DNS names for each read replica, you offer a singular
-    entry point. The ALB, with its content-based routing capabilities, efficiently distributes read traffic to the replicas,
-    ensuring load is balanced and response times are optimized.
 
   - ### RDS Encryption at Rest
  
