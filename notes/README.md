@@ -241,6 +241,116 @@ storage that is optimized for applications that require fast access to large amo
 - **Amazon FSx for Lustre**: High-speed, high-capacity distributed storage, ideal for high-performance computing (HPC), financial modeling,
   and more. It can also directly store data on Amazon S3.
 
+## Amazon Relational Database Service (RDS)
+
+Amazon RDS (Relational Database Service) is a managed database service provided by Amazon Web Services (AWS). It makes it easier to set up, 
+operate, and scale a relational database in the cloud. 
+
+  - ### RDS Engines
+    
+    - MySQL
+   
+    - PostgreSQL
+   
+    - MariaDB
+   
+    - Oracle
+   
+    - Microsoft SQL Server
+   
+  - ### RDS Multi-AZ
+
+    - **What is**: RDS Multi-AZ is a feature that provides high availability and fault tolerance for database instances. Its designed to
+    enhance the reliability of your database by automatically replicating data to a standby instance located in a different Availability Zone
+    within the same AWS region.
+
+    - **Primary Database**: You have a primary database instance that handles both read and write operations. This instance is located
+    in one Availability Zone.
+
+    - **Standby Replica**: A standby replica of the primary database is created in a different Availability Zone. This replica is an exact
+    copy of the primary database.
+
+  - ### RDS Automatic Backups
+
+    - **Frequency**: RDS takes automated backups of your database instance daily during a user-defined 8-hours window. The default window is
+    chosen by AWS, but you can modify it to better suit your needs.
+    
+    - **Retention Period**: By default, RDS retains backups for 7 days. However, you have the option to extend the retention period up to a
+    maximum of 35 days.
+    
+    - **Full Backups**: The automated backups taken by RDS are full backups of your database.
+    
+    - **Multi-AZ Deployments**: In Multi-AZ deployments, RDS automatically creates backups from the standby replica, so there is no impact on
+    the primary instance’s performance.
+
+  - ### RDS Snapshots
+
+    - **Manual Creating**: Unlike automated backups, which are taken automatically within a specific window, RDS snapshots are created manually by the user.
+      
+    - **Retention Period**: RDS snapshots are kept until you choose to delete tem. They do not expire after a specific time period like automated backups.
+      
+    - **Amazon S3 Bucket**: When you create an RDS snapshot, it is stored in an Amazon S3 bucket. Each AWS region has a default Amazon S3 bucket for RDS snapshot
+    storage. It's important to note that users cannot directly view the Amazon S3 bucket used for storing Amazon RDS snapshots using the AWS Management Console
+    or the AWS CLI. The RDS snapshot is managed by AWS, and the bucket is typically not accessible or visible to AWS customers through standard AWS interfaces.
+
+  - ### RDS Automatic Backups vs. RDS Snapshots
+    
+    - #### Creation Method
+
+      - **Automated Backups**: created automatically within a use-defined backup window.
+        
+      - **Snapshots**: Created manually by the user.
+
+    - #### Creation Method
+    
+      - **Automated Backups**: Taken daily during the defined backup window.
+        
+      - **Snapshots**: Created on-demand, whenever the user initiates the snapshot process.
+        
+    - #### Retention Period
+    
+      - **Automated Backups**: Retained for a user-defined period (default is 7 days, can be extended up to 35 days).
+      
+      - **Snapshots**: Retained indefinitely until manually deleted.
+
+  - ### RDS Read Replica
+    
+    - **What is**: An Amazon RDS Read Replica is a copy of a source database that is asynchronously updated in near
+    real-time. The purpose of a read replica is to offload read traffic from the primary database, which can
+    improve the overall performance and scalability.
+    
+    - **Read-Only**: Read replicas are read-only-instances. This means you can use the for SELECT queries but cannot
+    perform any write operations (INSERT, UPDATE, DELETE) on them.
+    
+    - **Asynchronous Replication**: Read replicas use asynchronous replication, which means that changes made to the primary
+    database are propagated to the replica with a small delay (lag).
+    
+    - **High Availability**: Read replicas can also be used to improve high availability. If the primary database experiences
+    a failure, you can promote one of the read replicas to become the new primary database.
+    
+    - **Different Availability Zones or Regions**: Read replicas can be created in the same AWS region as the primary database
+    or in a different region. This provides additional fault tolerance and disaster recovery options.
+    
+    - **Read Replicas from Read Replicas**: It is possible to create read replicas from existing read replicas in Amazon RDS.
+    This is known as creating a “multi-tier-replication”. The read replica you create from an existing read replica will have
+    additional replication lag compared to the original source database. This means there may be a delay in data replication.
+    
+    - **Example**: An Application Load Balancer (ALB) is a sophisticated traffic distributor provided by Amazon Web Services (AWS).
+    Operating at the application layer, it intelligently routes incoming requests based on their content, such as URTs, cookies,
+    and headers. When it comes to database management, ALBs play a pivotal role. Integrating ALBs with read replicas allows for
+    an even more refined approach. It grants you the ability to present a unified, unique DNS name to your applications. This
+    is paramount for seamless database access. Instead of managing individual DNS names for each read replica, you offer a singular
+    entry point. The ALB, with its content-based routing capabilities, efficiently distributes read traffic to the replicas,
+    ensuring load is balanced and response times are optimized.
+
+  - ### RDS Encryption at Rest
+ 
+    - **AWS Manage Key (AWS KMS)**: This is the default option and uses AWS Key Management Service (KMS) to manage encryption keys.
+    With this option, AWS manages the keys for you, and you have the option to use default keys or create custom ones.
+    
+    - **AWS Customer Manage Key (CMK)**: With this option, you can use KMS keys that you create and manage. This allows you for more
+    fine-grained control over key management.
+
 ## Amazon Backup
 
 AWS Backup is a fully managed backup service provided by Amazon Web Services. It makes it easy for you to centralize and automate the backup
