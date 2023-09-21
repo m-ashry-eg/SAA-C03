@@ -352,7 +352,7 @@ operate, and scale a relational database in the cloud.
     - **AWS Manage Key (AWS KMS)**: This is the default option and uses AWS Key Management Service (KMS) to manage encryption keys.
     With this option, AWS manages the keys for you, and you have the option to use default keys or create custom ones.
     
-    - **AWS Customer Manage Key (CMK)**: With this option, you can use KMS keys that you create and manage. This allows you for more
+    - **Customer Manage Key (CMK)**: With this option, you can use KMS keys that you create and manage. This allows you for more
     fine-grained control over key management.
 
 ## Amazon Backup
