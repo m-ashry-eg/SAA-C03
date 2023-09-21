@@ -729,6 +729,23 @@ const builder = [
 			'(D). Option D is the right choice because it leverages EBS snapshots and utilizes the EBS fast snapshot restore feature. This combination allows for the swift creation of new EBS volumes from snapshots, ensuring minimal downtime and maximizing data consistency. By attaching these new volumes to EC2 instances in the test environment, the company can efficiently clone large amounts of production data while maintaining consistently high I/O performance. This approach also guarantees that any modifications in the test environment do not affect the production environment, making it an efficient and safe solution for their requirements.',
 		],
 	},
+	{
+		question:
+			'A suite of web applications is hosted in an Auto Scaling group of EC2 instances across three Availability Zones and is configured with default settings. There is an Application Load Balancer that forwards the request to the respective target group on the URL path. The scale-in policy has been triggered due to the low number of incoming traffic to the application. Which EC2 instance will be the first one to be terminated by your Auto Scaling group?',
+		options: [
+			'A. The EC2 instance which has been running for the longest time.',
+			'B. The Instance will be randomly selected by the Auto Scaling group.',
+			'C. The EC2 instance which has the least number of user sessions.',
+			'D. The EC2 instance launched from the oldest launch configuration.',
+		],
+		answer: [3],
+		explanation: [
+			"(A). This option is not explicitly mentioned in the scenario. It's not a standard termination policy provided by AWS for Auto Scaling groups. Without custom configuration, this is not how Auto Scaling groups determine which instance to terminate.",
+			'(B). While custom policies can be set up, this is not part of the standard behavior.',
+			"(C). This is not a default behavior of Auto Scaling groups. The termination policy is not based on the number of user sessions. Custom policies could potentially be implemented using metrics and CloudWatch alarms, but it's not the default behavior.",
+			'(D). If you did not assign a specific termination policy to the group, Amazon EC2 Auto Scaling uses the default termination policy. It selects the Availability Zone with two instances, and terminates the instance that was launched from the oldest launch template or launch configuration.',
+		],
+	},
 ];
 
 export default builder;
