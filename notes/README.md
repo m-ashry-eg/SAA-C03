@@ -377,7 +377,7 @@ operate, and scale a relational database in the cloud.
   - **Customer Manages the Keys (CMK)**: With this option, you can use KMS keys that you create and manage. This allows you for more
     fine-grained control over key management.
 
-## Amazon Aurora
+## Amazon Aurora (RDS)
 
 Amazon Aurora is a MySQL and PostgreSQL compatible relational database built for the cloud, that combines the performance and availability 
 of high-end commercial databases with the simplicity and cost-effectiveness of open-source databases. It is a fully managed database service
