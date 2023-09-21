@@ -743,7 +743,7 @@ const builder = [
 			"(A). This option is not explicitly mentioned in the scenario. It's not a standard termination policy provided by AWS for Auto Scaling groups. Without custom configuration, this is not how Auto Scaling groups determine which instance to terminate.",
 			'(B). While custom policies can be set up, this is not part of the standard behavior.',
 			"(C). This is not a default behavior of Auto Scaling groups. The termination policy is not based on the number of user sessions. Custom policies could potentially be implemented using metrics and CloudWatch alarms, but it's not the default behavior.",
-			'(D). If you did not assign a specific termination policy to the group, Amazon EC2 Auto Scaling uses the default termination policy. It selects the Availability Zone with two instances, and terminates the instance that was launched from the oldest launch template or launch configuration.',
+			'(D). If you did not assign a specific termination policy to the group, Amazon EC2 Auto Scaling uses the default termination policy. It selects the Availability Zone, and terminates the instance that was launched from the oldest launch template or launch configuration.',
 		],
 	},
 ];
