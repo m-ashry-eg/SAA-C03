@@ -377,6 +377,85 @@ operate, and scale a relational database in the cloud.
   - **Customer Manages the Keys (CMK)**: With this option, you can use KMS keys that you create and manage. This allows you for more
     fine-grained control over key management.
 
+## Amazon Aurora
+
+Amazon Aurora is a MySQL and PostgreSQL compatible relational database built for the cloud, that combines the performance and availability 
+of high-end commercial databases with the simplicity and cost-effectiveness of open-source databases. It is a fully managed database service
+provided by Amazon Web Services (AWS).
+
+- ### Aurora Characteristics
+
+  - **Performance**: Aurora provides high performance, with up to 5 times the throughput of standard MySQL running on the same hardware. It achieves
+  this by using a distributed, fault-tolerance, self-healing storage system.
+  
+  - **High availability**: Aurora is designed for high availability. It replicates six copies of your data across three Availability Zones, and
+  continuously backs up your data to Amazon S3.
+  
+  - Backup: Automated backups are always enabled on Amazon Aurora Instances and backups do not impact database performance.
+  
+  - **Replication**: Aurora supports both synchronous and asynchronous replication to create read replicas for read scalability. It allows up to 15 read
+  replicas per Aurora database cluster.
+  
+  - **Disk Provisioning**: In standard RDS instances, you typically select the storage type and storage capacity, In contrast, Amazon Aurora uses a distributed,
+  fault-tolerance storage system that automatically scales storage capacity as needed, up to 128 terabytes per database.
+  
+  - **Scalability**: Aurora allows you to scale your database resources up or down with just a few clicks in the AWS Management Console. It also supports
+  auto-scaling for Aurora Replicas.
+
+- ### Aurora Severless
+
+  - **What is**: Aurora Serverless is a database deployment option for Amazon Aurora. Amazon Aurora Serverless is designed to automatically  and dynamically
+  adjust database capacity based on the application’s needs. It’s a fully managed service that allows you to run your database without the need to manage
+  the underlying infrastructure.
+  
+  - **Auto Scaling**: Aurora Serverless automatically scales the database capacity up or down based on the actual usage. This means that you don't need to manually
+  provision and manage the database instance or cluster.
+  
+  - **Const-Efficiency**: With Aurora Serverless, you pay only for the capacity you use on a per-second basis. This can lead to cost savings, especially for
+  applications with unpredictable or sporadic workloads.
+  
+  - **Data Replication**: Aurora Serverless can be configured as a Global Database, which means you can have an active-active setup across multiple AWS
+  regions for low-latency global access.
+  
+  - **Data API**: Aurora Serverles provides a Data API that allows you to easily access and interact with your database using HTTPS-based API calls.
+
+- ### Aurora Multi-Master
+
+  - **What is**: Amazon Aurora Multi-Master is a feature provided by Amazon Web Services (AWS) that allows you to create multiple read/write master instances within an
+  Aurora database cluster. This means that each master instance can handle both read and write operations, providing increased availability and fault tolerance
+  for your applications.
+  
+  - **High Availability**: With multiple master instances, your application can continue to operate even if one of the master instances fails. This provides a higher
+  level of availability and fault tolerance.
+  
+  - **One-Region**: Amazon Aurora is limited to a single AWS Region. This means that all master instances within an Aurora Multi-Master cluster must be located within
+  the same AWS Region.
+  
+  - **Consistency Guarantee**: Aurora Multi-Master maintains strong consistency across all master. This means that all writes are immediately visible to subsequent readers.
+  
+  - **Data Replication**: Data is automatically replicated across all master instances, ensuring that each master has an up-to-data copy of the data.
+  
+  - **Automatic Scaling**: Aurora Multi-Master clusters can scale both read and write workloads by adding or removing master instances dynamically.
+  
+  - **Global Database**: You can use Aurora Multi-Master in conjunction with Aurora Global Database to create an active-active setup across multiple AWS regions.
+ 
+- ### Aurora Global Database
+
+  - **What is**: Amazon Aurora Global Database is a feature provided by Amazon Web Services (AWS) that allows you to create a globally distributed, highly available
+  with low-latency access for read and write operation. It is designed for applications that require high availability and low-latency access across multiple
+  geographic regions.
+  
+  - **Global Replicas**: With Aurora Global Database, you can create one primary cluster and up to five secondary clusters around the world.
+  
+  - **Active-Active Replication**: With Global Database, you can have read and write access to multiple clusters simultaneously. This allows for active-active
+  configurations, where applications can read and write from any of the clusters.
+
+  - **Automatic failover**: In the event of a primary cluster failure, Aurora Global Database supports automatic failover to one of the secondary clusters. This ensures
+  high availability for your applications.
+  
+  - **Global Write Commit Policy**: You can choose whether to enforce a “write-anywhere” or “write-to-primary” policy. This allows you to control where writes are allowed,
+  based on your application’s requirements.
+
 ## Amazon Backup
 
 AWS Backup is a fully managed backup service provided by Amazon Web Services. It makes it easy for you to centralize and automate the backup
