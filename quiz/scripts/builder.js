@@ -712,6 +712,23 @@ const builder = [
 			"(D). This is the best option for the scenario. Gateway Load Balancers are designed for routing traffic to third-party network appliances, making them well-suited for packet inspection scenarios. Creating a Gateway Load Balancer endpoint to forward traffic to the virtual firewall appliance in the inspection VPC is a straightforward and efficient solution with minimal operational overhead. It keeps the traffic inspection centralized and focused on the appliance's specific role.",
 		],
 	},
+	{
+		question:
+			'A company wants to improve its ability to clone large amounts of production data into a test environment in the same AWS Region. The data is stored in Amazon EC2 instances on Amazon Elastic Block Store (Amazon EBS) volumes. Modifications to the cloned data must not affect the production environment. The software that accesses this data requires consistently high I/O performance. A solutions architect needs to minimize the time that is required to clone the production data into the test environment. Which solution will meet these requirements?',
+		options: [
+			'A. Take EBS snapshots of the production EBS volumes. Restore the snapshots onto EC2 instance store volumes in the test environment.',
+			'B. Configure the production EBS volumes to use the EBS Multi-Attach feature. Take EBS snapshots of the production EBS volumes. Attach the production EBS volumes to the EC2 instances in the test environment.',
+			'C. Take EBS snapshots of the production EBS volumes. Create and initialize new EBS volumes. Attach the new EBS volumes to EC2 instances in the test environment before restoring the volumes from the production EBS snapshots.',
+			'D. Take EBS snapshots of the production EBS volumes. Turn on the EBS fast snapshot restore feature on the EBS snapshots. Restore the snapshots into new EBS volumes. Attach the new EBS volumes to EC2 instances in the test environment.',
+		],
+		answer: [3],
+		explanation: [
+			'(A). EC2 instance store volumes are ephemeral and can be lost if the instance is stopped or terminated, which makes them unsuitable for persistently storing cloned data in a test environment. Restoring snapshots onto instance store volumes would not provide the data persistence required for a test environment. Instance store volumes typically have lower I/O performance compared to EBS volumes, which might not meet the requirement of consistently high I/O performance.',
+			"(B). While the EBS Multi-Attach feature allows multiple EC2 instances to attach and access the same EBS volume concurrently, it's generally designed for scenarios where you want shared access to data, such as clustering or distributed file systems. It's not intended for cloning data into a test environment. Cloning production EBS volumes directly to the test environment EC2 instances may impact the production environment and doesn't provide isolation for testing and modification.",
+			"(C). This approach adds unnecessary steps and complexity. Initializing new EBS volumes after taking snapshots and before attaching them to the test environment EC2 instances can be time-consuming and inefficient. It's better to restore the snapshots directly into new EBS volumes to minimize the time required for data cloning.",
+			'(D). Option D is the right choice because it leverages EBS snapshots and utilizes the EBS fast snapshot restore feature. This combination allows for the swift creation of new EBS volumes from snapshots, ensuring minimal downtime and maximizing data consistency. By attaching these new volumes to EC2 instances in the test environment, the company can efficiently clone large amounts of production data while maintaining consistently high I/O performance. This approach also guarantees that any modifications in the test environment do not affect the production environment, making it an efficient and safe solution for their requirements.',
+		],
+	},
 ];
 
 export default builder;
