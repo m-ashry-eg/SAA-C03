@@ -676,6 +676,42 @@ const builder = [
 			"(D). This option involves setting up and managing EC2 instances, EBS volumes, and snapshots. While it's a technically feasible solution, it introduces a higher level of operational complexity compared to the other options. It may also be less efficient in terms of data transfer speed compared to option A.",
 		],
 	},
+	{
+		question:
+			'An application development team is designing a microservice that will convert large images to smaller, compressed images. When a user uploads an image through the web interface, the microservice should store the image in an Amazon S3 bucket, process and compress the image with an AWS Lambda function, and store the image in its compressed form in a different S3 bucket. A solutions architect needs to design a solution that uses durable, stateless components to process the images automatically. Which combination of actions will meet these requirements? (Choose two.)',
+		options: [
+			'A. Create an Amazon Simple Queue Service (Amazon SQS) queue. Configure the S3 bucket to send a notification to the SQS queue when an image is uploaded to the S3 bucket.',
+			'B. Configure the Lambda function to use the Amazon Simple Queue Service (Amazon SQS) queue as the invocation source. When the SQS message is successfully processed, delete the message in the queue.',
+			'C. Configure the Lambda function to monitor the S3 bucket for new uploads. When an uploaded image is detected, write the file name to a text file in memory and use the text file to keep track of the images that were processed.',
+			'D. Launch an Amazon EC2 instance to monitor an Amazon Simple Queue Service (Amazon SQS) queue. When items are added to the queue, log the file name in a text file on the EC2 instance and invoke the Lambda function.',
+			"E. Configure an Amazon EventBridge (Amazon CloudWatch Events) event to monitor the S3 bucket. When an image is uploaded, send an alert to an Amazon Sample Notification Service (Amazon SNS) topic with the application owner's email address for further processing.",
+		],
+		answer: [0, 1],
+		explanation: [
+			'(A). This is the correct first step. By creating an SQS queue and configuring the S3 bucket to send a notification to the queue, you establish a durable and reliable messaging system. When an image is uploaded, a message will be sent to the SQS queue.',
+			'(B). This is also correct. By configuring the Lambda function to use the SQS queue as the event source, it will be triggered whenever there is a message in the queue (which happens when an image is uploaded). Processing the message and then deleting it from the queue ensures that the image is processed only once.',
+			"(C). This is not the best approach for this scenario. While it's possible to monitor the S3 bucket directly for new uploads, it introduces complexity and potential issues. Also, using a text file in memory is not a reliable and durable way to keep track of processed images. The SQS queue is a better choice for this purpose.",
+			'(D). This introduces unnecessary complexity. Using an EC2 instance to monitor the SQS queue is not recommended in this serverless architecture. It adds operational overhead and is not as efficient as using Lambda functions directly.',
+			"(E). This approach focuses on alerting rather than processing the images. While it's possible to use EventBridge and SNS for notifications, it doesn't address the actual processing of the images, which is the primary goal of the scenario.",
+		],
+	},
+	{
+		question:
+			'A company has a three-tier web application that is deployed on AWS. The web servers are deployed in a public subnet in a VPC. The application servers and database servers are deployed in private subnets in the same VPC. The company has deployed a third-party virtual firewall appliance from AWS Marketplace in an inspection VPC. The appliance is configured with an IP interface that can accept IP packets. A solutions architect needs to integrate the web application with the appliance to inspect all traffic to the application before the traffic reaches the web server. Which solution will meet these requirements with the LEAST operational overhead?',
+		options: [
+			"A. Create a Network Load Balancer in the public subnet of the application's VPC to route the traffic to the appliance for packet inspection.",
+			"B. Create an Application Load Balancer in the public subnet of the application's VPC to route the traffic to the appliance for packet inspection.",
+			'C. Deploy a transit gateway in the inspection VPConfigure route tables to route the incoming packets through the transit gateway.',
+			'D. Deploy a Gateway Load Balancer in the inspection VPC. Create a Gateway Load Balancer endpoint to receive the incoming packets and forward the packets to the appliance.',
+		],
+		answer: [3],
+		explanation: [
+			'(A). This is not the best choice for the scenario. Network Load Balancers are designed primarily for distributing incoming traffic across multiple healthy Amazon EC2 instances in multiple Availability Zones. They are not typically used for routing traffic to third-party virtual firewall appliances. Using a Network Load Balancer for this purpose would introduce unnecessary complexity and might not be well-suited for packet inspection.',
+			"(B). Similar to the Network Load Balancer, an Application Load Balancer is designed for routing traffic to multiple backend instances based on application-level routing (e.g., HTTP/HTTPS). It's not intended for routing traffic to a third-party virtual firewall appliance for packet inspection. Using an Application Load Balancer for this purpose would also add complexity and may not be efficient.",
+			'(C). While a Transit Gateway is a powerful tool for connecting multiple VPCs and networks, it might be overkill for this scenario. It introduces additional complexity and is typically used for more complex routing scenarios. Using it for routing traffic to a single firewall appliance would add unnecessary overhead and complexity to the architecture.',
+			"(D). This is the best option for the scenario. Gateway Load Balancers are designed for routing traffic to third-party network appliances, making them well-suited for packet inspection scenarios. Creating a Gateway Load Balancer endpoint to forward traffic to the virtual firewall appliance in the inspection VPC is a straightforward and efficient solution with minimal operational overhead. It keeps the traffic inspection centralized and focused on the appliance's specific role.",
+		],
+	},
 ];
 
 export default builder;
