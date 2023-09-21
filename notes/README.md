@@ -159,24 +159,6 @@ Compute Cloud (EC2) instances. It offers durable and scalable block-level storag
 
 Amazon Elastic File System (Amazon EFS) is a scalable and fully managed file storage service provided by AWS. It's designed to provide shared access to a file system, allowing multiple EC2 instances to read and write to the same file system at the same time.
 
-- ### EFS Classes
-
-  - #### EFS Standard
-
-    - **Designed for**: Frequently accessed data requiring the highest durability and availability.
-
-    - **Durability**: Up to 99.999999999% durability.
-
-    - **Availability**: Up to 99.99% availability.
-
-  - #### EFS Standard–Infrequent Access (IA)
-
-    - **Designed for**: Long lived, infrequently accessed data requiring the highest durability and availability.
-
-    - **Durability**: Up to 99.999999999% durability.
-
-    - **Availability**: Up to 99.99% availability.
-
 - ### EFS Characteristics
 
   - **Shared File Storage**: Amazon EFS provides a shared file system that can be accessed by multiple EC2 instances and services concurrently.
@@ -195,6 +177,24 @@ Amazon Elastic File System (Amazon EFS) is a scalable and fully managed file sto
 
   - **Encryption**: Amazon Elastic File System (EFS) provides encryption at rest by default. When you create a new Amazon EFS file system, the data and metadata
     are automatically encrypted using an AWS Key Management Service (KMS) key.
+
+- ### EFS Classes
+
+  - #### EFS Standard
+
+    - **Designed for**: Frequently accessed data requiring the highest durability and availability.
+
+    - **Durability**: Up to 99.999999999% durability.
+
+    - **Availability**: Up to 99.99% availability.
+
+  - #### EFS Standard–Infrequent Access (IA)
+
+    - **Designed for**: Long lived, infrequently accessed data requiring the highest durability and availability.
+
+    - **Durability**: Up to 99.999999999% durability.
+
+    - **Availability**: Up to 99.99% availability.
 
 ## Amazon FSx for Windows
 
