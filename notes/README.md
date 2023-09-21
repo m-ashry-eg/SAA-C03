@@ -335,7 +335,7 @@ operate, and scale a relational database in the cloud.
         
       - **Snapshots**: Created manually by the user.
 
-    - #### Creation Method
+    - #### Frequency
     
       - **Automated Backups**: Taken daily during the defined backup window.
         
