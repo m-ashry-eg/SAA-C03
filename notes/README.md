@@ -468,10 +468,10 @@ seamless scalability.
 
 - ### DynamoDB Characteristics
   
-  - ***Data Replication***: Amazon DynamoDB uses synchronous replications across 3 Availability Zones (AZs) within a region to provide high availability
+  - **Data Replication**: Amazon DynamoDB uses synchronous replications across 3 Availability Zones (AZs) within a region to provide high availability
   and data durability.
 
-  - ***Consistency Model***: Amazon DynamoDB is eventually consistent by default. This means that when you perform a read operation on a DynamoDB table without
+  - **Consistency Model**: Amazon DynamoDB is eventually consistent by default. This means that when you perform a read operation on a DynamoDB table without
   specifying a specific consistency level, you will receive the most up-to-date data available, but it might not reflect the most recent write.
 
 - ### RCU and WCU
