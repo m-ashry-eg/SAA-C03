@@ -461,6 +461,186 @@ provided by Amazon Web Services (AWS).
   - **Global Write Commit Policy**: You can choose whether to enforce a “write-anywhere” or “write-to-primary” policy. This allows you to control where writes are allowed,
   based on your application’s requirements.
 
+## Amazon DynamoDB
+
+Amazon DynamoDB is a fully managed NoSQL database service provided by Amazon Web Services (AWS). It is designed to provide fast and predictable performance with 
+seamless scalability.
+
+- ### DynamoDB Characteristics
+  
+  - ***Data Replication***: Amazon DynamoDB uses synchronous replications across 3 Availability Zones (AZs) within a region to provide high availability
+  and data durability.
+
+  - ***Consistency Model***: Amazon DynamoDB is eventually consistent by default. This means that when you perform a read operation on a DynamoDB table without
+  specifying a specific consistency level, you will receive the most up-to-date data available, but it might not reflect the most recent write.
+
+- ### RCU and WCU
+
+  - **RCU**: Read Capacity Units (RCUs) represent the read throughput capacity of DynamoDB tables. An RCU represents one strongly consistent read per second, or two eventually
+  consistent reads per second, for an item up to 4 KB size. Transactional read requests require two RCUs to perform one read per second for items up to 4 KB. If you need to
+  read an item that is larger than 4 KB, DynamoDB must consume additional RCUs.
+
+  - **WCU**: Write Capacity Units (WCUs) represent the write throughput capacity of a DynamoDB table. An WCU represents one write per second (up to 1KB) and two WCUs for each
+  additional write per second. For writes greater than 1 KB, total number of writes required = (total item size / 1 KB) rounded up.
+
+- ### DynamoDB Consistency Model
+  
+  - #### Strong Consistency
+    
+    - With strong consistency, a read operation returns the most-up-to-date data. This means that after a write operation is acknowledged, any subsequent read operation will
+    reflect the updated data.
+
+    - Strong consistency ensures that all operations are guaranteed to see the latest write. It provides a linearizable ordering of operations.
+   
+    - To achieve strong consistency, you can use the ‘ConsistentRead’ parameter in your read request.
+   
+    - Suitable for applications where the most up-to-date data is crucial. For example, in a financial application, you might need to ensure that you’re working with the
+    latest transition data.
+
+    - Offers a higher level of data consistency, but may have latency compared to eventual consistency.
+   
+  - #### Eventual Consistency
+ 
+    - With eventual consistency, a read operation might not reflect the most recent write. Instead, it guarantees that, given enough time, all replicas of a data item will
+    converge to the same value.
+
+    - Eventual consistency is typically faster and requires fewer resources compared to strong consistency.
+   
+    - By default, DynamoDB provides eventual consistency. You don’t need to specify anything in your read request to get eventually consistent reads.
+   
+    - Often sufficient for many applications where the absolute latest data isn’t required. For example, In a social media application, a slightly delayed view count on a
+    post might be acceptable.
+
+    - Tends to provide lower latency and higher throughput compared to strong consistency.
+
+- ### DynamoDB Transactions
+
+  - **What is**: DynamoDB Transitions is a feature that allows you to perform multiple read and write operations on one or more items as an atomic unit of work. This means that
+  either all of the operations in the transition succeed, or none of them do.
+
+  - **ACID Properties**: DynamoDB transitions provide ACID (Atomicity, Consistency, isolation, Durability) properties. This ensures that transitions are reliably processed,
+  and the data is always in a consistent state.
+
+- ### DynamoDB Accelerator (DAX)
+
+  - **What is**: Amazon DynamoDB Accelerator (DAX) is an in-memory cache for DynamoDB. It is designed to improve the performance of read-intensive DynamoDB workloads by providing
+  low-latency access to frequently accessed items.
+  
+  - **In-Memory Cache**: DAX stores frequently accessed items from DynamoDB in an in-memory cache. This reduces the need to read data from the underlying DynamoDB table, resulting
+  in lower read latencies.
+  
+  - **High Availability**: DAX clusters are designed for high availability. They are deployed across multiple Availability Zones within an AWS Region. In the event of a node failure,
+  DAX automatically redirects requests to healthy nodes.
+  
+  - **Multi-AZ Replication**: DAX provides data durability by replicating data across multiple Availability Zones within a Region. This ensures that cached data is not lost in the event
+  of a node failure.
+  
+  - **Const Consideration**: While DAX nodes can significantly improve read performance, It’s important to consider the cost implications.  DAX nodes have associated costs, and you’ll want
+  to ensure that the performance gains justify the additional expense.
+  
+  - **Usability**: DynamoDB Accelerator is particularly useful for applications that require low-latency access to frequently accessed data in DynamoDB. It’s commonly used in scenarios
+  such as gaming leaderboards, session stores, and real-time analytics.
+  
+  - **Keep in mind**: DAX is focused on improving read performance. Write operations are still sent directly to DynamoDB and are not cached in DAX.
+
+- ### DynamoDB Read-Replica
+
+  - **What is**: A DynamoDB read replica is a feature that allows you to create a copy of a DynamoDB table in the same for a different AWS region. This replica table is kept in sync with
+  the source table, providing you with the ability to offload traffic from the primary database and improve read scalability.
+  
+  - **Asynchronous Replication**: Data replication from the primary table to the replica is asynchronous. This means there may be a slight delay in data propagation from the source to
+  the replica.
+  
+  - **Cross-Region Replication**: You can create a red replica in a different AWS region. This can be useful for scenarios where you need to serve users in different geographic locations
+  with lower latency.
+  
+  - **Max Read-Replicas**: You can have up to 5 read replicas for a single DynamoDB table.
+ 
+- ### DynamoDB Accelerator (DAX) vs. DynamoDB Read-Replica
+
+  - **Read Replicas**: Suitable when you need to offload read traffic from the primary table, especially in scenarios where you have a geographic distributed user base or need to scale
+  read capacity.
+ 
+  - **DAX**: Beneficial when you require extremely low read latencies and want to leverage an in-memory cache to reduce the number of reads directly hitting DynamoDB. It’s particularly
+  useful for read-heavy workloads with a high rate of repeated queries for the same data.
+
+- ### DynamoDB Streams
+
+  - **What is**: DynamoDB Streams is a feature provided by Amazon DynamoDB that captures and streams changes made to items in a DynamoDB table. It allows you to read to changers in
+  real-time and build applications that can process these changes.
+  
+  - **Change Capture**: DynamoDB Streams captures a time-ordered sequence of item-level modifications in a DynamoDB table. This includes both inserts, updates, and deletes.
+  
+  - **Retention Period**: Streams retain data for 24 hours. This means you have a 24-hour window to read and process the steam records.
+  
+  - **Integration with Lambda**: One of the most common use cases for DynamoDB Streams is to use AWS Lambda to process the stream records. Lambda function can be set up to
+  automatically trigger in response to changes in the DynamoDB table.
+  
+  - **Cost Considerations**: While enabling DynamoDB Streams doesn’t incur an additional cost, you will be charged to the resource used to process the stream (e.g., Lambda invocations,
+  additional DynamoDB Read Capacity).
+
+- ### DynamoDB Global Tables
+
+  - **What is**: DynamoDB Global Tables is a feature provided by Amazon DynamoDB that enables you to replicate your table across multiple AWS regions. This allows you to achieve
+  low-latency access to data for globally distributed applications and provided disaster recovery capabilities.
+  
+  - **DynamoDB Streams**: In order to use DynamoDB Global Tables, you must have DynamoDB Streams enabled on the source table. Global Tables uses DynamoDB Streams to replicate
+  changes from the source table to its replicas in other regions. This ensures that data is kept in sync across multiple AWS regions.
+  
+  - **Active-Active Replication**: Global Tables supports active-active replication, meaning that you can write to any replication in any region. Changes are automatically
+  propagated to all other regions.
+  
+  - **Automatic Conflict Resolution**: In the rare event that there are conflicting writes to the same item in different regions, DynamoDB provides automatic conflict resolution.
+  The last write wins, and no user intervention is required.
+  
+  - **Strong Consistency**: Global Tables provide strong consistency for reads. This means that when you read data from a global table, you are guaranteed to see the most recent
+  write, regardless of the region you’re reading from.
+  
+  - **Endpoints**: With DynamoDB Global Tables, each region that participates in the global table will have its own endpoint. This means that you will have a separate endpoint for
+  each region where a replica of the global table is located.
+  
+  - **Cost Consideration**: While enabling global tables doesn’t incur an additional cost, you will be charged for the resource used in each region (e.g., storage, provisioned
+  throughput, etc.).
+
+- ### DynamoDB On-Demand Backups
+  
+  - **What is**: DynamoDB On-Demand Backups is a feature provided by Amazon DynamoDB that allows you to create full backups of your DynamoDB table at any time, without having
+  to provision and manage backup resources.
+  
+  - **Ad Hoc Backups**: On-Demand Backups allow you to create backups of your DynamoDB table whenever you need them. This is in contrast to scheduled backups, which are
+  automated and periodic.
+  
+  - **No Additional Cost for Backups**: Creating On-Demand Backups does not incur additional charges. You are only chargers for the storage of the backups.
+  
+  - **Retention Period**: On-Demand Backups are retained for 35 days, which means you have a 35-days window to restore your table to any point within that period.
+ 
+- ### DynamoDB Point-in-Time Recovery (PITR)
+
+  - **What is**: DynamoDB Point-in-Time Recovery (PITR) is a feature provided by Amazon DynamoDB that allows you to restore your table data to any point in time within the
+  last 35 days. This feature helps protect against accidental deletes, overwrites, or other data corruptions.
+  
+  - **Continuous Backups**: DynamoDB PITR automatically backs up your table data on an ongoing basis. These backups capture changes to your table data in real-time.
+  
+  - **Incremental Backup**: Amazon DynamoDB Point-in-Time Recovery (PITR) is incremental in the sense that it continuously backs up your table data and streams it to storage
+  over time. When you enable PITR, the service captures changes to your table data and stores them incrementally.
+  
+  - **No Additional Costs**: PITR is included in the cost of DynamoDB, and you are not charged extra for this feature.
+  
+  - **Retention period**: Backup data is retained for 35 days, providing a window of time for point-in-time recovery.
+  
+  - **Use Cases**: PITR is useful for scenarios such as recovering from accidental data loss, restoring to known good state after a corruption, and meeting regulatory requirements
+  for data recovery.
+
+- ### DynamoDB Encryption at Rest
+
+  - **Automated Encryption**: DynamoDB at Rest automatically encrypts your data using the AWS Key Management Service (KMS) encryption keys. You don’t need to manage the encryption process manually.
+  
+  - **Server-Side Encryption**: The encryption is applied at the server level, which means that your data is encrypted before it’s written to disk and decrypted when it’s read from disk.
+  
+  - **Choice of Key Management**: You can choose to use AWS-managed keys or create and manage your own custom KMS keys. This provides flexibility in managing encryption keys.
+  
+  - **No Additional Costs**: There is nop additional costs for enabling encryption at rest. You are charged for the storage of your data as usual.
+
 ## Amazon Backup
 
 AWS Backup is a fully managed backup service provided by Amazon Web Services. It makes it easy for you to centralize and automate the backup
