@@ -107,6 +107,11 @@ Compute Cloud (EC2) instances. It offers durable and scalable block-level storag
   - **Stored in Amazon S3**: EBS Snapshots are stored in Amazon S3, a highly durable and redundant storage service. This ensures the durability and availability of your snapshots.
 
   - **Consistent Snapshot**: To ensure a consistent snapshot, it is advisable to stop the instance before taking a snapshot.
+ 
+  - **EBS Fast Snapshot Restore (FSR) feature**: The AWS EBS Fast Snapshot Restore (FSR) feature accelerates the creation of volumes from snapshots. This is done by using additional
+  compute and memory to copy the data from the snapshot to the new volume more quickly. FSR can significantly reduce the time it takes to create a volume from a snapshot. For example,
+  creating a 1 TB volume from a snapshot without FSR can take several hours, but creating the same volume with FSR enabled can take as little as 10 minutes. You can also use AWS EBS Fast
+  Snapshot Restore (FSR) to initialize from inited snapshots. This means that you can create a new EBS volume from an existing snapshot that has already been initialized. 
 
   - **Snapshot Lifecycle Policies**: AWS provides tools like Amazon Data Lifecycle Manager (DLM) that allow you to automate the creation and retention of EBS snapshots. This helps you
     manage your backup strategy more effectively.
