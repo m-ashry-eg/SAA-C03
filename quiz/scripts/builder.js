@@ -746,6 +746,57 @@ const builder = [
 			'(D). If you did not assign a specific termination policy to the group, Amazon EC2 Auto Scaling uses the default termination policy. It selects the Availability Zone, and terminates the instance that was launched from the oldest launch template or launch configuration.',
 		],
 	},
+	{
+		question:
+			"A team is deploying AWS resources, including EC2 and RDS database instances, into a VPC's public subnet after recovering from a system failure. The team attempts to establish connections using HTTPS protocol to these new instances from other subnets within the VPC, and from other peered VPCs within the same region, but receives numerous 500 error messages. The team needs to quickly identify the cause or causes of the connection problem that prevents connecting to the new subnet. What AWS solution should they use to identify the cause of the network problem?",
+		options: [
+			'A. Amazon Route 53 Resolver',
+			'B. VPC Reachability Analyzer',
+			'C. VPC Network Access Analyzer',
+			'D. Amazon Route 53 Application Recovery Controller (ARC)',
+		],
+		answer: [1],
+		explanation: [
+			"(A). Amazon Route 53 Resolver is a service that provides recursive DNS resolution within a VPC. It is not specifically designed for troubleshooting network connectivity issues within a VPC. It's more focused on DNS resolution.",
+			'(B). VPC Reachability Analyzer is a service that helps you analyze and troubleshoot connectivity between resources within your VPC. It can identify the source of network connectivity problems by evaluating the routing path between resources. In this scenario, it is the most appropriate tool for quickly identifying the cause of the network problem preventing connections to the new subnet.',
+			"(C). VPC Network Access Analyzer helps you analyze and evaluate the access policies for resources within your VPC, ensuring that they comply with your security requirements. While it's a valuable tool for security analysis, it's not specifically designed for troubleshooting connectivity issues.",
+			"(D). Amazon Route 53 Application Recovery Controller is a service that helps you set up and run an application recovery across multiple AWS regions. It's focused on application-level recovery and resilience, and is not intended for troubleshooting network connectivity within a VPC.",
+		],
+	},
+	{
+		question:
+			'A company that hosts its web application on AWS wants to ensure all Amazon EC2 instances. Amazon RDS DB instances. and Amazon Redshift clusters are configured with tags. The company wants to minimize the effort of configuring and operating this check. What should a solutions architect do to accomplish this?',
+		options: [
+			'A. Use AWS Config rules to define and detect resources that are not properly tagged.',
+			'B. Use Cost Explorer to display resources that are not properly tagged. Tag those resources manually.',
+			'C. Write API calls to check all resources for proper tag allocation. Periodically run the code on an EC2 instance.',
+			'D. Write API calls to check all resources for proper tag allocation. Schedule an AWS Lambda function through Amazon CloudWatch to periodically run the code.',
+		],
+		answer: [0],
+		explanation: [
+			'(A). AWS Config is a service that provides a detailed view of the configuration of AWS resources. Config rules allow you to define desired configurations and evaluate resources for compliance. In this case, you can create a custom Config rule to check if resources like EC2 instances, RDS DB instances, and Redshift clusters have the required tags. This approach is automated and provides continuous monitoring for compliance.',
+			'(B). While Cost Explorer can help you visualize costs and resource usage, it is not designed for tagging enforcement or compliance checking. Manually tagging resources based on Cost Explorer information is not an efficient or scalable solution.',
+			"(C). This approach involves writing custom code to check for tags. While it's possible to do this, it requires manual intervention to run the code periodically on an EC2 instance. This is less automated and efficient compared to using AWS Config rules and Lambda functions.",
+			'(D). This option involves writing custom code to check for tags, similar to option C. However, it takes it a step further by using AWS Lambda and CloudWatch to automate the process. This is a valid alternative to using AWS Config rules, but it may require more manual setup and management compared to Config rules.',
+		],
+	},
+	{
+		question:
+			'A development team needs to host a website that will be accessed by other teams. The website contents consist of HTML, CSS, client-side JavaScript, and images. Which method is the MOST cost-effective for hosting the website?',
+		options: [
+			'A. Containerize the website and host it in AWS Fargate.',
+			'B. Create an Amazon S3 bucket and host the website there.',
+			'C. Deploy a web server on an Amazon EC2 instance to host the website.',
+			'D. Configure an Application Load Balancer with an AWS Lambda target that uses the Express.js framework',
+		],
+		answer: [1],
+		explanation: [
+			'(A). While AWS Fargate is a powerful service for running containers without having to manage the underlying infrastructure, it may be overkill for hosting a simple static website. Containerizing the website and using Fargate could incur additional costs and complexity that may not be necessary for this use case.',
+			'(B). This is the most cost-effective and straightforward option for hosting a static website. Amazon S3 is designed for static content hosting and is highly scalable and cost-effective. You can directly host static files like HTML, CSS, JavaScript, and images in an S3 bucket. This approach eliminates the need for running servers or containers.',
+			'(C). While hosting a website on an EC2 instance is a common approach, it may be over-engineered for a simple static website. It involves provisioning and managing an EC2 instance, which comes with additional maintenance overhead and costs associated with running a server.',
+			'(D). This option involves setting up a complex architecture with an Application Load Balancer (ALB), AWS Lambda, and Express.js. This is typically used for serverless applications or microservices, and it may be overcomplicated and costly for hosting a static website.',
+		],
+	},
 ];
 
 export default builder;
