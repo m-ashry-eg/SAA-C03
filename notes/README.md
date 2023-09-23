@@ -601,18 +601,6 @@ seamless scalability.
   
   - **Cost Consideration**: While enabling global tables doesn’t incur an additional cost, you will be charged for the resource used in each region (e.g., storage, provisioned
   throughput, etc.).
-
-- ### DynamoDB On-Demand Backups
-  
-  - **What is**: DynamoDB On-Demand Backups is a feature provided by Amazon DynamoDB that allows you to create full backups of your DynamoDB table at any time, without having
-  to provision and manage backup resources.
-  
-  - **Ad Hoc Backups**: On-Demand Backups allow you to create backups of your DynamoDB table whenever you need them. This is in contrast to scheduled backups, which are
-  automated and periodic.
-  
-  - **No Additional Cost for Backups**: Creating On-Demand Backups does not incur additional charges. You are only chargers for the storage of the backups.
-  
-  - **Retention Period**: On-Demand Backups are retained for 35 days, which means you have a 35-days window to restore your table to any point within that period.
  
 - ### DynamoDB Point-in-Time Recovery (PITR)
 
@@ -627,6 +615,10 @@ seamless scalability.
   - **No Additional Costs**: PITR is included in the cost of DynamoDB, and you are not charged extra for this feature.
   
   - **Retention period**: Backup data is retained for 35 days, providing a window of time for point-in-time recovery.
+ 
+  - **Amazon S3**: Amazon DynamoDB Point-in-Time Recovery (PITR) backups are stored in Amazon S3 (Simple Storage Service). When you enable PITR for a DynamoDB table, the service
+  automatically creates and manages backups of your table data and streams them to an S3 bucket in your AWS account. it's important to note that you do not have direct access to the S3
+  bucket where DynamoDB Point-in-Time Recovery (PITR) backups are stored. This bucket is managed by AWS and is not visible or accessible to you through the S3 console.
   
   - **Use Cases**: PITR is useful for scenarios such as recovering from accidental data loss, restoring to known good state after a corruption, and meeting regulatory requirements
   for data recovery.
