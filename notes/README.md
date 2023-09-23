@@ -545,13 +545,13 @@ seamless scalability.
 
 - ### DynamoDB Read-Replica
 
-  - **What is**: A DynamoDB read replica is a feature that allows you to create a copy of a DynamoDB table in the same for a different AWS region. This replica table is kept in sync with
-  the source table, providing you with the ability to offload traffic from the primary database and improve read scalability.
+  - **What is**: A DynamoDB read replica is a feature that allows you to create a copy of a DynamoDB table. This replica table is kept in sync with the source table, providing you with
+  the ability to offload traffic from the primary database and improve read scalability.
   
   - **Asynchronous Replication**: Data replication from the primary table to the replica is asynchronous. This means there may be a slight delay in data propagation from the source to
   the replica.
   
-  - **Cross-Region Replication**: You can create a red replica in a different AWS region. This can be useful for scenarios where you need to serve users in different geographic locations
+  - **Cross-Region Replication**: You can create a read replica in a different AWS region. This can be useful for scenarios where you need to serve users in different geographic locations
   with lower latency.
   
   - **Max Read-Replicas**: You can have up to 5 read replicas for a single DynamoDB table.
