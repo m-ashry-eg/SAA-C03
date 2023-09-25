@@ -183,9 +183,6 @@ allowing multiple EC2 instances to read and write to the same file system at the
   - **Encryption**: Amazon Elastic File System (EFS) provides encryption at rest by default. When you create a new Amazon EFS file system, the data and metadata
     are automatically encrypted using an AWS Key Management Service (KMS) key.
 
-  - **Encryption**: Amazon Elastic File System (EFS) provides encryption at rest by default. When you create a new Amazon EFS file system, the data and metadata
-    are automatically encrypted using an AWS Key Management Service (KMS) key.
-
 - #### EFS Classes
 
   - ##### EFS Standard
