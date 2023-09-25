@@ -43,7 +43,7 @@ attached to the host computer on which your instance runs and is ideal for tempo
 Amazon Elastic Block Store (Amazon EBS) is a block-level storage service provided by Amazon Web Services (AWS) for use with Amazon Elastic
 Compute Cloud (EC2) instances. It offers durable and scalable block-level storage that you can attach to your EC2 instances.
 
-- #### EBS Volumes
+- #### EBS Characteristics
 
   - **Block-Level Storage**: Amazon Elastic Block Store (EBS) provides raw storage volumes that can be directly attached to EC2 instances. This
     characteristic allows you to utilize EBS much like a physical hard drive, making it suitable for a wide array of applications.
