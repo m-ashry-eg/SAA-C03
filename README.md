@@ -22,6 +22,10 @@ A compilation of [notes](https://github.com/GabrielFlores8227/SAA-C03/tree/main/
 
 Test your knowledge with our [interactive quiz](https://gabrielflores8227.github.io/SAA-C03/quiz/), covering a wide range of topics relevant to the SAA-C03 exam. This quiz is a great way to reinforce your understanding and identify areas that may need further review.
 
+<a href="https://gabrielflores8227.github.io/SAA-C03/quiz/">
+  <img src="https://github.com/GabrielFlores8227/GabrielFlores8227/blob/main/global-assets/SAA-C03/screen.png" >
+</a>
+
 ## 👏🏼 Credits
 
 <ul>
