@@ -280,7 +280,7 @@ A compilation of notes for the SAA-C03 exam. These notes are meticulously organi
 
 - #### S3 Events
 
-  - **What is**: S3 Events are notifications sent by Amazon S3 whenever certain events occur within a bucket.
+  - **Definition**: S3 Events are notifications sent by Amazon S3 whenever certain events occur within a bucket.
   
   - **Event Triggers**: S3 Events can be triggered by various actions within a bucket, such as object creation, deletion, or restoration.
   
@@ -621,7 +621,7 @@ operate, and scale a relational database in the cloud.
 
 - #### RDS Multi-AZ
 
-  - **What is**: RDS Multi-AZ is a feature that provides high availability and fault tolerance for database instances. Its designed to
+  - **Definition**: RDS Multi-AZ is a feature that provides high availability and fault tolerance for database instances. Its designed to
     enhance the reliability of your database by automatically replicating data to a standby instance located in a different Availability Zone
     within the same AWS region.
 
@@ -633,7 +633,7 @@ operate, and scale a relational database in the cloud.
 
 - #### RDS Read Replica
 
-  - **What is**: An Amazon RDS Read Replica is a copy of a source database that is asynchronously updated in near
+  - **Definition**: An Amazon RDS Read Replica is a copy of a source database that is asynchronously updated in near
     real-time. The purpose of a read replica is to offload read traffic from the primary database, which can
     improve the overall performance and scalability.
 
@@ -663,7 +663,7 @@ operate, and scale a relational database in the cloud.
 
 - #### RDS Proxy
 
-  - **What is**: Amazon RDS Proxy is a fully managed database proxy service. Provided by Amazon Web Services (AWS). It is designed
+  - **Definition**: Amazon RDS Proxy is a fully managed database proxy service. Provided by Amazon Web Services (AWS). It is designed
     to improve the scalability and availability of applications using Amazon RDS databases.
 
   - **Connection Pooling**: RDS Proxy efficiently manages database connections, reducing the overhead of establishing and tearing
@@ -767,7 +767,7 @@ provided by Amazon Web Services (AWS).
 
 - #### Aurora Severless
 
-  - **What is**: Aurora Serverless is a database deployment option for Amazon Aurora. Amazon Aurora Serverless is designed to automatically  and dynamically
+  - **Definition**: Aurora Serverless is a database deployment option for Amazon Aurora. Amazon Aurora Serverless is designed to automatically  and dynamically
   adjust database capacity based on the application’s needs. It’s a fully managed service that allows you to run your database without the need to manage
   the underlying infrastructure.
   
@@ -784,7 +784,7 @@ provided by Amazon Web Services (AWS).
 
 - #### Aurora Multi-Master
 
-  - **What is**: Amazon Aurora Multi-Master is a feature provided by Amazon Web Services (AWS) that allows you to create multiple read/write master instances within an
+  - **Definition**: Amazon Aurora Multi-Master is a feature provided by Amazon Web Services (AWS) that allows you to create multiple read/write master instances within an
   Aurora database cluster. This means that each master instance can handle both read and write operations, providing increased availability and fault tolerance
   for your applications.
   
@@ -804,7 +804,7 @@ provided by Amazon Web Services (AWS).
  
 - #### Aurora Global Database
 
-  - **What is**: Amazon Aurora Global Database is a feature provided by Amazon Web Services (AWS) that allows you to create a globally distributed, highly available
+  - **Definition**: Amazon Aurora Global Database is a feature provided by Amazon Web Services (AWS) that allows you to create a globally distributed, highly available
   with low-latency access for read and write operation. It is designed for applications that require high availability and low-latency access across multiple
   geographic regions.
   
@@ -873,7 +873,7 @@ seamless scalability.
 
 - #### DynamoDB Transactions
 
-  - **What is**: DynamoDB Transitions is a feature that allows you to perform multiple read and write operations on one or more items as an atomic unit of work. This means that
+  - **Definition**: DynamoDB Transitions is a feature that allows you to perform multiple read and write operations on one or more items as an atomic unit of work. This means that
   either all of the operations in the transition succeed, or none of them do.
 
   - **ACID Properties**: DynamoDB transitions provide ACID (Atomicity, Consistency, isolation, Durability) properties. This ensures that transitions are reliably processed,
@@ -881,7 +881,7 @@ seamless scalability.
 
 - #### DynamoDB Accelerator (DAX)
 
-  - **What is**: Amazon DynamoDB Accelerator (DAX) is an in-memory cache for DynamoDB. It is designed to improve the performance of read-intensive DynamoDB workloads by providing
+  - **Definition**: Amazon DynamoDB Accelerator (DAX) is an in-memory cache for DynamoDB. It is designed to improve the performance of read-intensive DynamoDB workloads by providing
   low-latency access to frequently accessed items.
   
   - **In-Memory Cache**: DAX stores frequently accessed items from DynamoDB in an in-memory cache. This reduces the need to read data from the underlying DynamoDB table, resulting
@@ -903,7 +903,7 @@ seamless scalability.
 
 - #### DynamoDB Read-Replica
 
-  - **What is**: A DynamoDB read replica is a feature that allows you to create a copy of a DynamoDB table. This replica table is kept in sync with the source table, providing you with
+  - **Definition**: A DynamoDB read replica is a feature that allows you to create a copy of a DynamoDB table. This replica table is kept in sync with the source table, providing you with
   the ability to offload traffic from the primary database and improve read scalability.
   
   - **Asynchronous Replication**: Data replication from the primary table to the replica is asynchronous. This means there may be a slight delay in data propagation from the source to
@@ -924,7 +924,7 @@ seamless scalability.
 
 - #### DynamoDB Streams
 
-  - **What is**: DynamoDB Streams is a feature provided by Amazon DynamoDB that captures and streams changes made to items in a DynamoDB table. It allows you to read to changers in
+  - **Definition**: DynamoDB Streams is a feature provided by Amazon DynamoDB that captures and streams changes made to items in a DynamoDB table. It allows you to read to changers in
   real-time and build applications that can process these changes.
   
   - **Change Capture**: DynamoDB Streams captures a time-ordered sequence of item-level modifications in a DynamoDB table. This includes both inserts, updates, and deletes.
@@ -939,7 +939,7 @@ seamless scalability.
 
 - #### DynamoDB Global Tables
 
-  - **What is**: DynamoDB Global Tables is a feature provided by Amazon DynamoDB that enables you to replicate your table across multiple AWS regions. This allows you to achieve
+  - **Definition**: DynamoDB Global Tables is a feature provided by Amazon DynamoDB that enables you to replicate your table across multiple AWS regions. This allows you to achieve
   low-latency access to data for globally distributed applications and provided disaster recovery capabilities.
   
   - **DynamoDB Streams**: In order to use DynamoDB Global Tables, you must have DynamoDB Streams enabled on the source table. Global Tables uses DynamoDB Streams to replicate
@@ -962,7 +962,7 @@ seamless scalability.
  
 - #### DynamoDB Point-in-Time Recovery (PITR)
 
-  - **What is**: DynamoDB Point-in-Time Recovery (PITR) is a feature provided by Amazon DynamoDB that allows you to restore your table data to any point in time within the
+  - **Definition**: DynamoDB Point-in-Time Recovery (PITR) is a feature provided by Amazon DynamoDB that allows you to restore your table data to any point in time within the
   last 35 days. This feature helps protect against accidental deletes, overwrites, or other data corruptions.
   
   - **Continuous Backups**: DynamoDB PITR automatically backs up your table data on an ongoing basis. These backups capture changes to your table data in real-time.
