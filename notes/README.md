@@ -150,6 +150,8 @@ A compilation of notes for the SAA-C03 exam. These notes are meticulously organi
   
   - **Process**: To initiate a multipart upload, a 'POST' request is sent to the specific object's URL endpoint within the S3 bucket. This request returns an
   upload ID, which serves to uniquely identify the multipart upload. Once underway, object parts can be uploaded in any order, each being assigned a distinct part number.
+
+  - **Requirement**: Multipart Upload is recommended for files over 100 MB and required for files over 5 GB.
   
   - **Minimum Part Size**: Each part (except the final part) must have a minimum size of 5 megabytes (MB). The size of the final part may be smaller, contingent on the overall
   size of the object.
