@@ -291,14 +291,18 @@ A compilation of notes for the SAA-C03 exam. These notes are meticulously organi
 
   - ##### S3 Object Lock Characteristics
   
-    **Definition**: Amazon S3 Object Lock is a feature that allows you to enforce retention policies on objects stored in an S3 bucket.
+    - **Definition**: Amazon S3 Object Lock is a feature that allows you to enforce retention policies on objects stored in an S3 bucket.
     
-    **Retention Period**: You can set a specific retention period for objects in days or years.
+    - **Retention Period**: You can set a specific retention period for objects in days or years.
     
-    **Immutability and Data Integrity**: Object Lock helps to ensure the immutability and integrity of your data, making it suitable for applications
+    - **Immutability and Data Integrity**: Object Lock helps to ensure the immutability and integrity of your data, making it suitable for applications
     with strict compliance requirements.
   
   - ##### Retention Modes
+ 
+    - **Legal Hold**: When Legal Hold is applied to an object, it ensures that the object remains in a state of preservation, regardless of any specified
+    retention periods. This means the object cannot be deleted or altered until the legal hold is explicitly removed. Legal Hold is typically used for legal
+    proceedings, investigations, or situations where data preservation is mandated by law or regulation.
   
     - **Governance Mode**: In this mode, you can specify a retention period during which an object cannot be deleted or overwritten by anyone, including the
     bucket owner. However, a user with appropriate permissions can still remove the retention policy.
