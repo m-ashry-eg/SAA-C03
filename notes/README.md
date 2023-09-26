@@ -24,19 +24,20 @@ attached to the host computer on which your instance runs and is ideal for tempo
 
 - #### Amazon Instance Store Characteristics
 
-  - Instance Store volumes are directly attached to the physical hardware of the host machine.
+  - **Direct Hardware Attachment**:Instance Store volumes are directly attached to the physical hardware of the host machine,
+  providing exceptionally high input/output operations per second (IOPS) performance.
 
-  - They provide very high input/output operations per second (IOPS) performance.
+  - **Non-Persistence of Data**: Data on an Instance Store volume is not persisted beyond the life of the associated instance.
+  If the instance is stopped or terminated, all data on the instance store is lost.
 
-  - Data on an Instance Store volume is not persisted beyond the life of the associated instance. If the instance is stopped or terminated, all data on the instance store is lost.
+  - **Instance Type Dependency**: Not all EC2 instance types come with Instance Store. When selecting an instance type, you
+  need to choose one that specifies an "Instance Store" under the "Storage" section.
 
-  - Not all EC2 instance types come with Instance Store. When selecting an instance type, you need to choose one that specifies an "Instance Store" under the "Storage" section.
+  - **Data Preservation on Instance Stop**: When an instance is stopped (but not terminated), the data on the Instance Store is
+  preserved. However, it's important to note that if the underlying hardware fails, you may lose data.
 
-  - When an instance is stopped (but not terminated), the data on the Instance Store is preserved. However, it's important to note that if the underlying hardware fails, you may lose data.
-
-  - Unlike Instance Store, Amazon Elastic Block Store (EBS) volumes provide persistent, network-attached block storage that can be detached from one instance and attached to another.
-
-  - Instance store volumes do not support snapshots, so you cannot create backups or migrate data easily.
+  - **Lack of Snapshot Support**: Instance Store volumes do not support snapshots, which means you cannot easily create backups
+  or migrate data.
 
 ### Amazon Elastic Block Store (EBS)
 
