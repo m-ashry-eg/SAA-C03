@@ -59,45 +59,47 @@ Compute Cloud (EC2) instances. It offers durable and scalable block-level storag
 
   - ##### General Purpose (SSD)
 
-    - General Purpose SSD volumes, also known as gp2, provide a balance of price and performance for a wide range of workloads, They are designed to deliver consistent baseline
-      performance and burst performance for applications with varying I/O needs.
+    - **Description**: General Purpose SSD volumes, known as gp2, strike a balance between price and performance. They are engineered to offer a
+    mix of consistent baseline performance and burst performance, catering to applications with diverse I/O requirements.
 
-    - General-purpose SSD volumes are suitable for most types of workloads, including small to medium-sized databases, development and test environments, and boot volumes.
+    - **Workload Suitability**: These volumes are versatile and suitable for a wide range of workloads, including small to medium-sized databases,
+    development and test environments, as well as boot volumes.
 
-    - Up to 99.9% durability.
+    - **Durability**: Up to 99.9% durability.
 
   - ##### Provisioned IOPS (SSD)
 
-    - Provisioned IOPS SSD volumes, also known as io1, are designed for I/O-intensive workloads that require consistently high performance. You specify the desired number
-      of IOPS when you create the volume.
-
-    - While being the most expensive type, Provisioned IOPS volumes ensure top-tier performance for applications that demand low-latency and high-throughput storage.
-
-    - Provisioned IOPS volumes are ideal for applications that require low-latency, high-performance storage such as critical business applications, large databases,
-      and high-transactional workloads.
-
-    - Up to 99.9% durability.
+    - **Description**: Provisioned IOPS SSD volumes, also known as io1, are designed for I/O-intensive workloads that require consistently high performance.
+    You specify the desired number of IOPS when you create the volume.
+    
+    - **Performance and Cost Considerations**: While being the most expensive type, Provisioned IOPS volumes ensure top-tier performance for applications
+    that demand low-latency and high-throughput storage.
+    
+    - **Workload Suitability**: Provisioned IOPS volumes are ideal for applications that require low-latency, high-performance storage such as critical
+    business applications, large databases, and high-transactional workloads.
+    
+    - **Durability**: Up to 99.9% durability.
 
   - ##### Throughput Optimized (HDD)
 
-    - Throughput Optimized HDD volumes, also known as st1, are designed for frequently accessed, large, sequential workloads. They are optimized for consistency,
+    - **Description**: Throughput Optimized HDD volumes, also known as st1, are designed for frequently accessed, large, sequential workloads. They are optimized for consistency,
       high-throughput performance.
 
-    - Throughput Optimized volumes are suitable for data warehouses, log processing, and other workloads that require high-volume, sequential read and write operations.
+    - **Workload Suitability**: Throughput Optimized volumes are suitable for data warehouses, log processing, and other workloads that require high-volume, sequential read and write operations.
 
-    - Up to 99.9% durability.
+    - **Durability**: Up to 99.9% durability.
 
   - ##### Cold (HDD)
 
-    - Cold HDD volumes, also known as sc1, are designed for less frequently accessed workloads with large, sequential read and write. They offer the lowest storage cost but with
-      the trade-off of lower performance compared to other volume types.
-
-    - Cold Volumes is typically the lowest-cost option among Amazon Web Services (AWS) EBS volume types.
-
-    - Cold volumes are suitable for scenarios where cost-effectiveness is a priority, and occasional access to the data is sufficient, such as infrequently accessed archives or
-      backup storage.
-
-    - Up to 99.9% durability.
+    - **Description**: Cold HDD volumes, also known as sc1, are designed for less frequently accessed workloads with large, sequential read and write. They offer the lowest
+    storage cost but with the trade-off of lower performance compared to other volume types.
+    
+    - **Cost-Effectiveness**: Cold Volumes is typically the lowest-cost option among Amazon Web Services (AWS) EBS volume types.
+    
+    - **Workload Suitability**: Cold volumes are suitable for scenarios where cost-effectiveness is a priority, and occasional access to the data is sufficient,
+    such as infrequently accessed archives or backup storage.
+    
+    - **Durability**: Up to 99.9% durability.
 
 - #### EBS Snapshots
 
@@ -139,13 +141,13 @@ Compute Cloud (EC2) instances. It offers durable and scalable block-level storag
 
 - #### How to encrypt EBS Volumes that are not encrypted
 
-  - Create a snapshot of the unencrypted root EBS volume.
+  - **Step 1**: Create a snapshot of the unencrypted root EBS volume.
 
-  - Create a copy of the snapshot and select the encryption option.
+  - **Step 2**: Create a copy of the snapshot and select the encryption option.
 
-  - Create an AMI from the encrypted snapshot.
+  - **Step 3**: Create an AMI from the encrypted snapshot.
 
-  - Use that AMI to launch new encrypted instances.
+  - **Step 4**: Use that AMI to launch new encrypted instances.
 
 - #### EBS Hibernation
 
@@ -352,10 +354,12 @@ operate, and scale a relational database in the cloud.
 - #### RDS Snapshots
 
   - **Manual Creating**: Unlike automated backups, which are taken automatically within a specific window, RDS snapshots are created manually by the user.
+    
   - **Retention Period**: RDS snapshots are kept until you choose to delete tem. They do not expire after a specific time period like automated backups.
+    
   - **Amazon S3 Bucket**: When you create an RDS snapshot, it is stored in an Amazon S3 bucket. Each AWS region has a default Amazon S3 bucket for RDS snapshot
-    storage. It's important to note that users cannot directly view the Amazon S3 bucket used for storing Amazon RDS snapshots using the AWS Management Console
-    or the AWS CLI. The RDS snapshot is managed by AWS, and the bucket is typically not accessible or visible to AWS customers through standard AWS interfaces.
+  storage. It's important to note that users cannot directly view the Amazon S3 bucket used for storing Amazon RDS snapshots using the AWS Management Console
+  or the AWS CLI. The RDS snapshot is managed by AWS, and the bucket is typically not accessible or visible to AWS customers through standard AWS interfaces.
 
 - #### RDS Automatic Backups vs. RDS Snapshots
 
@@ -488,31 +492,31 @@ seamless scalability.
   
   - ##### Strong Consistency
     
-    - With strong consistency, a read operation returns the most-up-to-date data. This means that after a write operation is acknowledged, any subsequent read operation will
-    reflect the updated data.
-
-    - Strong consistency ensures that all operations are guaranteed to see the latest write. It provides a linearizable ordering of operations.
-   
-    - To achieve strong consistency, you can use the ‘ConsistentRead’ parameter in your read request.
-   
-    - Suitable for applications where the most up-to-date data is crucial. For example, in a financial application, you might need to ensure that you’re working with the
-    latest transition data.
-
-    - Offers a higher level of data consistency, but may have latency compared to eventual consistency.
+    - **Description**: With strong consistency, a read operation returns the most-up-to-date data. This means that after a write operation is acknowledged,
+    any subsequent read operation will reflect the updated data.
+    
+    - **Guaranteed Latest Write**: Strong consistency ensures that all operations are guaranteed to see the latest write. It provides a linearizable
+    ordering of operations.
+    
+    - **Parameter Usage**: To achieve strong consistency, you can use the ‘ConsistentRead’ parameter in your read request.
+    
+    - **Use Cases**: Suitable for applications where the most up-to-date data is crucial. For example, in a financial application, you might need to ensure
+    that you’re working with the latest transition data.
+    
+    - **Latency Consideration**: Offers a higher level of data consistency, but may have latency compared to eventual consistency.
    
   - ##### Eventual Consistency
  
-    - With eventual consistency, a read operation might not reflect the most recent write. Instead, it guarantees that, given enough time, all replicas of a data item will
-    converge to the same value.
-
-    - Eventual consistency is typically faster and requires fewer resources compared to strong consistency.
-   
-    - By default, DynamoDB provides eventual consistency. You don’t need to specify anything in your read request to get eventually consistent reads.
-   
-    - Often sufficient for many applications where the absolute latest data isn’t required. For example, In a social media application, a slightly delayed view count on a
-    post might be acceptable.
-
-    - Tends to provide lower latency and higher throughput compared to strong consistency.
+    - **Description**: With eventual consistency, a read operation might not reflect the most recent write. Instead, it guarantees that, given enough time, all
+    replicas of a data item will converge to the same value.
+    
+    - **Performance Comparison**: Eventual consistency is typically faster and requires fewer resources compared to strong consistency.
+    
+    - **Default Behavior**: By default, DynamoDB provides eventual consistency. You don’t need to specify anything in your read request to get eventually
+    consistent reads.
+    
+    - **Use Cases**: Often sufficient for many applications where the absolute latest data isn’t required. For example, In a social media application, a slightly
+    delayed view count on a post might be acceptable.
 
 - #### DynamoDB Transactions
 
