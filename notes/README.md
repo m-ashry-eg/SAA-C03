@@ -292,6 +292,8 @@ A compilation of notes for the SAA-C03 exam. These notes are meticulously organi
   - ##### S3 Object Lock Characteristics
   
     - **Definition**: Amazon S3 Object Lock is a feature that allows you to enforce retention policies on objects stored in an S3 bucket.
+   
+    - **Level**: Object Lock can be implemented at both the individual object level and across the entire bucket.
     
     - **Retention Period**: You can set a specific retention period for objects in days or years.
     
