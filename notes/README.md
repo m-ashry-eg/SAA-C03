@@ -70,6 +70,78 @@ A compilation of notes for the SAA-C03 exam. These notes are meticulously organi
     - **Resources**: This section identifies the AWS resources (such as buckets or objects) that the policy pertains to.
    
     - **Condition**: While optional, this facet allows for the imposition of additional conditions that must be met for the policy to be enforced.
+   
+- #### S3 ACLs
+  
+  - ##### S3 ACLs Characteristics
+ 
+    - **Definition**: S3 Access Control Lists (ACLs) represent legacy methods for managing access to S3 objects and buckets.
+   
+    - **Granular Access Control**: ACLs provide a more fine-grained level of control over access compared to bucket policies. They allow for specific
+    permissions to be assigned to individual objects and buckets.
+
+    - **XML-Based Configuration**: Amazon S3 Access Control Lists (ACLs) are structured in XML (eXtensible Markup Language) format, providing a structured
+    way to define access rules.
+
+  - ##### Types of ACLs
+ 
+    - **Bucket ACL**: This type of ACL controls who can perform certain bucket-level operations, such as creating new objects within the bucket.
+   
+    - **Object ACL**: Object ACLs dictate who can perform operations on individual objects within a bucket. This includes actions like reading
+    and writing object data.
+
+  - ##### S3 ACLs Permissions
+ 
+    - **READ**: Grants a user the ability to list the objects in a bucket and read the data of those objects.
+   
+    - **WRITE**: Enables a user to create new objects, overwrite existing ones, and delete objects.
+   
+    - **READ_ACP**: Allows a user to read the Access Control Lists associated with objects.
+   
+    - **WRITE_ACP**: Permits a user to modify an object's Access Control List.
+   
+    - **FULL_CONTROL**: Grants a user the ability to perform any action on the object, including both read and write operations.
+   
+- #### Static Website Hosting
+
+  - **Definition**: Amazon S3 can be utilized as a platform for hosting static websites, encompassing HTML, CSS, JavaScript, images, and various other client-side assets.
+ 
+  - **Cost-Effectiveness**: This method of hosting provides an efficient and economical solution for delivering content that doesn't necessitate server-side processing.
+  It minimizes operational costs associated with traditional web hosting services.
+
+- #### Object Versioning
+
+  - **Definition**: Object versioning in Amazon S3 is a feature that enables you to retain multiple versions of an object within a bucket.
+ 
+  - **Overview**: Upon activation, any write operation (such as a PUT request) performed on an existing object generates a new version of that object.
+ 
+  - **Version Status**: Once versioning is enabled, it cannot be outright disabled; it can only be temporarily suspended.
+ 
+  - **Version ID**: Every iteration of an object is furnished with a distinct identifier, known as a Version ID.
+ 
+  - **Latest Version**: By default, when you request an object, S3 provides the most recent version. However, if necessary, you can specify a particular
+  version to retrieve. This allows for precise control over which version of an object is accessed.
+
+- #### S3 Lifecycle Policies
+
+  - ##### S3 Lifecycle Policies Characteristics
+ 
+    - **Definition**: S3 Lifecycle policies provide a means to establish rules for the automated management of objects throughout their lifecycle.
+   
+    - **Overview**: These policies encompass a range of actions, including transitioning objects to different storage classes or even orchestrating their deletion
+    after a specified period.
+
+    - **Automated Cleanup**: They enable the automated removal of objects that are no longer needed, helping to keep storage usage efficient and clutter-free.
+   
+    - **Cost Optimization**: By automating the transition of objects to lower-cost storage classes, lifecycle policies help reduce overall storage expenses over time.
+   
+  - ##### Components of a Lifecycle Policy
+ 
+    - **Transition Actions**: This component dictates when objects migrate from one storage class to another. For instance, transitioning from Standard to S3 Standard-IA
+    after a defined number of days.
+
+    - **Expiration Actions**: This facet allows for the establishment of rules concerning when objects are to be permanently removed, for instance, after a specified
+    number of days.
       
 ### Amazon Instance Store
 
