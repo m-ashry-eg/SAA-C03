@@ -142,6 +142,225 @@ A compilation of notes for the SAA-C03 exam. These notes are meticulously organi
 
     - **Expiration Actions**: This facet allows for the establishment of rules concerning when objects are to be permanently removed, for instance, after a specified
     number of days.
+
+- #### Multipart Upload
+ 
+  - **Definition**: Multipart Upload is a fundamental feature in Amazon S3 designed for efficiently handling the upload of large objects. It provides a reliable
+  mechanism for uploading files that surpass the size limit for a single operation.
+  
+  - **Process**: To initiate a multipart upload, a 'POST' request is sent to the specific object's URL endpoint within the S3 bucket. This request returns an
+  upload ID, which serves to uniquely identify the multipart upload. Once underway, object parts can be uploaded in any order, each being assigned a distinct part number.
+  
+  - **Minimum Part Size**: Each part (except the final part) must have a minimum size of 5 megabytes (MB). The size of the final part may be smaller, contingent on the overall
+  size of the object.
+  
+  - **Reliability and Efficiency**: Multipart Upload ensures the reliable and efficient transfer of large objects, minimizing the risk of upload failures and providing a more
+  robust method than single-operation uploads.
+  
+  - **Resilience to Interruptions**: In the event of network issues or interruptions during the upload process, Multipart Upload allows for the re-upload of only the
+  affected parts, rather than the entire object.
+
+- #### S3 Accelerated Transfer
+
+  - **Definition**: Amazon S3 Transfer Acceleration is a feature within Amazon Simple Storage Service (Amazon S3) that facilitates rapid, convenient, and secure file
+  transfers over the internet. It leverages the Amazon CloudFront content delivery network (CDN) to expedite the uploading and downloading of objects.
+
+  - **Acceleration Endpoint**: Upon enabling S3 Transfer Acceleration for a specific bucket, AWS furnishes a distinct accelerated endpoint (URL) exclusively designated
+  for uploading and downloading objects.
+
+  - **Upload Process**: When utilizing S3 Transfer Acceleration to upload an object, the data initially traverses to an AWS edge location situated nearest to your location.
+  Subsequently, it is securely transmitted to the designated S3 bucket.
+
+- #### S3 Storage Classes
+
+  - ##### S3 Standard
+  
+    - **Description**:  The Standard storage class is the default and most widely used tier within Amazon S3. It is designed for data with high access frequency,
+    providing immediate and low-latency retrieval of stored objects.
+    
+    - **Cost**: Relatively higher storage cost compared to other classes, but offers the highest availability.
+    
+    - **Use Case**: Hosting dynamic and frequently accessed content, such as website assets, application data, and real-time analytics.
+    
+    - **Durability and Availability**: Offers 99.999999999% (11 9's) durability and 99.99% availability over a year.
+
+  - ##### S3 Standard-IA (Infrequent Access)
+  
+    - **Description**: Standard-IA is tailored for data characterized by less frequent access, yet necessitates prompt retrieval when required. It is an
+    economical choice for data that does not require immediate access.
+    
+    - **Cost**: Incurs a nominal per-GB storage fee and a corresponding per-GB retrieval fee. This makes it cost-effective for data with occasional
+    access requirements.
+    
+    - **Use Case**: Storing data like backup archives, log files, and regulatory compliance records.
+    
+    - **Transition Considerations**: Objects are automatically transitioned to Standard-IA after 30 days of no access in Standard class.
+    
+    - **Availability**: Offers the same level of availability as the Standard class.
+
+  - ##### S3 One Zone-IA
+  
+    - **Description**: One Zone-IA storage class is similar to Standard-IA but is confined to a single Availability Zone. This results in a lower cost, making
+    it a cost-effective alternative for infrequently accessed data.
+    
+    - **Cost Consideration**: Costs approximately 20% less than regular Standard-IA. However, it may have slightly lower availability due to the single Availability Zone deployment.
+    
+    - **Use Case**: Storing secondary backup copies of data that do not necessitate multi-Availability Zone redundancy.
+    
+    - **Availability Considerations**: While slightly less available than Standard-IA, it is still suitable for data with infrequent access needs in a single Availability Zone.
+   
+  - ##### S3 Intelligent-Tiering
+  
+    - **Description**: Intelligent-Tiering is a dynamic storage class that automatically moves objects between Standard and Standard-IA tiers based on observed
+    access patterns. It optimizes costs for variable workloads.
+    
+    - **Cost Efficiency**: Automatically transitions objects to a lower-cost tier when access patterns change, saving on storage costs.
+    
+    - **Use Case**: Ideal for data with unpredictable access patterns, where cost optimization is crucial.
+    
+    - **Savings Considerations**: It may incur a small monthly monitoring and automation fee, but this is offset by the cost savings achieved through intelligent tiering.
+   
+  - ##### S3 Glacier Flexible Retrieval
+  
+    - **Description**: The Glacier storage class is specifically designed for long-term archival storage. It is characterized by retrieval times ranging from minutes to hours.
+    
+    - **Cost Structure**: Incurs charges for data access, comprising a low per-GB storage cost and a separate per-GB retrieval fee.
+    
+    - **Use Case**: Storing data that is rarely accessed but requires long-term retention for compliance or legal purposes.
+    
+    - **Durability and Availability**: Offers the same high durability as Standard class but with slower retrieval times.
+   
+  - ##### S3 Glacier Deep Archive
+  
+    - **Description**: Glacier Deep Archive is tailored for data with extraordinarily infrequent access patterns and no immediate retrieval time constraints.
+    It offers the lowest storage cost among all S3 storage classes.
+    
+    - **Cost Structure**: Incurs charges for data access, involving a low per-GB storage cost and a separate per-GB retrieval fee.
+    
+    - **Use Case**: Suitable for extremely long-term archival, where data access is extremely rare.
+    
+    - **Retrieval Time**: Retrieval times can take several hours, making it unsuitable for data with immediate retrieval requirements.
+
+- #### S3 Object Replication
+
+  - **Definition**: Amazon S3 Replication is a feature that allows you to automatically and asynchronously replicate objects from one S3 bucket to another
+  in the same or a different AWS Region.
+  
+  - **Cross-Region Replications**: S3 replication can be set up to replicate objects between buckets in different AWS Regions. This provides geographic
+  redundancy and helps ensure data availability even in the event of a regional outage.
+  
+  - **Same-Region Replication**: You can also use S3 replication to replicate objects within the same AWS Region. This can be useful for maintaining copies
+  in different accounts, for example, for auditing or security purposes.
+  
+  - **Supported Storage Classes**: You can replicate objects between buckets that use different storage classes, such as Standard, Standard-IA,
+  Intelligent-Tiering, Glacier, and others.
+  
+  - **Versioning**: In order to set up replication between 2 S3 buckets, you must enable versioning in both the source and destination buckets. This is a
+  crucial requirement for replication to function properly.
+  
+  - **All objects or a subset**: S3 replication allows you to choose whether you want to replicate all objects in a bucket or only a subset based on specific
+  criteria, such as objects with a certain prefix in their key names.
+  
+  - **Ownership**: By default, objects replicated to the destination bucket will retain the ownership of the source account. This means that the original AWS
+  account that owns the source bucket will also own the replicated objects.
+  
+  - **Replication Time Control (RTC)**: RTC allows you to specify an SLA (service level Agreement) for the replications process. You can set rules for how quickly
+  objects should be replicated after they are created or modified in the source bucket.
+  
+  - **Batch Replication**: You can use batch replication to replicate existing objects from the source bucket to the destination bucket. Batch replication is a
+  method of replicating a large number of objects in a single operation.
+  
+  - **One-way replication**: S3 replication is one-way, meaning that objects are replicated from the source bucket to the destination bucket, but changes made in
+  the destination bucket are not replicated back to the source.
+  
+  - **Deletes are not replicated**: if an object is deleted from the source bucket, that deletion is not automatically replicated to the destination bucket. The
+  object will remain in the destination bucket unless it is manually deleted.
+
+- #### S3 Events
+
+  - **What is**: S3 Events are notifications sent by Amazon S3 whenever certain events occur within a bucket.
+  
+  - **Event Triggers**: S3 Events can be triggered by various actions within a bucket, such as object creation, deletion, or restoration.
+  
+  - **SNS Topics**: Events can also be sent to Amazon Simple Notification Service (SNS) topics to notify multiple subscribers.
+  
+  - **Lambda Functions**: S3 Events are often used to trigger AWS Lambda functions, allowing for serverless processing of objects. This is a powerful way
+  to automate tasks based on S3 activity.
+
+- #### S3 Object Lock
+
+  - ##### S3 Object Lock Characteristics
+  
+    **Definition**: Amazon S3 Object Lock is a feature that allows you to enforce retention policies on objects stored in an S3 bucket.
+    
+    **Retention Period**: You can set a specific retention period for objects in days or years.
+    
+    **Immutability and Data Integrity**: Object Lock helps to ensure the immutability and integrity of your data, making it suitable for applications
+    with strict compliance requirements.
+  
+  - ##### Retention Modes
+  
+    - **Governance Mode**: In this mode, you can specify a retention period during which an object cannot be deleted or overwritten by anyone, including the
+    bucket owner. However, a user with appropriate permissions can still remove the retention policy.
+    
+    - **Compliance Mode**: In this mode, once an object is locked, its retention cannot be shortened, and the object cannot be deleted by anyone until the retention
+    period expires. This mode is designed for regulatory compliance requirements.
+
+- #### Glacier Vault Lock
+
+  - **Definition**: Amazon S3 Glacier Vault Lock is a feature that allows you to enforce compliance controls on your S3 Glacier vaults.
+  
+  - **Compliance Control**: Glacier Vault Lock helps you implement compliance controls for your archived data, ensuring it remains unaltered and secure for the
+  specified retention period.
+  
+  - **Retention Period**: You can set a specific retention period for your Glacier vault, during which the data cannot be deleted or altered.
+  
+  - **Immutability and Data Integrity**: The Vault Lock feature ensures the immutability and data integrity of your archived data, making it suitable for applications
+  with strict compliance requirements.
+  
+  - **Legal and Regulatory Requirements**: Glacier Vault Lock is designed to help you meet legal and regulatory requirements for data archiving and retention.
+  
+  - **Retention Policy Enforcement**: Once a Glacier vault is locked, its retention cannot be shortened, and the data cannot be deleted until the specified retention period expires.
+  
+  - **Emergency Access**: While the Vault Lock is in place, you can create and lock a legal hold to allow for temporary suspension of the retention policy for compliance
+  checks or legal investigations.
+
+- #### S3 Access Points
+
+  - ##### S3 Access Points Characteristics
+
+    - **Named Endpoints**: Access Points are named endpoints in S3 that are used to upload and access objects. They are independent of the bucket’s name and can be associated
+    with one or more buckets.
+    
+    - **Access Control Policies**: You can attach specific access policies to an Access Point. This allow you to control who can access the objects through the Access Point,
+    and what action they can perform.
+    
+    - **Endpoint DNS Names**: Each Access Point has its own unique DNS name, allowing you to access objects using the access point’s endpoint.
+   
+  - ##### Network Controls
+ 
+    - **VPC Endpoints**: Access Points can be associated with Virtual private Cloud (VPC) endpoints, allowing access to S3 resources without traversing the public internet.
+    
+    - **VPC Endpoints**: You can attach an access policy to an Access Point to control which VPCs or VPC endpoints can use the Access Point.
+   
+  - ##### Use Cases
+ 
+    - **Multi-Tenant Environment**: Access Points are useful in scenarios where multiple teams or applications share a single bucket, but need separate access controls.
+    
+    - **Isolation and Control**: Try to provide additional isolation and control over access to your S3 data.
+    
+    - **Compliance and Security**: Access Points help enforce compliance requirements and enhance security by providing distinct access policies.
+
+- #### Object Encryption
+
+  - **SSE-S3**: Amazon S3 manages the encryption process for you. When you upload an object, S3 uses its own encryption keys to encrypt the object. These keys are unique to your
+  account  and the object.
+  
+  - **SSE-KMS**: Amazon S3 uses AWS Key Management Service (KMS) to manage the encryption keys. With this option, you can have more control over key management, including features
+  like key rotation and auditing.
+    
+  - **SSE–C**: You (customer) provide your own encryption key and manage them outside of AWS. When you upload an object, you need to include the encryption key in the request
+  headers, and Amazon S3 uses it to encrypt the object.
       
 ### Amazon Instance Store
 
