@@ -123,13 +123,13 @@ A compilation of notes for the SAA-C03 exam. These notes are meticulously organi
 
 - #### EC2 Storage Types
 
-  **Ephemeral** Storage: Instance Store
+  - **Ephemeral** Storage: Instance Store
   
-  **Block Storage**: Elastic Block Store (EBS)
+  - **Block Storage**: Elastic Block Store (EBS)
   
-  **Network File System (NFS)**: Elastic File System (EFS)
+  - **Network File System (NFS)**: Elastic File System (EFS)
   
-  **Object Storage**: Simple Storage Service (S3)
+  - **Object Storage**: Simple Storage Service (S3)
 
 - #### EC2 Termination Protection
 
