@@ -213,7 +213,7 @@ A compilation of notes for the SAA-C03 exam. These notes are meticulously organi
    
   - ##### S3 Intelligent-Tiering
   
-    - **Description**: Intelligent-Tiering is a dynamic storage class that automatically moves objects between Standard and Standard-IA tiers based on observed
+    - **Description**: Intelligent-Tiering is a dynamic storage class that automatically moves objects between Frequent Access Tier and Infrequent Access Tier based on observed
     access patterns. It optimizes costs for variable workloads.
     
     - **Cost Efficiency**: Automatically transitions objects to a lower-cost tier when access patterns change, saving on storage costs.
