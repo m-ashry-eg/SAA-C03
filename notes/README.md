@@ -349,7 +349,7 @@ A compilation of notes for the SAA-C03 exam. These notes are meticulously organi
  
     - **VPC Endpoints**: Access Points can be associated with Virtual private Cloud (VPC) endpoints, allowing access to S3 resources without traversing the public internet.
     
-    - **VPC Endpoints**: You can attach an access policy to an Access Point to control which VPCs or VPC endpoints can use the Access Point.
+    - **Access Policy**: You can attach an Access Policy to an Access Point to control which VPCs or VPC endpoints can use the Access Point.
    
   - ##### Use Cases
  
