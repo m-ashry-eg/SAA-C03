@@ -123,13 +123,13 @@ A compilation of notes for the SAA-C03 exam. These notes are meticulously organi
 
 - #### EC2 Storage Types
 
-  - **Object Storage**: [Simple Storage Service (S3)](https://github.com/GabrielFlores8227/SAA-C03/tree/main/notes#simple-storage-service-s3).
+  - **Object Storage**: [Simple Storage Service (S3)](#simple-storage-service-s3).
 
-  - **Ephemeral Storage**: [Instance Store](https://github.com/GabrielFlores8227/SAA-C03/tree/main/notes#amazon-instance-store).
+  - **Ephemeral Storage**: [Instance Store](#amazon-instance-store).
   
-  - **Block Storage**: [Elastic Block Store (EBS)](https://github.com/GabrielFlores8227/SAA-C03/tree/main/notes#amazon-elastic-block-store-ebs).
+  - **Block Storage**: [Elastic Block Store (EBS)](#amazon-elastic-block-store-ebs).
   
-  - **Network File System (NFS)**: [Elastic File System (EFS)](https://github.com/GabrielFlores8227/SAA-C03/tree/main/notes#amazon-elastic-file-system-efs).
+  - **Network File System (NFS)**: [Elastic File System (EFS)](#amazon-elastic-file-system-efs).
     
 - #### EC2 Termination Protection
 
