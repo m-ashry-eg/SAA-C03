@@ -123,14 +123,14 @@ A compilation of notes for the SAA-C03 exam. These notes are meticulously organi
 
 - #### EC2 Storage Types
 
-  - **Ephemeral** Storage: Instance Store
-  
-  - **Block Storage**: Elastic Block Store (EBS)
-  
-  - **Network File System (NFS)**: Elastic File System (EFS)
-  
-  - **Object Storage**: Simple Storage Service (S3)
+  - **Object Storage**: [Simple Storage Service (S3)](https://github.com/GabrielFlores8227/SAA-C03/tree/main/notes#simple-storage-service-s3).
 
+  - **Ephemeral Storage**: [Instance Store](https://github.com/GabrielFlores8227/SAA-C03/tree/main/notes#amazon-instance-store).
+  
+  - **Block Storage**: [Elastic Block Store (EBS)](https://github.com/GabrielFlores8227/SAA-C03/tree/main/notes#amazon-elastic-block-store-ebs).
+  
+  - **Network File System (NFS)**: [Elastic File System (EFS)](https://github.com/GabrielFlores8227/SAA-C03/tree/main/notes#amazon-elastic-file-system-efs).
+    
 - #### EC2 Termination Protection
 
   - **Definition**: EC2 Termination Protection is a feature provided by AWS to prevent accidental termination of EC2 Instances. When enabled, it acts as an
