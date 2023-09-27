@@ -15,6 +15,200 @@ A compilation of notes for the SAA-C03 exam. These notes are meticulously organi
   <img src="https://img.shields.io/badge/state-in_development-blue" alt="version">
 </p>
 
+## Compute Services
+
+### Elastic Cloud Compute (EC2)
+
+- #### EC2 Characteristics
+
+  - **Definition**: Amazon Elastic Compute Cloud (Amazon EC2) is a web service that provides secure, resizable compute capacity in the cloud.
+  It is designed to make web-scale cloud computing easier for developers.
+  
+  - **Virtual Servers**: EC2 allows you to run virtual servers, known as instances.
+  
+  - **Scalability**: You can easily scale up or down based on your application needs. EC2 instances can be launched or terminated as required.
+  
+  - **Variety of Instance Types**: EC2 offers a wide range of instance types optimized for different use cases, such as compute-optimized, memory-optimized,
+  storage-optimized, and more.
+
+- #### EC2 Instance Types
+
+  - ##### General Purpose
+ 
+    - **Definition**: These instances provide a balance of compute, memory, and networking resources, making them suitable for a wide
+    range of applications.
+    
+    - **Use Case**: They are equipped with burstable CPU performance for handling short spikes in demand.
+    
+    - **Families**: T4g (arm64), T3a (amd64), T3 (amd64), T2 (amd64)
+   
+  - ##### Compute Optimized
+ 
+    - **Definition**:  These instances are designed for compute-boud applications that rely heavily on processing power.
+    
+    - **Use Case**: They are equipped with high-performance processors, making them ideal for tasks that involve heavy computational workloads.
+    
+    - **Families**: C6g (arm64), C5a (amd64), C5 (amd64), C4 (amd64)
+   
+  - ##### Memory Optimized
+
+    - **Definition**: These instances are optimized for applications that require fast performance when processing large data sets in memory.
+    
+    - **Use Case**: They are equipped with a higher ratio of memory to CPU cores, making them suitable for tasks like in-memory analytics and database operations.
+    
+    - **Families**: R6g (arm64), R5a (amd64), R5 (amd64), R4 (amd64), u-6tb1.metal (Intel Xeon), u-9tb1.metal (Intel Xeon), u-12tb1.metal (Intel Xeon)
+   
+  - ##### Accelerated Computing
+ 
+    - **Definition**: These instances leverage hardware accelerators or co-processors to perform specific tasks more efficiently than a general-purpose CPU.
+    
+    - **Use Case**: They are suitable for tasks like machine learning, where specialized hardware can significantly enhance performance.
+      
+    - **Families**: P4 (Intel Xeon with NVIDIA V100 GPUs), P3 (Intel Xeon with NVIDIA V100 GPUs), F1 (Intel Xeon with FPGA)
+   
+  - ##### Storage Optimized
+ 
+    - **Definition**: These instances are tailored for workloads that demand high, sequential read and write access to large data sets on local storage.
+    
+    - **Use Cases**: They are equipped with high-speed, locally attached storage options, making them ideal for tasks like data warehousing and log processing.
+    
+    - **Families**: I3 (Intel Xeon), D2 (Intel Xeon)
+      
+- #### EC2 Purchase Options
+
+  - ##### On-Demand Instances
+ 
+    - **Definition**: On-Demand Instances allow you to pay for compute capacity by the hour or be second (for some Linux Instances). You can use them whenever you
+    need them, with no long-term commitments.
+    
+    - **Billing**: There is no upfront commitment, and you can use the instances as needed.
+    
+    - **Use Case**: Ideal for applications with short-term, spiky, or unpredictable workloads that cannot be interrupted.
+
+  - ##### Savings Plans
+
+    - **Definition**: Savings Plans offer significant cost savings in exchange for a commitment to use a specific amount of resources for a 1 or 3
+    years term. They provide flexibility in usage across any AWS region.
+    
+    - **Billing**: Your usage is automatically counted towards your Savings Plans commitment, and you are billed at the lower Savings Plans rate.
+    
+    - **Use Case**: Suitable for steady-state workloads with predictable usage, or for applications with flexible usage patterns that can commit to a 1 or 3 years term.
+   
+  - ##### Reserved Instances
+ 
+    - **Definition**: RIs provide a substantial discount (compared to On-Demand Pricing) in exchange for a 1 or 3 years commitment to a specific instance
+    type in a specific region.
+    
+    - **Billing**: You are billed at the lower RI rate for the duration of the term, regardless of whether you use the instance or not.
+    
+    - **Use Case**: Best for applications with steady-state or predictable usage and for workloads that run continuously or almost continuously.
+
+  - ##### Spot Instances
+ 
+    - **Definition**: Sport Instances allow you to use spare EC2 capacity at a significantly lower cost compared to On-Demand Instances (up to 90% discount).
+    However, they can be terminated if the capacity is needed by AWS.
+    
+    - **Billing**: You pay the Spot price for each hour the instance runs, and if the Sport price exceeds your maximum price (bid), your instance is terminated.
+    
+    - **Use Case**: ideal for applications that have flexible start and end times, or that can withstand potential interruptions.
+   
+  - ##### Dedicated Hosts
+ 
+    - **Definition**: A Dedicated Host is a physical server with EC2 instance capacity that is fully dedicated to your use. You have visibility and control over
+    the placement of instances on the host.
+    
+    - **Billing**: You can use as many instances as the host sup[ports, as long as they fit within the host’s specifications.
+    
+    - **Use Case**: Suitable for workloads that require a higher level of isolation from instances in other accounts.
+
+- #### EC2 Storage Types
+
+  **Ephemeral** Storage: Instance Store
+  
+  **Block Storage**: Elastic Block Store (EBS)
+  
+  **Network File System (NFS)**: Elastic File System (EFS)
+  
+  **Object Storage**: Simple Storage Service (S3)
+
+- #### EC2 Termination Protection
+
+  **Definition**: EC2 Termination Protection is a feature provided by AWS to prevent accidental termination of EC2 Instances. When enabled, it acts as an
+  additional layer of security, helping to safeguard critical instances from being terminated.
+  
+  **Disabling Termination Protection**: if you need to terminate an instance with termination Protection enabled, you must first disable Termination Protection.
+  
+  **Best Practices**: Combine Termination Protection with IAM policies and proper access control to ensure that only authorized users can disable Termination Protection.
+
+- #### EC2 Auto Recovery
+
+  - **Definition**: EC2 Auto Recovery is a feature provided by AWS that helps enhance the availability and resilience of your EC2 instance. It is designed to automatically
+  recover instances in the event of an underlying hardware failure or degradation.
+  
+  - **Use Cases**: Auto Recovery is particularly valuable for instances hosting critical applications, databases, or services that need to maintain high availability.
+  
+  - **Monitoring and Notifications**: CloudWatch Alarms can be configured to send notifications (via Amazon SNS) when Auto Recovery is triggered, allowing you to stay informed
+  about instance status changes.
+
+- #### Instance Metadata Service
+
+  - ##### Instance Metadata Service Characteristics
+ 
+    - **Definition**: The Instance Metadata Service (IMDS)provides an HTTP endpoint from which an EC2 instance can retrieve a wealth of information about itself, including
+    metadata and user data.
+    
+    - **Access URL**: THE IMDS can be accessed locally by making an HTTP request for the following URL: ‘http://169.254.169.254/latest/’.
+    
+    - **Availability**: The IMDS is available for all EC2 Instances, regardless of the operating system or configuration.
+   
+  - ##### Instance Metadata Service Categories
+ 
+    - http://169.254.169.254/latest/ami-id
+    
+    - http://169.254.169.254/latest/ami-launch-index
+    
+    - http://169.254.169.254/latest/ami-manifest-path
+    
+    - http://169.254.169.254/latest/block-device-mapping/
+    
+    - http://169.254.169.254/latest/events/
+    
+    - http://169.254.169.254/latest/hostname
+    
+    - http://169.254.169.254/latest/iam/
+    
+    - http://169.254.169.254/latest/instance-action
+    
+    - http://169.254.169.254/latest/instance-id
+    
+    - http://169.254.169.254/latest/instance-type
+    
+    - http://169.254.169.254/latest/local-hostname
+    
+    - http://169.254.169.254/latest/local-ipv4
+    
+    - http://169.254.169.254/latest/mac
+    
+    - http://169.254.169.254/latest/metrics/
+    
+    - http://169.254.169.254/latest/network/
+    
+    - http://169.254.169.254/latest/placement/
+    
+    - http://169.254.169.254/latest/profile
+    
+    - http://169.254.169.254/latest/public-hostname
+    
+    - http://169.254.169.254/latest/public-ipv4
+    
+    - http://169.254.169.254/latest/public-keys/
+    
+    - http://169.254.169.254/latest/reservation-id
+    
+    - http://169.254.169.254/latest/security-groups
+    
+    - http://169.254.169.254/latest/services/
+
 ## Storage Services
 
 ### Simple Storage Service (S3)
