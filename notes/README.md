@@ -154,7 +154,7 @@ A compilation of notes for the SAA-C03 exam. These notes are meticulously organi
 
   - ##### Instance Metadata Service Characteristics
  
-    - **Definition**: The Instance Metadata Service (IMDS)provides an HTTP endpoint from which an EC2 instance can retrieve a wealth of information about itself, including
+    - **Definition**: The Instance Metadata Service (IMDS) provides an HTTP endpoint from which an EC2 instance can retrieve a wealth of information about itself, including
     metadata and user data.
     
     - **Access URL**: THE IMDS can be accessed locally by making an HTTP request for the following URL: ‘http://169.254.169.254/latest/’.
