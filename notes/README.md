@@ -133,12 +133,12 @@ A compilation of notes for the SAA-C03 exam. These notes are meticulously organi
 
 - #### EC2 Termination Protection
 
-  **Definition**: EC2 Termination Protection is a feature provided by AWS to prevent accidental termination of EC2 Instances. When enabled, it acts as an
+  - **Definition**: EC2 Termination Protection is a feature provided by AWS to prevent accidental termination of EC2 Instances. When enabled, it acts as an
   additional layer of security, helping to safeguard critical instances from being terminated.
   
-  **Disabling Termination Protection**: if you need to terminate an instance with termination Protection enabled, you must first disable Termination Protection.
+  - **Disabling Termination Protection**: if you need to terminate an instance with termination Protection enabled, you must first disable Termination Protection.
   
-  **Best Practices**: Combine Termination Protection with IAM policies and proper access control to ensure that only authorized users can disable Termination Protection.
+  - **Best Practices**: Combine Termination Protection with IAM policies and proper access control to ensure that only authorized users can disable Termination Protection.
 
 - #### EC2 Auto Recovery
 
