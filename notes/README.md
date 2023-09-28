@@ -966,6 +966,8 @@ storage that is optimized for applications that require fast access to large amo
 - **Amazon FSx for Lustre**: High-speed, high-capacity distributed storage, ideal for high-performance computing (HPC), financial modeling,
   and more. It can also directly store data on Amazon S3.
 
+## Database Services
+
 ### Amazon Relational Database Service (RDS)
 
 Amazon RDS (Relational Database Service) is a managed database service provided by Amazon Web Services (AWS). It makes it easier to set up,
