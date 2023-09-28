@@ -15,14 +15,12 @@ A compilation of notes for the SAA-C03 exam. These notes are meticulously organi
   <img src="https://img.shields.io/badge/state-in_development-blue" alt="version">
 </p>
 
-## Compute Services
-
-### Elastic Cloud Compute (EC2)
+## Elastic Cloud Compute (EC2)
 
 Amazon Elastic Compute Cloud (Amazon EC2) is a web service that provides secure, resizable compute capacity in the cloud.
 It is designed to make web-scale cloud computing easier for developers.
 
-- #### EC2 Characteristics
+- ### EC2 Characteristics
   
   - **Virtual Servers**: EC2 allows you to run virtual servers, known as instances.
   
@@ -31,9 +29,9 @@ It is designed to make web-scale cloud computing easier for developers.
   - **Variety of Instance Types**: EC2 offers a wide range of instance types optimized for different use cases, such as compute-optimized, memory-optimized,
   storage-optimized, and more.
 
-- #### EC2 Instance Types
+- ### EC2 Instance Types
 
-  - ##### General Purpose
+  - #### General Purpose
  
     - **Definition**: These instances provide a balance of compute, memory, and networking resources, making them suitable for a wide
     range of applications.
@@ -42,7 +40,7 @@ It is designed to make web-scale cloud computing easier for developers.
     
     - **Families**: T4g (arm64), T3a (amd64), T3 (amd64), T2 (amd64)
    
-  - ##### Compute Optimized
+  - #### Compute Optimized
  
     - **Definition**:  These instances are designed for compute-boud applications that rely heavily on processing power.
     
@@ -50,7 +48,7 @@ It is designed to make web-scale cloud computing easier for developers.
     
     - **Families**: C6g (arm64), C5a (amd64), C5 (amd64), C4 (amd64)
    
-  - ##### Memory Optimized
+  - #### Memory Optimized
 
     - **Definition**: These instances are optimized for applications that require fast performance when processing large data sets in memory.
     
@@ -58,7 +56,7 @@ It is designed to make web-scale cloud computing easier for developers.
     
     - **Families**: R6g (arm64), R5a (amd64), R5 (amd64), R4 (amd64), u-6tb1.metal (Intel Xeon), u-9tb1.metal (Intel Xeon), u-12tb1.metal (Intel Xeon)
    
-  - ##### Accelerated Computing
+  - #### Accelerated Computing
  
     - **Definition**: These instances leverage hardware accelerators or co-processors to perform specific tasks more efficiently than a general-purpose CPU.
     
@@ -66,7 +64,7 @@ It is designed to make web-scale cloud computing easier for developers.
       
     - **Families**: P4 (Intel Xeon with NVIDIA V100 GPUs), P3 (Intel Xeon with NVIDIA V100 GPUs), F1 (Intel Xeon with FPGA)
    
-  - ##### Storage Optimized
+  - #### Storage Optimized
  
     - **Definition**: These instances are tailored for workloads that demand high, sequential read and write access to large data sets on local storage.
     
@@ -74,9 +72,9 @@ It is designed to make web-scale cloud computing easier for developers.
     
     - **Families**: I3 (Intel Xeon), D2 (Intel Xeon)
       
-- #### EC2 Purchase Options
+- ### EC2 Purchase Options
 
-  - ##### On-Demand Instances
+  - #### On-Demand Instances
  
     - **Definition**: On-Demand Instances allow you to pay for compute capacity by the hour or be second (for some Linux Instances). You can use them whenever you
     need them, with no long-term commitments.
@@ -85,7 +83,7 @@ It is designed to make web-scale cloud computing easier for developers.
     
     - **Use Case**: Ideal for applications with short-term, spiky, or unpredictable workloads that cannot be interrupted.
 
-  - ##### Savings Plans
+  - #### Savings Plans
 
     - **Definition**: Savings Plans offer significant cost savings in exchange for a commitment to use a specific amount of resources for a 1 or 3
     years term. They provide flexibility in usage across any AWS region.
@@ -94,7 +92,7 @@ It is designed to make web-scale cloud computing easier for developers.
     
     - **Use Case**: Suitable for steady-state workloads with predictable usage, or for applications with flexible usage patterns that can commit to a 1 or 3 years term.
    
-  - ##### Reserved Instances
+  - #### Reserved Instances
  
     - **Definition**: RIs provide a substantial discount (compared to On-Demand Pricing) in exchange for a 1 or 3 years commitment to a specific instance
     type in a specific region.
@@ -103,7 +101,7 @@ It is designed to make web-scale cloud computing easier for developers.
     
     - **Use Case**: Best for applications with steady-state or predictable usage and for workloads that run continuously or almost continuously.
 
-  - ##### Spot Instances
+  - #### Spot Instances
  
     - **Definition**: Sport Instances allow you to use spare EC2 capacity at a significantly lower cost compared to On-Demand Instances (up to 90% discount).
     However, they can be terminated if the capacity is needed by AWS.
@@ -112,7 +110,7 @@ It is designed to make web-scale cloud computing easier for developers.
     
     - **Use Case**: ideal for applications that have flexible start and end times, or that can withstand potential interruptions.
    
-  - ##### Dedicated Hosts
+  - #### Dedicated Hosts
  
     - **Definition**: A Dedicated Host is a physical server with EC2 instance capacity that is fully dedicated to your use. You have visibility and control over
     the placement of instances on the host.
@@ -121,7 +119,7 @@ It is designed to make web-scale cloud computing easier for developers.
     
     - **Use Case**: Suitable for workloads that require a higher level of isolation from instances in other accounts.
 
-- #### EC2 Storage Types
+- ### EC2 Storage Types
 
   - **Object Storage**: [Simple Storage Service (S3)](#simple-storage-service-s3).
 
@@ -131,7 +129,7 @@ It is designed to make web-scale cloud computing easier for developers.
   
   - **Network File System (NFS)**: [Elastic File System (EFS)](#amazon-elastic-file-system-efs).
     
-- #### EC2 Termination Protection
+- ### EC2 Termination Protection
 
   - **Definition**: EC2 Termination Protection is a feature provided by AWS to prevent accidental termination of EC2 Instances. When enabled, it acts as an
   additional layer of security, helping to safeguard critical instances from being terminated.
@@ -140,7 +138,7 @@ It is designed to make web-scale cloud computing easier for developers.
   
   - **Best Practices**: Combine Termination Protection with IAM policies and proper access control to ensure that only authorized users can disable Termination Protection.
 
-- #### EC2 Auto Recovery
+- ### EC2 Auto Recovery
 
   - **Definition**: EC2 Auto Recovery is a feature provided by AWS that helps enhance the availability and resilience of your EC2 instance. It is designed to automatically
   recover instances in the event of an underlying hardware failure or degradation.
@@ -150,9 +148,9 @@ It is designed to make web-scale cloud computing easier for developers.
   - **Monitoring and Notifications**: CloudWatch Alarms can be configured to send notifications (via Amazon SNS) when Auto Recovery is triggered, allowing you to stay informed
   about instance status changes.
 
-- #### Instance Metadata Service
+- ### Instance Metadata Service
 
-  - ##### Instance Metadata Service Characteristics
+  - #### Instance Metadata Service Characteristics
  
     - **Definition**: The Instance Metadata Service (IMDS) provides an HTTP endpoint from which an EC2 instance can retrieve a wealth of information about itself, including
     metadata and user data.
@@ -161,7 +159,7 @@ It is designed to make web-scale cloud computing easier for developers.
     
     - **Availability**: The IMDS is available for all EC2 Instances, regardless of the operating system or configuration.
    
-  - ##### Instance Metadata Service Categories
+  - #### Instance Metadata Service Categories
  
     - http://169.254.169.254/latest/ami-id
     
@@ -209,11 +207,11 @@ It is designed to make web-scale cloud computing easier for developers.
     
     - http://169.254.169.254/latest/services/
    
-### Amazon Lambda
+## Amazon Lambda
 
  AWS Lambda is a serverless computing service that allows you to run code is response to events without the need to provision or manage servers.
 
-- #### Lambda Characteristics
+- ### Lambda Characteristics
   
   - **FaaS**: AWS Lambda is a prime example of a Function-as-a-Service (FaaS) platform.
   
@@ -227,14 +225,14 @@ It is designed to make web-scale cloud computing easier for developers.
   environment, and loading the function code. If it’s the first invocation or the function has been idle, a “cold start” may occur, which involves setting up a new container.
   After initialization, the function processes the event, executes its code, and returns a response.
 
-- #### Lambda Runtimes
+- ### Lambda Runtimes
 
   - **Definition**: Lambda Runtimes play a crucial role in AWS Lambda as they define the environment in which your code runs. Each Runtime provides a specific set of supported 
   languages, libraries, and dependencies.
   
   - **Supported Languages**: Lambda supports multiple programming languages, including Node.js, Python, Java, Go, Ruby, .NET, and custom runtime environments.
  
-- #### Lambda Container
+- ### Lambda Container
   
   - **Definition**: Lambda Containers, also known as AWS lambda Container Image support, allows you to package and deploy your code as a container image.
   This extends the flexibility of AWS Lambda beyond the traditional zip file deployment method.
@@ -243,7 +241,7 @@ It is designed to make web-scale cloud computing easier for developers.
   
   - **Use Case**: You can use lambda Containers to run code in environments that are not covered by the built-in runtimes, allowing for a high degree of customization.
  
-- #### Lambda Resources
+- ### Lambda Resources
 
   - **Memory Allocation**: You can specify the amount of memory (in megabytes) that you want to allocate to a function (128 MB to 10 GB). This determines the CPU power and network
   bandwidth available to the function.
@@ -258,30 +256,30 @@ It is designed to make web-scale cloud computing easier for developers.
   parameter to consider when configuring your functions. When you create or update a Lambda Function, you can specify the timeout period. The value can range from 1 second to 900 seconds
   (15 minutes).  If you don’t explicitly set a timeout, AWS Lambda uses a default timeout period of 3 seconds.
 
-- #### Lambda Invocation Types
+- ### Lambda Invocation Types
 
-  - ##### Synchronous
+  - #### Synchronous
 
     - **Definition**: In a synchronous invocation, the caller waits for the function to complete and return a response, If an error occurs or the function times out, the error message is
     returned. This is also known as “Request-Response” invocation.
     
     - **Use Case**: Ideal for situations where the caller requires a specific result from the function before proceeding.
 
-  - ##### Asynchronous
+  - #### Asynchronous
  
     - **Definition**: In an asynchronous invocation, the caller does not wait for a response. The function is triggered, and the caller receives a success message indicating that
     the request was accepted. If an error occurs, AWS Lambda retries the invocation twice. 
     
     - **Use Case**: Suitable for tasks that can be processed in the background without immediate feedback.
    
-  - ##### Event Source Mapping
+  - #### Event Source Mapping
 
     - **Definition**: Event Source Mapping is a way to connect an AWS service (like Amazon S3, DynamoDB, etc.) to a Lambda function. When an event occurs in the connected service,
     it triggers the function. This is often used for stream-based processing.
     
     - **Use Case**: For AWS services that can act as event sources (e.g., S3, DynamoDB, Kinesis), an event source mapping connects these services to a Lambda function.
 
-- #### Lambda Versioning
+- ### Lambda Versioning
 
   - **Definition**: Lambda versioning is a feature of AWS Lambda that allows you to create and manage different versions of your Lambda functions. This enables you to deploy and
   test new versions of your code without affecting the existing production version.
@@ -291,9 +289,9 @@ It is designed to make web-scale cloud computing easier for developers.
   
   - **Immutable**: Once a version is published, it becomes immutable. This means that you cannot update or change the code, configuration, or permissions of a published version.
  
-- #### Lambda Networking
+- ### Lambda Networking
 
-  - ##### Public
+  - #### Public
  
     - **Default Configuration**: When you create a Lambda function, it is configured to run in a public network environment by default.
     
@@ -301,7 +299,7 @@ It is designed to make web-scale cloud computing easier for developers.
     
     - **NAT Gateway Not Required**: You do not need to set up a NAT Gateway to enable internet access for functions in a public network.
    
-  - ##### Private
+  - #### Private
 
     - **VPC Configuration**: To run a lambda function in a private network, you must configure it to use a Virtual Private Cloud (VPC). This allows the function to operate within your own
     isolated network environment.
@@ -314,13 +312,13 @@ It is designed to make web-scale cloud computing easier for developers.
     - **NAT Gateway or VPC Endpoints**: If your function in a private network needs internet access, you can set up a NAT Gateway or use VPC endpoints to connect to AWS services without
     going over the internet.
     
-- #### Lambda Resource Policy
+- ### Lambda Resource Policy
 
   - **Definition**: In AWS lambda, a resource policy is a JSON document that grants or denies permissions to perform actions on Lambda functions.
   
   - **Policy**: It’s similar to an IAM policy, but it’s attached directly to a lambda function and controls who can invoke it.
 
- - #### Lambda Billing
+ - ### Lambda Billing
 
   - **Definition**: Billing for AWS Lambda is based on three main factors: the number of requests, the duration of code execution, and any additional resources or services 
   used in conjunction with lambda.
@@ -336,13 +334,13 @@ It is designed to make web-scale cloud computing easier for developers.
   - **Memory Allocation**: The amount of memory allocated to your function affects both execution duration and cost. Functions with more memory may execute faster 
   and incur higher charges.
 
-### Elastic Container Service (ECS)
+## Elastic Container Service (ECS)
 
 Amazon Elastic Container Service (Amazon ECS) is a fully managed container orchestration service that simplifies your deployment, management, and scaling of
 containerized applications. Amazon EC2 will launch, monitor, and scale your application across flexible compute options, with automatic integrations to other 
 supporting AWS services that your applications needs.
 
-- #### ECS Characteristics
+- ### ECS Characteristics
 
   - **Orchestration System**: ECS uses its own proprietary orchestration system. It manages containers using ECS-specific constructs like Task Definitions, Services, and Clusters.
   
@@ -356,14 +354,14 @@ supporting AWS services that your applications needs.
   
   - **Consideration**: Choose ECS if you want a managed service that abstracts more of the underlying infrastructure and provides seamless integration with other AWS services.
  
-### Elastic Kubernetes Service (EKS)
+## Elastic Kubernetes Service (EKS)
 
 Amazon Elastic Kubernetes Service (Amazon EKS) is a managed Kubernetes service to run Kubernetes in the AWS cloud and on-premises data center. In the cloud, Amazon EKS automatically
 manages the availability and scalability of the Kubernetes control planes node responsible for scheduling containers, managing application availability, storing cluster data, and other 
 key tasks. With Amazon EKS, you can take advantage of all the performance, scale, reliability, and availability of AWS infrastructure, as well as integration with AWS networking and security 
 services. On-premises, EKS provides a consistent, fully-supported Kubernetes solution with integrated tooling and simple deployment to AWS Outposts, virtual machines, or bare metal servers.
 
-- #### EKS Characteristics
+- ### EKS Characteristics
 
   - **Orchestration System**: EKS is a managed Kubernetes service. It uses Kubernetes as the container orchestration system.
   
@@ -376,14 +374,12 @@ services. On-premises, EKS provides a consistent, fully-supported Kubernetes sol
   
   - **Consideration**: Choose EKS if you prefer to use standard Kubernetes APIs and tools, need a higher degree of portability, or have existing investments in Kubernetes-based workflows.
 
-## Storage Services
-
-### Simple Storage Service (S3)
+## Simple Storage Service (S3)
 
 Amazon S3 or Amazon Simple Storage Service is a service offered by Amazon Web Services that provides object storage through a web service interface. Amazon 
 S3 uses the same scalable storage infrastructure that Amazon.com uses to run its e-commerce network.
 
-- #### S3 Characteristics
+- ### S3 Characteristics
   
   - **Object Storage Service**: S3 functions as an object storage service, enabling the storage and retrieval of data in the form of objects.
   Each object comprises data, a unique key for identification, and associated metadata.
@@ -405,9 +401,9 @@ S3 uses the same scalable storage infrastructure that Amazon.com uses to run its
   - **Strong Read-After-Write Consistency**: Following a successful write operation (PUT) of a new object or an overwrite of an existing one, any subsequent
   read request promptly retrieves the most up-to-date version of the object. This ensures strong data consistency after write operations.
 
-- #### S3 Bucket Policies
+- ### S3 Bucket Policies
   
-  - ##### S3 Bucket Policies Characteristics
+  - #### S3 Bucket Policies Characteristics
     
     - **Definition**: S3 Bucket Policies serve as a mechanism to regulate who can access your buckets and the actions they are permitted to perform.
    
@@ -420,7 +416,7 @@ S3 uses the same scalable storage infrastructure that Amazon.com uses to run its
     - **Flexibility and Customization**: By leveraging JSON-based policies, you have the flexibility to craft highly customized access rules, tailoring
     them to your specific security requirements.
 
-  - ##### Components of a Bucket Policy
+  - #### Components of a Bucket Policy
  
     - **Statement**: This serves as a foundational element within a policy, delineating the permissions, resources, and conditions. It is possible to have
     multiple statements within a policy.
@@ -435,9 +431,9 @@ S3 uses the same scalable storage infrastructure that Amazon.com uses to run its
    
     - **Condition**: While optional, this facet allows for the imposition of additional conditions that must be met for the policy to be enforced.
    
-- #### S3 ACLs
+- ### S3 ACLs
   
-  - ##### S3 ACLs Characteristics
+  - #### S3 ACLs Characteristics
  
     - **Definition**: S3 Access Control Lists (ACLs) represent legacy methods for managing access to S3 objects and buckets.
    
@@ -447,14 +443,14 @@ S3 uses the same scalable storage infrastructure that Amazon.com uses to run its
     - **XML-Based Configuration**: Amazon S3 Access Control Lists (ACLs) are structured in XML (eXtensible Markup Language) format, providing a structured
     way to define access rules.
 
-  - ##### Types of ACLs
+  - #### Types of ACLs
  
     - **Bucket ACL**: This type of ACL controls who can perform certain bucket-level operations, such as creating new objects within the bucket.
    
     - **Object ACL**: Object ACLs dictate who can perform operations on individual objects within a bucket. This includes actions like reading
     and writing object data.
 
-  - ##### S3 ACLs Permissions
+  - #### S3 ACLs Permissions
  
     - **READ**: Grants a user the ability to list the objects in a bucket and read the data of those objects.
    
@@ -466,14 +462,14 @@ S3 uses the same scalable storage infrastructure that Amazon.com uses to run its
    
     - **FULL_CONTROL**: Grants a user the ability to perform any action on the object, including both read and write operations.
    
-- #### Static Website Hosting
+- ### Static Website Hosting
 
   - **Definition**: Amazon S3 can be utilized as a platform for hosting static websites, encompassing HTML, CSS, JavaScript, images, and various other client-side assets.
  
   - **Cost-Effectiveness**: This method of hosting provides an efficient and economical solution for delivering content that doesn't necessitate server-side processing.
   It minimizes operational costs associated with traditional web hosting services.
 
-- #### Object Versioning
+- ### Object Versioning
 
   - **Definition**: Object versioning in Amazon S3 is a feature that enables you to retain multiple versions of an object within a bucket.
  
@@ -486,9 +482,9 @@ S3 uses the same scalable storage infrastructure that Amazon.com uses to run its
   - **Latest Version**: By default, when you request an object, S3 provides the most recent version. However, if necessary, you can specify a particular
   version to retrieve. This allows for precise control over which version of an object is accessed.
 
-- #### S3 Lifecycle Policies
+- ### S3 Lifecycle Policies
 
-  - ##### S3 Lifecycle Policies Characteristics
+  - #### S3 Lifecycle Policies Characteristics
  
     - **Definition**: S3 Lifecycle policies provide a means to establish rules for the automated management of objects throughout their lifecycle.
    
@@ -499,7 +495,7 @@ S3 uses the same scalable storage infrastructure that Amazon.com uses to run its
    
     - **Cost Optimization**: By automating the transition of objects to lower-cost storage classes, lifecycle policies help reduce overall storage expenses over time.
    
-  - ##### Components of a Lifecycle Policy
+  - #### Components of a Lifecycle Policy
  
     - **Transition Actions**: This component dictates when objects migrate from one storage class to another. For instance, transitioning from Standard to S3 Standard-IA
     after a defined number of days.
@@ -507,7 +503,7 @@ S3 uses the same scalable storage infrastructure that Amazon.com uses to run its
     - **Expiration Actions**: This facet allows for the establishment of rules concerning when objects are to be permanently removed, for instance, after a specified
     number of days.
 
-- #### Multipart Upload
+- ### Multipart Upload
  
   - **Definition**: Multipart Upload is a fundamental feature in Amazon S3 designed for efficiently handling the upload of large objects. It provides a reliable
   mechanism for uploading files that surpass the size limit for a single operation.
@@ -526,7 +522,7 @@ S3 uses the same scalable storage infrastructure that Amazon.com uses to run its
   - **Resilience to Interruptions**: In the event of network issues or interruptions during the upload process, Multipart Upload allows for the re-upload of only the
   affected parts, rather than the entire object.
 
-- #### S3 Accelerated Transfer
+- ### S3 Accelerated Transfer
 
   - **Definition**: Amazon S3 Transfer Acceleration is a feature within Amazon Simple Storage Service (Amazon S3) that facilitates rapid, convenient, and secure file
   transfers over the internet. It leverages the Amazon CloudFront content delivery network (CDN) to expedite the uploading and downloading of objects.
@@ -537,9 +533,9 @@ S3 uses the same scalable storage infrastructure that Amazon.com uses to run its
   - **Upload Process**: When utilizing S3 Transfer Acceleration to upload an object, the data initially traverses to an AWS edge location situated nearest to your location.
   Subsequently, it is securely transmitted to the designated S3 bucket.
 
-- #### S3 Storage Classes
+- ### S3 Storage Classes
 
-  - ##### S3 Standard
+  - #### S3 Standard
   
     - **Description**:  The Standard storage class is the default and most widely used tier within Amazon S3. It is designed for data with high access frequency,
     providing immediate and low-latency retrieval of stored objects.
@@ -550,7 +546,7 @@ S3 uses the same scalable storage infrastructure that Amazon.com uses to run its
     
     - **Durability and Availability**: Offers 99.999999999% (11 9's) durability and 99.99% availability over a year.
 
-  - ##### S3 Standard-IA (Infrequent Access)
+  - #### S3 Standard-IA (Infrequent Access)
   
     - **Description**: Standard-IA is tailored for data characterized by less frequent access, yet necessitates prompt retrieval when required. It is an
     economical choice for data that does not require immediate access.
@@ -564,7 +560,7 @@ S3 uses the same scalable storage infrastructure that Amazon.com uses to run its
     
     - **Availability**: Offers the same level of availability as the Standard class.
 
-  - ##### S3 One Zone-IA
+  - #### S3 One Zone-IA
   
     - **Description**: One Zone-IA storage class is similar to Standard-IA but is confined to a single Availability Zone. This results in a lower cost, making
     it a cost-effective alternative for infrequently accessed data.
@@ -575,7 +571,7 @@ S3 uses the same scalable storage infrastructure that Amazon.com uses to run its
     
     - **Availability Considerations**: While slightly less available than Standard-IA, it is still suitable for data with infrequent access needs in a single Availability Zone.
    
-  - ##### S3 Intelligent-Tiering
+  - #### S3 Intelligent-Tiering
   
     - **Description**: Intelligent-Tiering is a dynamic storage class that automatically moves objects between Frequent Access Tier and Infrequent Access Tier based on observed
     access patterns. It optimizes costs for variable workloads.
@@ -586,7 +582,7 @@ S3 uses the same scalable storage infrastructure that Amazon.com uses to run its
     
     - **Savings Considerations**: It may incur a small monthly monitoring and automation fee, but this is offset by the cost savings achieved through intelligent tiering.
    
-  - ##### S3 Glacier Flexible Retrieval
+  - #### S3 Glacier Flexible Retrieval
   
     - **Description**: The Glacier storage class is specifically designed for long-term archival storage. It is characterized by retrieval times ranging from minutes to hours.
     
@@ -596,7 +592,7 @@ S3 uses the same scalable storage infrastructure that Amazon.com uses to run its
     
     - **Durability and Availability**: Offers the same high durability as Standard class but with slower retrieval times.
    
-  - ##### S3 Glacier Deep Archive
+  - #### S3 Glacier Deep Archive
   
     - **Description**: Glacier Deep Archive is tailored for data with extraordinarily infrequent access patterns and no immediate retrieval time constraints.
     It offers the lowest storage cost among all S3 storage classes.
@@ -607,7 +603,7 @@ S3 uses the same scalable storage infrastructure that Amazon.com uses to run its
     
     - **Retrieval Time**: Retrieval times can take several hours, making it unsuitable for data with immediate retrieval requirements.
 
-- #### S3 Object Replication
+- ### S3 Object Replication
 
   - **Definition**: Amazon S3 Replication is a feature that allows you to automatically and asynchronously replicate objects from one S3 bucket to another
   in the same or a different AWS Region.
@@ -642,7 +638,7 @@ S3 uses the same scalable storage infrastructure that Amazon.com uses to run its
   - **Deletes are not replicated**: if an object is deleted from the source bucket, that deletion is not automatically replicated to the destination bucket. The
   object will remain in the destination bucket unless it is manually deleted.
 
-- #### S3 Events
+- ### S3 Events
 
   - **Definition**: S3 Events are notifications sent by Amazon S3 whenever certain events occur within a bucket.
   
@@ -653,9 +649,9 @@ S3 uses the same scalable storage infrastructure that Amazon.com uses to run its
   - **Lambda Functions**: S3 Events are often used to trigger AWS Lambda functions, allowing for serverless processing of objects. This is a powerful way
   to automate tasks based on S3 activity.
 
-- #### S3 Object Lock
+- ### S3 Object Lock
 
-  - ##### S3 Object Lock Characteristics
+  - #### S3 Object Lock Characteristics
   
     - **Definition**: Amazon S3 Object Lock is a feature that allows you to enforce retention policies on objects stored in an S3 bucket.
    
@@ -666,7 +662,7 @@ S3 uses the same scalable storage infrastructure that Amazon.com uses to run its
     - **Immutability and Data Integrity**: Object Lock helps to ensure the immutability and integrity of your data, making it suitable for applications
     with strict compliance requirements.
   
-  - ##### Retention Modes
+  - #### Retention Modes
  
     - **Legal Hold**: When Legal Hold is applied to an object, it ensures that the object remains in a state of preservation, regardless of any specified
     retention periods. This means the object cannot be deleted or altered until the legal hold is explicitly removed. Legal Hold is typically used for legal
@@ -678,7 +674,7 @@ S3 uses the same scalable storage infrastructure that Amazon.com uses to run its
     - **Compliance Mode**: In this mode, once an object is locked, its retention cannot be shortened, and the object cannot be deleted by anyone until the retention
     period expires. This mode is designed for regulatory compliance requirements.
 
-- #### Glacier Vault Lock
+- ### Glacier Vault Lock
 
   - **Definition**: Amazon S3 Glacier Vault Lock is a feature that allows you to enforce compliance controls on your S3 Glacier vaults.
   
@@ -697,9 +693,9 @@ S3 uses the same scalable storage infrastructure that Amazon.com uses to run its
   - **Emergency Access**: While the Vault Lock is in place, you can create and lock a legal hold to allow for temporary suspension of the retention policy for compliance
   checks or legal investigations.
 
-- #### S3 Access Points
+- ### S3 Access Points
 
-  - ##### S3 Access Points Characteristics
+  - #### S3 Access Points Characteristics
 
     - **Named Endpoints**: Access Points are named endpoints in S3 that are used to upload and access objects. They are independent of the bucket’s name and can be associated
     with one or more buckets.
@@ -709,13 +705,13 @@ S3 uses the same scalable storage infrastructure that Amazon.com uses to run its
     
     - **Endpoint DNS Names**: Each Access Point has its own unique DNS name, allowing you to access objects using the access point’s endpoint.
    
-  - ##### Network Controls
+  - #### Network Controls
  
     - **VPC Endpoints**: Access Points can be associated with Virtual private Cloud (VPC) endpoints, allowing access to S3 resources without traversing the public internet.
     
     - **Access Policy**: You can attach an Access Policy to an Access Point to control which VPCs or VPC endpoints can use the Access Point.
    
-  - ##### Use Cases
+  - #### Use Cases
  
     - **Multi-Tenant Environment**: Access Points are useful in scenarios where multiple teams or applications share a single bucket, but need separate access controls.
     
@@ -723,7 +719,7 @@ S3 uses the same scalable storage infrastructure that Amazon.com uses to run its
     
     - **Compliance and Security**: Access Points help enforce compliance requirements and enhance security by providing distinct access policies.
 
-- #### Object Encryption
+- ### Object Encryption
 
   - **SSE-S3**: Amazon S3 manages the encryption process for you. When you upload an object, S3 uses its own encryption keys to encrypt the object. These keys are unique to your
   account  and the object.
@@ -734,12 +730,12 @@ S3 uses the same scalable storage infrastructure that Amazon.com uses to run its
   - **SSE–C**: You (customer) provide your own encryption key and manage them outside of AWS. When you upload an object, you need to include the encryption key in the request
   headers, and Amazon S3 uses it to encrypt the object.
       
-### Amazon Instance Store
+## Amazon Instance Store
 
 Amazon Instance Store, also known as ephemeral storage, provides temporary block-level storage for Amazon EC2 Instance. It is physically
 attached to the host computer on which your instance runs and is ideal for temporary storage of data that changes frequently.
 
-- #### Amazon Instance Store Characteristics
+- ### Amazon Instance Store Characteristics
 
   - **Direct Hardware Attachment**:Instance Store volumes are directly attached to the physical hardware of the host machine,
   providing exceptionally high input/output operations per second (IOPS) performance.
@@ -756,12 +752,12 @@ attached to the host computer on which your instance runs and is ideal for tempo
   - **Lack of Snapshot Support**: Instance Store volumes do not support snapshots, which means you cannot easily create backups
   or migrate data.
 
-### Amazon Elastic Block Store (EBS)
+## Amazon Elastic Block Store (EBS)
 
 Amazon Elastic Block Store (Amazon EBS) is a block-level storage service provided by Amazon Web Services (AWS) for use with Amazon Elastic
 Compute Cloud (EC2) instances. It offers durable and scalable block-level storage that you can attach to your EC2 instances.
 
-- #### EBS Characteristics
+- ### EBS Characteristics
 
   - **Block-Level Storage**: Amazon Elastic Block Store (EBS) provides raw storage volumes that can be directly attached to EC2 instances. This
     characteristic allows you to utilize EBS much like a physical hard drive, making it suitable for a wide array of applications.
@@ -772,9 +768,9 @@ Compute Cloud (EC2) instances. It offers durable and scalable block-level storag
   - **Resizable Volumes**: EBS volumes can be adjusted in size without the need to halt or restart the associated instance. However, it's
     important to note that the filesystem within the operating system must be extended in order for the OS to recognize the resized volume.
 
-- #### EBS Volume Types
+- ### EBS Volume Types
 
-  - ##### General Purpose (SSD)
+  - #### General Purpose (SSD)
 
     - **Description**: General Purpose SSD volumes, known as gp2, strike a balance between price and performance. They are engineered to offer a
     mix of consistent baseline performance and burst performance, catering to applications with diverse I/O requirements.
@@ -784,7 +780,7 @@ Compute Cloud (EC2) instances. It offers durable and scalable block-level storag
 
     - **Durability**: Up to 99.9% durability.
 
-  - ##### Provisioned IOPS (SSD)
+  - #### Provisioned IOPS (SSD)
 
     - **Description**: Provisioned IOPS SSD volumes, also known as io1, are designed for I/O-intensive workloads that require consistently high performance.
     You specify the desired number of IOPS when you create the volume.
@@ -797,7 +793,7 @@ Compute Cloud (EC2) instances. It offers durable and scalable block-level storag
     
     - **Durability**: Up to 99.9% durability.
 
-  - ##### Throughput Optimized (HDD)
+  - #### Throughput Optimized (HDD)
 
     - **Description**: Throughput Optimized HDD volumes, also known as st1, are designed for frequently accessed, large, sequential workloads. They are optimized for consistency,
       high-throughput performance.
@@ -806,7 +802,7 @@ Compute Cloud (EC2) instances. It offers durable and scalable block-level storag
 
     - **Durability**: Up to 99.9% durability.
 
-  - ##### Cold (HDD)
+  - #### Cold (HDD)
 
     - **Description**: Cold HDD volumes, also known as sc1, are designed for less frequently accessed workloads with large, sequential read and write. They offer the lowest
     storage cost but with the trade-off of lower performance compared to other volume types.
@@ -818,7 +814,7 @@ Compute Cloud (EC2) instances. It offers durable and scalable block-level storag
     
     - **Durability**: Up to 99.9% durability.
 
-- #### EBS Snapshots
+- ### EBS Snapshots
 
   - **Backup and Recovery**: EBS Snapshots allow you to create backups of your EBS volumes, providing a reliable way to recover your data in case of accidental deletion, corruption,
     or other data loss scenarios.
@@ -842,7 +838,7 @@ Compute Cloud (EC2) instances. It offers durable and scalable block-level storag
 
   - **Encrypted Snapshots**: You can choose to encrypt your EBS snapshots using AWS Key Management Service (KMS) keys for added security.
 
-- #### EBS Encryption
+- ### EBS Encryption
 
   - **Data Security**: Amazon EBS Encryption is a feature that allows you to encrypt your Elastic Block Store (EBS) volumes at rest.
 
@@ -856,7 +852,7 @@ Compute Cloud (EC2) instances. It offers durable and scalable block-level storag
   - **Snapshots Sharing**: You can share snapshots of encrypted volumes with other AWS accounts, but the snapshots remain encrypted. The recipient account must have the necessary
     permissions to use the shared snapshot.
 
-- #### How to encrypt EBS Volumes that are not encrypted
+- ### How to encrypt EBS Volumes that are not encrypted
 
   - **Step 1**: Create a snapshot of the unencrypted root EBS volume.
 
@@ -866,7 +862,7 @@ Compute Cloud (EC2) instances. It offers durable and scalable block-level storag
 
   - **Step 4**: Use that AMI to launch new encrypted instances.
 
-- #### EBS Hibernation
+- ### EBS Hibernation
 
   - **Preservation of In-Memory State**: Amazon EBS Hibernation is a feature that allows you to pause and resume Amazon EC2 instances, preserving their in-memory state. When
     an instance is hibernated, the contents of its RAM are written to the associated EBS root volume. This enables you to quickly restart the instance in the same state it
@@ -882,12 +878,12 @@ Compute Cloud (EC2) instances. It offers durable and scalable block-level storag
 
   - **Instance Type**: Hibernation is only available for On-Demand and Reserved Instances.
 
-### Amazon Elastic File System (EFS)
+## Amazon Elastic File System (EFS)
 
 Amazon Elastic File System (Amazon EFS) is a scalable and fully managed file storage service provided by AWS. It's designed to provide shared access to a file system, 
 allowing multiple EC2 instances to read and write to the same file system at the same time.
 
-- #### EFS Characteristics
+- ### EFS Characteristics
 
   - **Shared File Storage**: Amazon EFS provides a shared file system that can be accessed by multiple EC2 instances and services concurrently.
 
@@ -903,9 +899,9 @@ allowing multiple EC2 instances to read and write to the same file system at the
   - **Encryption**: Amazon Elastic File System (EFS) provides encryption at rest by default. When you create a new Amazon EFS file system, the data and metadata
     are automatically encrypted using an AWS Key Management Service (KMS) key.
 
-- #### EFS Classes
+- ### EFS Classes
 
-  - ##### EFS Standard
+  - #### EFS Standard
 
     - **Designed for**: Frequently accessed data requiring the highest durability and availability.
 
@@ -913,7 +909,7 @@ allowing multiple EC2 instances to read and write to the same file system at the
 
     - **Availability**: Up to 99.99% availability.
 
-  - ##### EFS Standard–Infrequent Access (IA)
+  - #### EFS Standard–Infrequent Access (IA)
 
     - **Designed for**: Long lived, infrequently accessed data requiring the highest durability and availability.
 
@@ -921,12 +917,12 @@ allowing multiple EC2 instances to read and write to the same file system at the
 
     - **Availability**: Up to 99.99% availability.
 
-### Amazon FSx for Windows
+## Amazon FSx for Windows
 
 Amazon FSx for Windows File Server is a fully managed file storage service provided by AWS. It is designed to provide a fully compatible, native Windows
 file system experience to applications and workloads that require shared file storage.
 
-- #### FSx for Windows Characteristics
+- ### FSx for Windows Characteristics
 
   - **Fully Managed Service**: Amazon FSx for Windows File Server is a fully managed service, which means AWS handles the underlying infrastructure,
     maintenance, and updates for the file system.
@@ -937,12 +933,12 @@ file system experience to applications and workloads that require shared file st
   - **SMB Protocol Support**: Amazon FSx supports the Server Message Block (SMB) protocol versions 2.0, 2.1, 3.0, and 3.1.1, allowing seamless integration
     with Windows environments.
 
-### Amazon FSx for Lustre
+## Amazon FSx for Lustre
 
 Amazon FSx for Lustre is a high-performance, fully managed file system designed for compute-intensive workloads. It provides scalable and parallel file
 storage that is optimized for applications that require fast access to large amounts of data.
 
-- #### FSx for Lustre Characteristics
+- ### FSx for Lustre Characteristics
 
   - **High Performance**: FSx for Lustre is optimized for high-performance computing (HPC) and other demanding workloads. It provides low-latency
     access to data, making it ideal for applications like machine learning, analytics, and simulations.
@@ -956,7 +952,7 @@ storage that is optimized for applications that require fast access to large amo
   - **Integration with S3**: You can seamlessly integrate FSx for Lustre with Amazon S3, allowing you to efficiently move data between the two services.
     This is useful for data processing workflows that require both high-speed processing and long-term storage.
 
-### Amazon EFS vs. Amazon FSx for Windows vs. Amazon FSx for Lustre
+## Amazon EFS vs. Amazon FSx for Windows vs. Amazon FSx for Lustre
 
 - **Amazon EFS**: Distributed and highly resilient storage for Linux instances and Linux-based applications.
 
@@ -966,14 +962,12 @@ storage that is optimized for applications that require fast access to large amo
 - **Amazon FSx for Lustre**: High-speed, high-capacity distributed storage, ideal for high-performance computing (HPC), financial modeling,
   and more. It can also directly store data on Amazon S3.
 
-## Database Services
-
-### Amazon Relational Database Service (RDS)
+## Amazon Relational Database Service (RDS)
 
 Amazon RDS (Relational Database Service) is a managed database service provided by Amazon Web Services (AWS). It makes it easier to set up,
 operate, and scale a relational database in the cloud.
 
-- #### RDS Engines
+- ### RDS Engines
 
   - MySQL
 
@@ -985,7 +979,7 @@ operate, and scale a relational database in the cloud.
 
   - Microsoft SQL Server
 
-- #### RDS Multi-AZ
+- ### RDS Multi-AZ
 
   - **Definition**: RDS Multi-AZ is a feature that provides high availability and fault tolerance for database instances. Its designed to
     enhance the reliability of your database by automatically replicating data to a standby instance located in a different Availability Zone
@@ -997,7 +991,7 @@ operate, and scale a relational database in the cloud.
   - **Standby Replica**: A standby replica of the primary database is created in a different Availability Zone. This replica is an exact
     copy of the primary database.
 
-- #### RDS Read Replica
+- ### RDS Read Replica
 
   - **Definition**: An Amazon RDS Read Replica is a copy of a source database that is asynchronously updated in near
     real-time. The purpose of a read replica is to offload read traffic from the primary database, which can
@@ -1027,7 +1021,7 @@ operate, and scale a relational database in the cloud.
     entry point. The ALB, with its content-based routing capabilities, efficiently distributes read traffic to the replicas,
     ensuring load is balanced and response times are optimized.
 
-- #### RDS Proxy
+- ### RDS Proxy
 
   - **Definition**: Amazon RDS Proxy is a fully managed database proxy service. Provided by Amazon Web Services (AWS). It is designed
     to improve the scalability and availability of applications using Amazon RDS databases.
@@ -1053,7 +1047,7 @@ operate, and scale a relational database in the cloud.
   - **Cross-Region Deployment**: RDS proxy also supports cross-region deployments. This means you can deploy an RDS Proxy in one AWS Region and have it
     route traffic to RDS databases in different AWS Region. This allows you to scale your application globally while benefiting from the performance and security of RDS Proxy.
 
-- #### RDS Automatic Backups
+- ### RDS Automatic Backups
 
   - **Frequency**: RDS takes automated backups of your database instance daily during a user-defined 8-hours window. The default window is
     chosen by AWS, but you can modify it to better suit your needs.
@@ -1070,7 +1064,7 @@ operate, and scale a relational database in the cloud.
     storage. It's important to note that users cannot directly view the Amazon S3 bucket used for storing Amazon RDS Backup using the AWS Management Console
     or the AWS CLI. The RDS Backup is managed by AWS, and the bucket is typically not accessible or visible to AWS customers through standard AWS interfaces.
 
-- #### RDS Snapshots
+- ### RDS Snapshots
 
   - **Manual Creating**: Unlike automated backups, which are taken automatically within a specific window, RDS snapshots are created manually by the user.
     
@@ -1080,25 +1074,25 @@ operate, and scale a relational database in the cloud.
   storage. It's important to note that users cannot directly view the Amazon S3 bucket used for storing Amazon RDS snapshots using the AWS Management Console
   or the AWS CLI. The RDS snapshot is managed by AWS, and the bucket is typically not accessible or visible to AWS customers through standard AWS interfaces.
 
-- #### RDS Automatic Backups vs. RDS Snapshots
+- ### RDS Automatic Backups vs. RDS Snapshots
 
-  - ##### Creation Method
+  - #### Creation Method
 
     - **Automated Backups**: created automatically within a use-defined backup window.
     - **Snapshots**: Created manually by the user.
 
-  - ##### Frequency
+  - #### Frequency
 
     - **Automated Backups**: Taken daily during the defined backup window.
     - **Snapshots**: Created on-demand, whenever the user initiates the snapshot process.
 
-  - ##### Retention Period
+  - #### Retention Period
 
     - **Automated Backups**: Retained for a user-defined period (default is 7 days, can be extended up to 35 days).
 
     - **Snapshots**: Retained indefinitely until manually deleted.
 
-- #### RDS Encryption at Rest
+- ### RDS Encryption at Rest
 
   - **AWS Manages the Keys (AWS KMS)**: This is the default option and uses AWS Key Management Service (KMS) to manage encryption keys.
     With this option, AWS manages the keys for you, and you have the option to use default keys or create custom ones.
@@ -1106,13 +1100,13 @@ operate, and scale a relational database in the cloud.
   - **Customer Manages the Keys (CMK)**: With this option, you can use KMS keys that you create and manage. This allows you for more
     fine-grained control over key management.
 
-### Amazon Aurora (RDS)
+## Amazon Aurora (RDS)
 
 Amazon Aurora is a MySQL and PostgreSQL compatible relational database built for the cloud, that combines the performance and availability 
 of high-end commercial databases with the simplicity and cost-effectiveness of open-source databases. It is a fully managed database service
 provided by Amazon Web Services (AWS).
 
-- #### Aurora Characteristics
+- ### Aurora Characteristics
 
   - **Performance**: Aurora provides high performance, with up to 5 times the throughput of standard MySQL running on the same hardware. It achieves
   this by using a distributed, fault-tolerance, self-healing storage system.
@@ -1131,7 +1125,7 @@ provided by Amazon Web Services (AWS).
   - **Scalability**: Aurora allows you to scale your database resources up or down with just a few clicks in the AWS Management Console. It also supports
   auto-scaling for Aurora Replicas.
 
-- #### Aurora Severless
+- ### Aurora Severless
 
   - **Definition**: Aurora Serverless is a database deployment option for Amazon Aurora. Amazon Aurora Serverless is designed to automatically  and dynamically
   adjust database capacity based on the application’s needs. It’s a fully managed service that allows you to run your database without the need to manage
@@ -1148,7 +1142,7 @@ provided by Amazon Web Services (AWS).
   
   - **Data API**: Aurora Serverles provides a Data API that allows you to easily access and interact with your database using HTTPS-based API calls.
 
-- #### Aurora Multi-Master
+- ### Aurora Multi-Master
 
   - **Definition**: Amazon Aurora Multi-Master is a feature provided by Amazon Web Services (AWS) that allows you to create multiple read/write master instances within an
   Aurora database cluster. This means that each master instance can handle both read and write operations, providing increased availability and fault tolerance
@@ -1168,7 +1162,7 @@ provided by Amazon Web Services (AWS).
   
   - **Global Database**: You can use Aurora Multi-Master in conjunction with Aurora Global Database to create an active-active setup across multiple AWS regions.
  
-- #### Aurora Global Database
+- ### Aurora Global Database
 
   - **Definition**: Amazon Aurora Global Database is a feature provided by Amazon Web Services (AWS) that allows you to create a globally distributed, highly available
   with low-latency access for read and write operation. It is designed for applications that require high availability and low-latency access across multiple
@@ -1185,12 +1179,12 @@ provided by Amazon Web Services (AWS).
   - **Global Write Commit Policy**: You can choose whether to enforce a “write-anywhere” or “write-to-primary” policy. This allows you to control where writes are allowed,
   based on your application’s requirements.
 
-### Amazon DynamoDB
+## Amazon DynamoDB
 
 Amazon DynamoDB is a fully managed NoSQL database service provided by Amazon Web Services (AWS). It is designed to provide fast and predictable performance with 
 seamless scalability.
 
-- #### DynamoDB Characteristics
+- ### DynamoDB Characteristics
   
   - **Data Replication**: Amazon DynamoDB uses synchronous replications across 3 Availability Zones (AZs) within a region to provide high availability
   and data durability.
@@ -1198,7 +1192,7 @@ seamless scalability.
   - **Consistency Model**: Amazon DynamoDB is eventually consistent by default. This means that when you perform a read operation on a DynamoDB table without
   specifying a specific consistency level, you will receive the most up-to-date data available, but it might not reflect the most recent write.
 
-- #### RCU and WCU
+- ### RCU and WCU
 
   - **RCU**: Read Capacity Units (RCUs) represent the read throughput capacity of DynamoDB tables. An RCU represents one strongly consistent read per second, or two eventually
   consistent reads per second, for an item up to 4 KB size. Transactional read requests require two RCUs to perform one read per second for items up to 4 KB. If you need to
@@ -1207,9 +1201,9 @@ seamless scalability.
   - **WCU**: Write Capacity Units (WCUs) represent the write throughput capacity of a DynamoDB table. An WCU represents one write per second (up to 1KB) and two WCUs for each
   additional write per second. For writes greater than 1 KB, total number of writes required = (total item size / 1 KB) rounded up.
 
-- #### DynamoDB Consistency Model
+- ### DynamoDB Consistency Model
   
-  - ##### Strong Consistency
+  - #### Strong Consistency
     
     - **Description**: With strong consistency, a read operation returns the most-up-to-date data. This means that after a write operation is acknowledged,
     any subsequent read operation will reflect the updated data.
@@ -1224,7 +1218,7 @@ seamless scalability.
     
     - **Latency Consideration**: Offers a higher level of data consistency, but may have latency compared to eventual consistency.
    
-  - ##### Eventual Consistency
+  - #### Eventual Consistency
  
     - **Description**: With eventual consistency, a read operation might not reflect the most recent write. Instead, it guarantees that, given enough time, all
     replicas of a data item will converge to the same value.
@@ -1237,7 +1231,7 @@ seamless scalability.
     - **Use Cases**: Often sufficient for many applications where the absolute latest data isn’t required. For example, In a social media application, a slightly
     delayed view count on a post might be acceptable.
 
-- #### DynamoDB Transactions
+- ### DynamoDB Transactions
 
   - **Definition**: DynamoDB Transitions is a feature that allows you to perform multiple read and write operations on one or more items as an atomic unit of work. This means that
   either all of the operations in the transition succeed, or none of them do.
@@ -1245,7 +1239,7 @@ seamless scalability.
   - **ACID Properties**: DynamoDB transitions provide ACID (Atomicity, Consistency, isolation, Durability) properties. This ensures that transitions are reliably processed,
   and the data is always in a consistent state.
 
-- #### DynamoDB Accelerator (DAX)
+- ### DynamoDB Accelerator (DAX)
 
   - **Definition**: Amazon DynamoDB Accelerator (DAX) is an in-memory cache for DynamoDB. It is designed to improve the performance of read-intensive DynamoDB workloads by providing
   low-latency access to frequently accessed items.
@@ -1267,7 +1261,7 @@ seamless scalability.
   
   - **Keep in mind**: DAX is focused on improving read performance. Write operations are still sent directly to DynamoDB and are not cached in DAX.
 
-- #### DynamoDB Read-Replica
+- ### DynamoDB Read-Replica
 
   - **Definition**: A DynamoDB read replica is a feature that allows you to create a copy of a DynamoDB table. This replica table is kept in sync with the source table, providing you with
   the ability to offload traffic from the primary database and improve read scalability.
@@ -1280,7 +1274,7 @@ seamless scalability.
   
   - **Max Read-Replicas**: You can have up to 5 read replicas for a single DynamoDB table.
  
-- #### DynamoDB Accelerator (DAX) vs. DynamoDB Read-Replica
+- ### DynamoDB Accelerator (DAX) vs. DynamoDB Read-Replica
 
   - **Read Replicas**: Suitable when you need to offload read traffic from the primary table, especially in scenarios where you have a geographic distributed user base or need to scale
   read capacity.
@@ -1288,7 +1282,7 @@ seamless scalability.
   - **DAX**: Beneficial when you require extremely low read latencies and want to leverage an in-memory cache to reduce the number of reads directly hitting DynamoDB. It’s particularly
   useful for read-heavy workloads with a high rate of repeated queries for the same data.
 
-- #### DynamoDB Streams
+- ### DynamoDB Streams
 
   - **Definition**: DynamoDB Streams is a feature provided by Amazon DynamoDB that captures and streams changes made to items in a DynamoDB table. It allows you to read to changers in
   real-time and build applications that can process these changes.
@@ -1303,7 +1297,7 @@ seamless scalability.
   - **Cost Considerations**: While enabling DynamoDB Streams doesn’t incur an additional cost, you will be charged to the resource used to process the stream (e.g., Lambda invocations,
   additional DynamoDB Read Capacity).
 
-- #### DynamoDB Global Tables
+- ### DynamoDB Global Tables
 
   - **Definition**: DynamoDB Global Tables is a feature provided by Amazon DynamoDB that enables you to replicate your table across multiple AWS regions. This allows you to achieve
   low-latency access to data for globally distributed applications and provided disaster recovery capabilities.
@@ -1326,7 +1320,7 @@ seamless scalability.
   - **Cost Consideration**: While enabling global tables doesn’t incur an additional cost, you will be charged for the resource used in each region (e.g., storage, provisioned
   throughput, etc.).
  
-- #### DynamoDB Point-in-Time Recovery (PITR)
+- ### DynamoDB Point-in-Time Recovery (PITR)
 
   - **Definition**: DynamoDB Point-in-Time Recovery (PITR) is a feature provided by Amazon DynamoDB that allows you to restore your table data to any point in time within the
   last 35 days. This feature helps protect against accidental deletes, overwrites, or other data corruptions.
@@ -1347,7 +1341,7 @@ seamless scalability.
   - **Use Cases**: PITR is useful for scenarios such as recovering from accidental data loss, restoring to known good state after a corruption, and meeting regulatory requirements
   for data recovery.
 
-- #### DynamoDB Encryption at Rest
+- ### DynamoDB Encryption at Rest
 
   - **Automated Encryption**: DynamoDB at Rest automatically encrypts your data using the AWS Key Management Service (KMS) encryption keys. You don’t need to manage the encryption process manually.
   
@@ -1357,27 +1351,27 @@ seamless scalability.
   
   - **No Additional Costs**: There is nop additional costs for enabling encryption at rest. You are charged for the storage of your data as usual.
 
-### Amazon DocumentDB
+## Amazon DocumentDB
 
 Amazon DocumentDB is a fully managed, scalable, and highly available NoSQL database service provided by Amazon Web Services (AWS). It is designed to be compatible with the popular
 MongoDB database, which means it supports MongoDB workloads and applications without requiring code changes.
 
-### Amazon Keyspaces
+## Amazon Keyspaces
 
 Amazon Keyspaces, formerly known as Amazon managed Apache Cassandra Service (MCS), is a fully managed, serverless, and scalable NoSQL database service provided by Amazon 
 Web Services (AWS). It is designed to offer compatibility with Apache Cassandra, a popular open-source distributed database system.
 
-### Amazon Neptune
+## Amazon Neptune
 
 Amazon neptune is a fully managed graph database service provided by Amazon Web Services (AWS). It’s designed to handle highly connected data and is compatible with 
 two popular graph models: Property Graph and W3C’s RDS.
 
-### Amazon Quantum Ledger Database
+## Amazon Quantum Ledger Database
 
 Amazon Quantum Ledger Database (QLDB) is a fully managed, serverless, and blockchain-like database service provided by Amazon Web Services (AWS). It is designed to provide a 
 secure, transparent, and immutable ledger for tracking changes to data.
 
-### Amazon Timestream
+## Amazon Timestream
 
 Amazon Timestream is a fully managed, serverless, and purpose-built time-series database service provided by Amazon Web Services (AWS). It is designed to handle high volumes 
 of data points collected over time, making it well-suited for IoT applications, industrial telemetry, and operational monitoring.
