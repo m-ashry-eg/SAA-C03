@@ -336,6 +336,46 @@ It is designed to make web-scale cloud computing easier for developers.
   - **Memory Allocation**: The amount of memory allocated to your function affects both execution duration and cost. Functions with more memory may execute faster 
   and incur higher charges.
 
+### Elastic Container Service (ECS)
+
+Amazon Elastic Container Service (Amazon ECS) is a fully managed container orchestration service that simplifies your deployment, management, and scaling of
+containerized applications. Amazon EC2 will launch, monitor, and scale your application across flexible compute options, with automatic integrations to other 
+supporting AWS services that your applications needs.
+
+- #### ECS Characteristics
+
+  - **Orchestration System**: ECS uses its own proprietary orchestration system. It manages containers using ECS-specific constructs like Task Definitions, Services, and Clusters.
+  
+  - **Managed Service**: ECS is a fully managed service provided by AWS. It abstracts the underlying infrastructure, and AWS takes care of the ECS control plane.
+  
+  - **Task Definitions**: Tasks in ECS are defined by Task Definitions, A Task Definition specifies how a set of containers should work together.
+  
+  - **Launch Type**: ECS offers two launch types, EC2 and Fargate. EC2 launch type allows you to run tasks on your own EC2 instances, while Fargate abstracts the underlying infrastructure.
+  
+  - **AWS-Native**: ECS is a native AWS service and is tightly integrated with other AWS services. It provides seamless integration with services like CloudWatch, IAM, and others.
+  
+  - **Consideration**: Choose ECS if you want a managed service that abstracts more of the underlying infrastructure and provides seamless integration with other AWS services.
+ 
+### Elastic Kubernetes Service (EKS)
+
+Amazon Elastic Kubernetes Service (Amazon EKS) is a managed Kubernetes service to run Kubernetes in the AWS cloud and on-premises data center. In the cloud, Amazon EKS automatically
+manages the availability and scalability of the Kubernetes control planes node responsible for scheduling containers, managing application availability, storing cluster dta, and other 
+key tasks. With Amazon EKS, you can take advantage of all the performance, scale, reliability, and availability of AWS infrastructure, as well as integration with AWS networking and security 
+services. On-premises, EKS provides a consistent, fully-supported Kubernetes solution with integrated tooling and simple deployment to AWS outposts, virtual machines, or bare metal servers.
+
+- #### EKS Characteristics
+
+  - **Orchestration System**: EKS is a managed Kubernetes service. It uses Kubernetes as the container orchestration system.
+  
+  - **Managed Service**: EKS manages the Kubernetes control plane, but you are responsible for managing and scaling the worker node (EC2 instances) that run your applications.
+  
+  - **Launch Type**: EKS offers two launch types, EC2 and Fargate. EC2 launch type allows you to run tasks on your own EC2 instances, while Fargate abstracts the underlying infrastructure.
+  
+  - **Flexibility and Portability**: EKS allows for a higher degree of flexibility and portability because it adheres to standard Kubernetes APIs. This means you can easily move workloads between 
+  different Kubernetes environments, whether they are hosted on-premises or in different cloud providers.
+  
+  - **Consideration**: Choose EKS if you prefer to use standard Kubernetes APIs and tools, need a higher degree of portability, or have existing investments in Kubernetes-based workflows.
+
 ## Storage Services
 
 ### Simple Storage Service (S3)
