@@ -373,6 +373,50 @@ services. On-premises, EKS provides a consistent, fully-supported Kubernetes sol
   different Kubernetes environments, whether they are hosted on-premises or in different cloud providers.
   
   - **Consideration**: Choose EKS if you prefer to use standard Kubernetes APIs and tools, need a higher degree of portability, or have existing investments in Kubernetes-based workflows.
+ 
+## AWS Fargate
+
+AWS Fargate is a serverless compute engine provided by Amazon Web Services (AWS) that allows you to run containers without managing the underlying infrastructure. It’s part of the broader 
+Amazon ECS (Elastic Container Service) and Amazon EKS (Elastic Kubernetes Service) offering.
+
+- ### Fargate Characteristics
+
+  - **Serverless Container Management**: Fargate enables you to run containers in AWS without having to manage the underlying EC2 instances. You simply define your  containers and their
+  resources, and AWS takes care of the rest.
+  
+  - **Container Orchestration**: Fargate works with both Amazon ECS and Amazon EKS for container orchestration. You define your task or pods, and Fargate handles the container placement,
+  scaling, and lifecycle.
+  
+  - **Resource isolation**: Each Fargate task gets its own isolated environment with its own compute, memory, and networking resources. This provides strong isolation between tasks.
+  
+  - **Resource Efficiency**: Fargate allows for efficient use of resources. You only pay for the resources used by your containers and tasks, and there’s no need to provision and
+  manage instances.
+  
+  - **Automatic Scaling**: Fargate can automatically scale your tasks based on resource requirements or application load. This ensures that your applications have the resources they need
+  to perform optimally.
+  
+  - **Billing Model**: With fargate, you are billed based on the vCPU and memory resources allocated to your tasks.
+  
+  - **Multi-AZ availability**: Fargate tasks can be launched in multiple Availability Zones (AZs) for high availability and fault tolerance.
+ 
+## AWS Elastic Container Registry (ECR)
+
+AWS Elastic Container Registry (ECR) is a fully-managed container image registry provided by Amazon Web Services (AWS). It allows you to store, 
+manage, and deploy Docker container images.
+
+- ### ECR Characteristics
+
+  - **Container Image Registry**: ECR is a private Docker image registry, which means it allows you to securely store and manage your container images.
+  
+  - **Integration with Other AWS Services**: ECR seamlessly integrates with other AWS services, making it easy to deploy containerized applications on services like ECS
+  (elastic Container Service) and EKS (Elastic Kubernetes Service).
+  
+  - **Immutable Image Tagging**: Once an image is pushed to ECR, its tags are immutable. This ensures that the image content remains consistent over time.
+  
+  - **Private Repository**: By default, ECR repositories are private. This means you have control over who can access and pull images from your repository.
+  
+  - **Public Repository**: ECR allows you to create public repositories in ECR. With public repositories, you can share container images publicly making them accessible
+  to anyone on the internet.
 
 ## Simple Storage Service (S3)
 
