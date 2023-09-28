@@ -208,6 +208,133 @@ A compilation of notes for the SAA-C03 exam. These notes are meticulously organi
     - http://169.254.169.254/latest/security-groups
     
     - http://169.254.169.254/latest/services/
+   
+### Amazon Lambda
+
+- #### Lambda Characteristics
+
+  - **Definition**: AWS Lambda is a serverless computing service that allows you to run code is response to events without the need to provision or manage servers.
+  
+  - **FaaS**: AWS Lambda is a prime example of a Function-as-a-Service (FaaS) platform.
+  
+  - **Event-Driven Model**: Lambda functions are triggered by events. These events can come from various sources, including other AWS services, custom applications,
+  or external systems.
+  
+  - **No Infrastructure Management**: AWS Lambda automatically scales and manages the compute infrastructure needed to run your code. You don’t need to worry about server
+  provisioning, scaling, or patch management.
+  
+  - **Lambda Startup**: Lambda startup is the process of initializing an AWS Lambda function when it’s invoked. This involves loading the runtime, preparing the execution
+  environment, and loading the function code. If it’s the first invocation or the function has been idle, a “cold start” may occur, which involves setting up a new container.
+  After initialization, the function processes the event, executes its code, and returns a response.
+
+- #### Lambda Runtimes
+
+  - **Definition**: Lambda Runtimes play a crucial role in AWS Lambda as they define the environment in which your code runs. Each Runtime provides a specific set of supported 
+  languages, libraries, and dependencies.
+  
+  - **Supported Languages**: Lambda supports multiple programming languages, including Node.js, Python, Java, Go, Ruby, .NET, and custom runtime environments.
+ 
+- #### Lambda Container
+  
+  - **Definition**: Lambda Containers, also known as AWS lambda Container Image support, allows you to package and deploy your code as a container image.
+  This extends the flexibility of AWS Lambda beyond the traditional zip file deployment method.
+
+  - **Docker Compatibility**: Lambda supports container images that are compliant with the Open Container Initiative (OCI) and Docker image specifications.
+  
+  - **Use Case**: You can use lambda Containers to run code in environments that are not covered by the built-in runtimes, allowing for a high degree of customization.
+ 
+- #### Lambda Resources
+
+  - **Memory Allocation**: You can specify the amount of memory (in megabytes) that you want to allocate to a function (128 MB to 10 GB). This determines the CPU power and network
+  bandwidth available to the function.
+  
+  - **CPU and Network Allocation**: The amount of allocated memory also determines the CPU power and network bandwidth available to the function. Higher memory settings
+  provide more resources.
+  
+  - **Ephemeral Storage**: AWS Lambda Ephemeral Storage (also known as /tmp space) is a storage space that functions can use to store temporary data. This is available to the function during its execution
+  and is not shared across invocations. The amount of ephemeral storage available depends on the allocated memory for the function, with a baseline of 512 MB.
+  
+  - **Timeout**: “Timeout” refers to the maximum amount of time that a function is allowed to run before it’s forcibly terminated by the Lambda service. This timeout setting is an important
+  parameter to consider when configuring your functions. When you create or update a Lambda Function, you can specify the timeout period. The value can range from 1 second to 900 seconds
+  (15 minutes).  If you don’t explicitly set a timeout, AWS Lambda uses a default timeout period of 3 seconds.
+
+- #### Lambda Invocation Types
+
+  - ##### Synchronous
+
+    - **Definition**: In a synchronous invocation, the caller waits for the function to complete and return a response, If an error occurs or the function times out, the error message is
+    returned. This is also known as “Request-Response” invocation.
+    
+    - **Use Case**: Ideal for situations where the caller requires a specific result from the function before proceeding.
+
+  - ##### Asynchronous
+ 
+    - **Definition**: In an asynchronous invocation, the caller does not wait for a response. The function is triggered, and the caller receives a success message indicating that
+    the request was accepted. If an error occurs, AWS Lambda retries the invocation twice. 
+    
+    - **Use Case**: Suitable for tasks that can be processed in the background without immediate feedback.
+   
+  - ##### Event Source Mapping
+
+    - **Definition**: Event Source Mapping is a way to connect an AWS service (like Amazon S3, DynamoDB, etc.) to a Lambda function. When an event occurs in the connected service,
+    it triggers the function. This is often used for stream-based processing.
+    
+    - **Use Case**: For AWS services that can act as event sources (e.g., S3, DynamoDB, Kinesis), an event source mapping connects these services to a Lambda function.
+
+- #### Lambda Versioning
+
+  - **Definition**: Lambda versioning is a feature of AWS Lambda that allows you to create and manage different versions of your Lambda functions. This enables you to deploy and
+  test new versions of your code without affecting the existing production version.
+  
+  - **Version identifier**: A Lambda version is identified by a unique version number or ARN (Amazon Resource Name). For example,
+  arn:aws:lambda:region:account-id:function:function-name:version.
+  
+  - **Immutable**: Once a version is published, it becomes immutable. This means that you cannot update or change the code, configuration, or permissions of a published version.
+ 
+- #### Lambda Networking
+
+  - ##### Public
+ 
+    - **Default Configuration**: When you create a Lambda function, it is configured to run in a public network environment by default.
+    
+    - **Internet Access**: Functions in a public network environment have internet access. They can connect to external services and resources over the internet.
+    
+    - **NAT Gateway Not Required**: You do not need to set up a NAT Gateway to enable internet access for functions in a public network.
+   
+  - ##### Private
+
+    - **VPC Configuration**: To run a lambda function in a private network, you must configure it to use a Virtual Private Cloud (VPC). This allows the function to operate within your own
+    isolated network environment.
+
+    - **Access to Private Resources**: Functions in a private network can access resources within your VPC, such as Amazon RDS databases, private EC2 instances, and other services.
+    
+    - **No Internet Access by Default**: Functions in a private network do not have direct internet access by default. They can only communicate with resources within the VPC or resources
+    accessible via VPC peering, VPN, or Direct Connect.
+    
+    - **NAT Gateway or VPC Endpoints**: If your function in a private network needs internet access, you can set up a NAT Gateway or use VPC endpoints to connect to AWS services without
+    going over the internet.
+    
+- #### Lambda Resource Policy
+
+  - **Definition**: In AWS lambda, a resource policy is a JSON document that grants or denies permissions to perform actions on Lambda functions.
+  
+  - **Policy**: It’s similar to an IAM policy, but it’s attached directly to a lambda function and controls who can invoke it.
+
+ - #### Lambda Billing
+
+  - **Definition**: Billing for AWS Lambda is based on three main factors: the number of requests, the duration of code execution, and any additional resources or services 
+  used in conjunction with lambda.
+  
+  - **Request Charges**: You are charged based on the number of requests made to your Lambda functions. This includes both invocations (when the function is triggered) and 
+  any additional requests made to services like Amazon S3 or DynamoDB.
+  
+  - **Duration Charges**: You are billed on the time it takes for your code to execute. This is calculated in increments of 100ms. For example, if your function runs for 
+  300ms, you’ll be billed for 400ms.
+  
+  - **Free Tier**: AWS offers a free tier that includes 1 million free requests per month and 400.000 FB-seconds of compute time per month for Lambda.
+  
+  - **Memory Allocation**: The amount of memory allocated to your function affects both execution duration and cost. Functions with more memory may execute faster 
+  and incur higher charges.
 
 ## Storage Services
 
