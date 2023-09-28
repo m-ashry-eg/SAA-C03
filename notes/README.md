@@ -19,10 +19,10 @@ A compilation of notes for the SAA-C03 exam. These notes are meticulously organi
 
 ### Elastic Cloud Compute (EC2)
 
-- #### EC2 Characteristics
+Amazon Elastic Compute Cloud (Amazon EC2) is a web service that provides secure, resizable compute capacity in the cloud.
+It is designed to make web-scale cloud computing easier for developers.
 
-  - **Definition**: Amazon Elastic Compute Cloud (Amazon EC2) is a web service that provides secure, resizable compute capacity in the cloud.
-  It is designed to make web-scale cloud computing easier for developers.
+- #### EC2 Characteristics
   
   - **Virtual Servers**: EC2 allows you to run virtual servers, known as instances.
   
@@ -211,9 +211,9 @@ A compilation of notes for the SAA-C03 exam. These notes are meticulously organi
    
 ### Amazon Lambda
 
-- #### Lambda Characteristics
+ AWS Lambda is a serverless computing service that allows you to run code is response to events without the need to provision or manage servers.
 
-  - **Definition**: AWS Lambda is a serverless computing service that allows you to run code is response to events without the need to provision or manage servers.
+- #### Lambda Characteristics
   
   - **FaaS**: AWS Lambda is a prime example of a Function-as-a-Service (FaaS) platform.
   
@@ -339,6 +339,9 @@ A compilation of notes for the SAA-C03 exam. These notes are meticulously organi
 ## Storage Services
 
 ### Simple Storage Service (S3)
+
+Amazon S3 or Amazon Simple Storage Service is a service offered by Amazon Web Services that provides object storage through a web service interface. Amazon 
+S3 uses the same scalable storage infrastructure that Amazon.com uses to run its e-commerce network.
 
 - #### S3 Characteristics
   
