@@ -1549,13 +1549,6 @@ distributed application components.
   
   - **Use Case**: DLQs are useful in scenarios where you want to investigate the reasons for the message processing failures or implement a retry mechanism for messages that 
   encounter temporary issues.
-   
-- ### SQS Fanout
-
-  - **Description**: SQS Fanout is a messaging pattern that involves distributing messages from a single source (or producer) to multiple consumers or subscribers. This is achieved 
-  by using multiple queues, allowing each customer to process messages independently.
-  
-  - **Use Case**: Broadcasting notifications to different types of recipients (e.g., email notifications to customers, SMS notifications to admins).
  
 - ### Batch Processing with SQS
 
