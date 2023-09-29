@@ -1574,3 +1574,47 @@ distributed application components.
   
   - **Standard vs. FIFO**: There may be a slight difference in pricing between Standard and FIFO (First-In-First-Out) queues. FIFO queues offer additional features 
   and guarantees that may affect pricing.
+
+## Simple Notification Service (SNS)
+
+- ### SNS Characteristics
+
+  - **Message Size**: SNS supports messages with a maximum size of 256 KB. This is an important consideration for sending and receiving data through this service, ensuring
+  that messages fit within this limit.
+  
+  - **Network Connectivity with Public Endpoint**: SNS can be reached via the internet, making it accessible to users across the globe.
+  
+  - **Protocols**: SNS supports various protocols for delivering messages to subscribers, including HTTP/S, Email, SMS, Lambda, etc.
+
+- ### SNS Components
+
+  - **Topics**: A Topic is an access point for allowing recipients to receive notifications. Publishers send messages to topics, and subscribers receive notifications from topics. 
+  Topics can be thought of as communication channels.
+  
+  - **Publishers**: Publishers are the entities that send messages to SNS topics. These can be applications, services, or systems that generate events or notifications.
+  
+  - **Subscribers**: Subscribers are the endpoints that receive notifications from SNS topics. Subscribers can be applications, HTTP endpoints, email addresses, mobile devices, 
+  SMS numbers, Lambda functions, and more.
+
+- ### SNS Dead-Letter Queue
+
+  - **Definition**: A Dead-Letter Queue (DLQ) is a specialized queue where messages that cannot be successfully processed are sent for further investigation and handling. 
+  In the context of SNS, if a message can’t be delivered to any of the subscribers after a certain number of retries, it can be sent to a DLQ.
+  
+  - **How it works**: When a message in an SNS topic fails to be delivered to a subscriber after multiple retries, SNS can be configures to send that message to a designated DLQ. 
+  This allows for further analysis and troubleshooting.
+
+- ### SNS Billing
+
+  - **Pricing Model**: SNS is a pay-as-you-go service, which means you are charged based on your usage. There are no upfront fees or long-term commitments.
+  
+  - **Free Tier**: AWS offers a free tier for SNS that includes a certain number of monthly requests and data transfer out. This is designed to give you an opportunity to
+  try out the service at no cost.
+  
+  - **Requests**: Charges are incurred for each message delivered or requested.
+  
+  - **Data Transfer**: This includes the data transferred out of SNS to endpoints like SMS, email, mobile push, etc.
+  
+  - **Message Size**: The size of the message being sent can affect the cost, particularly if it exceeds the free tier limits. Keep in mind that there are limits on the
+  maximum message size for each protocol.
+
