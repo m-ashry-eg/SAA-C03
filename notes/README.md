@@ -1419,3 +1419,165 @@ secure, transparent, and immutable ledger for tracking changes to data.
 
 Amazon Timestream is a fully managed, serverless, and purpose-built time-series database service provided by Amazon Web Services (AWS). It is designed to handle high volumes 
 of data points collected over time, making it well-suited for IoT applications, industrial telemetry, and operational monitoring.
+
+## Simple Queue Service (SQS)
+
+Amazon Simple Queue Service (SQS) is a fully managed message querying service provided by Amazon Web Service (AWS). It allows you to decouple the components of a cloud 
+application by sending messages between them. SQS acts as a reliable and scalable message broker, ensuring that messages are reliably delivered between 
+distributed application components.
+
+- ### SQS Characteristics
+
+  - **Message Size**: SQS supports messages up to 256 KB. If you need to send large messages, you may want to consider using Amazon Simple Notification Service (SNS) 
+  or Amazon Kinesis instead.
+  
+  - **Message Visibility**: When a message is retrieved from an SQS queue, it is temporarily hidden from other consumers for a specified period known as the Visibility 
+  Timeout. During this time, the consumer processes the message. If the message is not deleted within the visibility timeout, it will become visible again in the 
+  queue for another consumer to process.
+  
+  - **Message Retention**: The default message retention period is 4 days. However, you have the flexibility to adjust this period according to your specific requirements, 
+  allowing you to set it anywhere between 1 minute and 14 days.
+  
+  - **Auto Scaling Integration**: Auto Scaling Groups can be configured to scale based on the length of an SQS queue. This means that you can automatically adjust the number of 
+  instances in an Auto Scaling Group based on the number of messages in the queue. This is a powerful feature for dynamically scaling your application based on workload.
+
+- ### SQS Visibility Timeout
+
+  - **Definition**: The Visibility Timeout in Amazon Queue Service (SQS) is an important feature that helps manage message visibility to prevent multiple consumers from
+  processing the same message simultaneously.
+  
+  - **How it Works**: When a consumer (like an EC2 instance or a Lambda function) retrieves a message from an SQS queue, the message becomes ‘invisible’ to other consumers.
+  This means that although the message is reserved for the consumer that retrieved it, it’s not immediately removed from the queue. The consumer then has a certain amount
+  of time (the visibility timeout) to process the message. This period is specified in seconds and can range from 0 to 43.200 seconds (12 hours). If the consumer successfully
+  processes the message within the visibility timeout, it deletes the message from the queue. If the consumer  does not delete the message within the visibility timeout, the
+  message becomes visible in the queue again and can be retrieved by another consumer.
+  
+  - **Default Time**: The default visibility timeout for a message in Amazon SQS is 30 seconds. This means that when a consumer retrieves a message from a queue, the message becomes
+  temporarily “invisible” to other consumers for a period of 30 seconds.
+
+- ### SQS Queue Types
+
+  - #### Standard Queue
+
+    - **Ordering**: Messages are not guaranteed to be delivered in the order  they were sent.
+    
+    - **At Least Once Delivery**: Messages can be delivered more than once, but duplicates are rare.
+    
+    - **Default**: Standard queues are the default queue type.
+    
+    - **High Throughput**: Supports a virtually unlimited number of transactions per second (TPS).
+    
+    - **Best for**: Situations where the order of messages is not critical and high throughput is important.
+    
+    - **Pricing**: Pay-as-you-go pricing model based on the number of requests and message retention.
+    
+    - **Use Case**: When you want to decouple the components of a cloud application and improve scalability and reliability.
+  
+  - #### FIFO Queue
+
+    - **Ordering**: Messages are delivered in a strict- first-in-first-out (FIFO) order.
+    
+    - **FIFO Suffix**: A FIFO queue name must end with the ‘.fifo’ suffix.
+    
+    - **Exactly Once Delivery**: Messages are delivered exactly once, and remain available until a consumer processes and deletes them.
+    
+    - **Message Grouping**: Supports message groups that allow multiple ordered message groups within a single queue.
+    
+    - **Limited Throughput**: Supports up to 3.000 TPS for message sends and receives.
+    
+    - **Duplication**: Use of Message Deduplication IDs. Helps prevent duplication of messages.
+    
+    - **Pricing**: Slightly higher pricing compared to Standard queue due to the additional features.
+    
+    - **Use Case**: Use cases requiring strict message ordering, such as financial transactions, where the order of processing is crucial.
+   
+- ### SQS Polling Types
+
+  - #### Short Polling
+ 
+    - **Description**: In short polling, the ‘ReceiveMessage’ API call returns immediately, even if the queue is empty. If there are no messages available, the call returns
+    an empty response.
+    
+    - **Key Point**: Short Polling can result in empty responses if no messages are available and it may lead to increased costs if your application constantly
+    polls an empty queue.
+    
+    - **Use Case**: Situations where you need to retrieve messages quickly, even if the queue is empty.
+  
+  - #### Long Polling
+ 
+    - **Description**: Long Polling allows the ‘ReceiveMessage’ API call to wait for a specified period of time (between 1 and 20 seconds) until a message is available in the queue.
+    If a message arrives within that time, it is immediately returned in the response. If no messages are available, the call waits until a message arrives or the
+    timeout is reached.
+    
+    - **Key Point**: Long Polling reduces the number of empty responses because the API call waits for a message to arrive and helps to reduce overall costs by minimizing
+    unnecessary API calls.
+    
+    - **Use Case**: Situations where immediate message availability is not crucial, and you want to reduce the number of API calls.
+
+- ### SQS Delay Queues
+
+  - **Definition**: Amazon Simple Queue Service (SQS) Delay Queues allow you to set a delay period on individual messages. This means that once a message is sent to the queue,
+  it won’t be available for retrieval by consumers until the specified delay period has passed.
+  
+  - **Delay Period**: The delay period can be set when a message is sent to the queue. It is specified in seconds and can range from 0 to 900 seconds (15 minutes).
+  
+  - **Purpose**: Delay queues are useful when you want to postpone the delivery of a message for a certain period of time. This can be used to implement features like scheduled or
+  deferred processing.
+  
+  - **FIFO and Standard**: Delay queues can be either FIFO or Standard queues. You can choose the type of queue based on your specific requirements.
+  
+  - **Message Level**: Delay Queues are applied at the message level in SQS. This means that you can set a specific delay period for each individual message when you send
+  it to the queue.
+  
+  - **Use Case**: Messages can be delayed based on priority or urgency.
+ 
+- ### SQS Dead-Letter Queues
+
+  - **Definition**: Amazon Simple Queue Service Dead Letter Queue (DLQs) are special queues used to store messages that cannot be processed successfully by consumers. This feature helps 
+  you identify and troubleshoot the reasons why messages are not getting processed as expected.
+  
+  - **Purpose**: DLQs are used to isolate and store messages that have failed to be processed after a certain number of retries. They act as a holding area for problematic messages, 
+  allowing you to investigate the issue.
+  
+  - **Message Retention**: Messages in a SQL are retained just like messages in regular queues. You can configure the retention period for DLQs to be between 1 minute and 14 days.
+  
+  - **Configuration**: You can configure a redrive policy on a standard SQS queue. This policy determines the conditions under which messages are moved to the DLQ. It specifies the 
+  maximum number of receive attempts before a message is considered a failure.
+  
+  - **Visibility Timeout**: If a message is moved to a DLQ due to exceeding the ‘maxReceiveCount’, it retains its original visibility timeout. This means it may not be available for 
+  retrieval immediately after being moved.
+  
+  - **Use Case**: DLQs are useful in scenarios where you want to investigate the reasons for the message processing failures or implement a retry mechanism for messages that 
+  encounter temporary issues.
+   
+- ### SQS Fanout
+
+  - **Description**: SQS Fanout is a messaging pattern that involves distributing messages from a single source (or producer) to multiple consumers or subscribers. This is achieved 
+  by using multiple queues, allowing each customer to process messages independently.
+  
+  - **Use Case**: Broadcasting notifications to different types of recipients (e.g., email notifications to customers, SMS notifications to admins).
+ 
+- ### Batch Processing with SQS
+
+  - **Description**: Batch processing with Amazon Simple Queue Service (SQS) involves sending or receiving multiple messages in a single API call. This can lead to increased throughput and 
+  reduced costs, especially when dealing with large volumes of messages.
+  
+  - **Sending Messages in batches**: instead of sending messages one by one, you can use the ‘SendMessagebatch’ API call to send multiple messages in a single request.
+  
+  - **Reduced API Call Cost**: Sending messages in batches reduces the number of API calls, which can help lower costs.
+  
+  - **Improved Throughput**: Batching messages can lead to increased throughput, especially when sending a large number of messages.
+  
+  - **Consideration**: Each batch can contain up to 10 messages.
+  
+  - **Use Case**: Ingesting large sets of data in batches for processing or storage; Sending notifications to multiple recipients simultaneously.
+ 
+- ### SQS Billing
+
+  - **Pricing Model**: SQS uses a pay-as-you-go pricing model. You are billed based on the number of requests you make to the service and the amount of data transferred.
+  
+  - **Requests Pricing**: SQS charges for each API request you make. This includes sending messages, receiving messages, deleting messages, and other actions. There 
+  are different requests types with varying costs.
+  
+  - **Standard vs. FIFO**: There may be a slight difference in pricing between Standard and FIFO (First-In-First-Out) queues. FIFO queues offer additional features 
+  and guarantees that may affect pricing.
