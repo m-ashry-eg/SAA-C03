@@ -108,14 +108,14 @@ It is designed to make web-scale cloud computing easier for developers.
     
     - **Billing**: You pay the Spot price for each hour the instance runs, and if the Sport price exceeds your maximum price (bid), your instance is terminated.
     
-    - **Use Case**: ideal for applications that have flexible start and end times, or that can withstand potential interruptions.
+    - **Use Case**: Ideal for applications that have flexible start and end times, or that can withstand potential interruptions.
    
   - #### Dedicated Hosts
  
     - **Definition**: A Dedicated Host is a physical server with EC2 instance capacity that is fully dedicated to your use. You have visibility and control over
     the placement of instances on the host.
     
-    - **Billing**: You can use as many instances as the host sup[ports, as long as they fit within the host’s specifications.
+    - **Billing**: You can use as many instances as the host supports, as long as they fit within the host’s specifications.
     
     - **Use Case**: Suitable for workloads that require a higher level of isolation from instances in other accounts.
 
