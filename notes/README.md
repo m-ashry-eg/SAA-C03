@@ -103,7 +103,7 @@ It is designed to make web-scale cloud computing easier for developers.
 
   - #### Spot Instances
  
-    - **Definition**: Sport Instances allow you to use spare EC2 capacity at a significantly lower cost compared to On-Demand Instances (up to 90% discount).
+    - **Definition**: Spot Instances allow you to use spare EC2 capacity at a significantly lower cost compared to On-Demand Instances (up to 90% discount).
     However, they can be terminated if the capacity is needed by AWS.
     
     - **Billing**: You pay the Spot price for each hour the instance runs, and if the Sport price exceeds your maximum price (bid), your instance is terminated.
