@@ -311,14 +311,14 @@ It is designed to make web-scale cloud computing easier for developers.
     
     - **NAT Gateway or VPC Endpoints**: If your function in a private network needs internet access, you can set up a NAT Gateway or use VPC endpoints to connect to AWS services without
     going over the internet.
-    
+
 - ### Lambda Resource Policy
 
   - **Definition**: In AWS lambda, a resource policy is a JSON document that grants or denies permissions to perform actions on Lambda functions.
   
   - **Policy**: It’s similar to an IAM policy, but it’s attached directly to a lambda function and controls who can invoke it.
 
- - ### Lambda Billing
+- ### Lambda Billing
 
   - **Definition**: Billing for AWS Lambda is based on three main factors: the number of requests, the duration of code execution, and any additional resources or services 
   used in conjunction with lambda.
