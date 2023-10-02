@@ -320,7 +320,7 @@ It is designed to make web-scale cloud computing easier for developers.
 
 - ### Lambda Billing
 
-  - **Definition**: Billing for AWS Lambda is based on three main factors: the number of requests, the duration of code execution, and any additional resources or services 
+  - **Definition**: Billing for AWS Lambda is based on three main factors, the number of requests, the duration of code execution, and any additional resources or services 
   used in conjunction with lambda.
   
   - **Request Charges**: You are charged based on the number of requests made to your Lambda functions. This includes both invocations (when the function is triggered) and 
