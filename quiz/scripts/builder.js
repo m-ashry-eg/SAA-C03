@@ -389,7 +389,7 @@ const builder = [
 	},
 	{
 		question:
-			'A company using PostgreSQL on-premise as the database for a customer-facing application is migra to the AWS cloud. The development team needs to select a high-performance Amazon database solution that offers increased throughput and minimal lock contention for this migration. Another obje of the migration is to minimize the resources needed to maintain the database server. The developmen team has designed the application to support concurrent queries and transactions and wants to ensure the database solution can support this workload. Which of the following database services would the te choose to meet these requirements?',
+			'A company using PostgreSQL on-premise as the database for a customer-facing application is migrating to the AWS cloud. The development team needs to select a high-performance Amazon database solution that offers increased throughput and minimal lock contention for this migration. Another objective of the migration is to minimize the resources needed to maintain the database server. The development team has designed the application to support concurrent queries and transactions and wants to ensure the database solution can support this workload. Which of the following database services would the team choose to meet these requirements?',
 		options: [
 			'A. Migrate to Amazon RDS for PostgreSQL',
 			'B. Migrate to Amazon Aurora for PostgreSQL',
