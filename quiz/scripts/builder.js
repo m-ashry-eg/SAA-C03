@@ -270,23 +270,6 @@ const builder = [
 	},
 	{
 		question:
-			'You run accounting software in the AWS US West (Oregon) region. This software needs to be available continuously on a large general-purpose instance during normal business hours, eight hours a day, every day of the week. You also have other unrelated batch jobs that need to run once per day at any time of your choosing. These batch jobs require a large general-purpose instance and take four hours a day to complete.How should you minimize cost?',
-		options: [
-			'A. Multi-AZ deployment',
-			'B. Increased IOPS',
-			'C. Elastic Load Balancing',
-			'D. Sharding',
-		],
-		answer: [3],
-		explanation: [
-			"(A). While Multi-AZ improves availability, it doesn't inherently increase the capacity or scale of the database. It provides redundancy, but it doesn't distribute the workload across multiple instances.",
-			"(B). While increasing IOPS can improve the performance of the underlying storage for a single RDS instance, it doesn't directly address the need for horizontal scaling to handle a higher volume of requests. It's more about improving the performance of a single instance.",
-			"(C). ELB is used for distributing traffic across multiple EC2 instances or other resources. It's not directly applicable to horizontally scaling a database. It's more relevant for distributing requests to application servers.",
-			'(D). In the given scenario, where the client is receiving greater than expected traffic and there is a need to scale the database horizontally, sharding is the appropriate technique. It enables you to expand the database capacity by adding more shards as needed.',
-		],
-	},
-	{
-		question:
 			"A system administrator is unable to connect via SSH into an EC2 instance in the company's VPC. You begin reviewing the configuration and see that he has tried to configure a custom access control list (ACL) and a security group. The instance security group allows SSH from a block of company IP addresses, but its outbound traffic rule has been removed. The ACL is configured to allow inbound traffic from the same block of IP addresses, and to deny all outbound traffic. What does the administrator need to change to enable SSH access?",
 		options: [
 			'A. Allow outbound traffic on the security group.',
