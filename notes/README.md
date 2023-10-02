@@ -1420,7 +1420,7 @@ secure, transparent, and immutable ledger for tracking changes to data.
 Amazon Timestream is a fully managed, serverless, and purpose-built time-series database service provided by Amazon Web Services (AWS). It is designed to handle high volumes 
 of data points collected over time, making it well-suited for IoT applications, industrial telemetry, and operational monitoring.
 
-## Simple Queue Service (SQS)
+## Amazon Simple Queue Service (SQS)
 
 Amazon Simple Queue Service (SQS) is a fully managed message querying service provided by Amazon Web Service (AWS). It allows you to decouple the components of a cloud 
 application by sending messages between them. SQS acts as a reliable and scalable message broker, ensuring that messages are reliably delivered between 
@@ -1575,7 +1575,7 @@ distributed application components.
   - **Standard vs. FIFO**: There may be a slight difference in pricing between Standard and FIFO (First-In-First-Out) queues. FIFO queues offer additional features 
   and guarantees that may affect pricing.
 
-## Simple Notification Service (SNS)
+## Amazon Simple Notification Service (SNS)
 
 - ### SNS Characteristics
 
