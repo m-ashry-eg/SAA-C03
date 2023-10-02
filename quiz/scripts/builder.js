@@ -406,23 +406,6 @@ const builder = [
 	},
 	{
 		question:
-			"A DevOps team is deploying a new application to an Amazon EC2 instance with an EBS data volume. The team does not fully understand the application's EBS performance needs and does not wa to over-provision, so they have started with a general-purpose SSD volume (gp2). However, they woul like the option to modify the volume type without any downtime if they need to move to a Provisioned IOPS SSD (io1). What steps can the team take to change the volume type without any downtime for th EC2 instance?",
-		options: [
-			'A. Use the Amazon EBS Elastic Volumes feature to change the volume type.',
-			'B. Resize the EC2 instance and choose an EBS-backed instance with the appropriate volume type.',
-			'C. Take a snapshot of the current EBS volume and create a new io1 volume from the snapshot.',
-			'D. Modify the EC2 instance to use instance storage for the data volume.',
-		],
-		answer: [0],
-		explanation: [
-			'(A). The Amazon EBS Elastic Volumes feature allows you to modify the volume type of an existing EBS volume, including changing from gp2 to io1, without any downtime. This ensures continuous availability of the application while making necessary adjustments to the volume type.',
-			'(B). This option involves changing the entire EC2 instance type. While this would allow you to choose an EBS-backed instance with the desired volume type, it is a more drastic measure than simply modifying the volume type. It may not be necessary and could result in additional downtime.',
-			"(C). While this approach could create a new volume with the desired volume type, it would involve creating a new volume and potentially requiring downtime to switch the application to use the new volume. It doesn't meet the requirement of changing the volume type without any downtime.",
-			"(D). This option suggests using instance storage, which is not as flexible or persistent as EBS volumes. It may not be suitable for the application's requirements, especially if the team initially chose an EBS volume for data persistence.",
-		],
-	},
-	{
-		question:
 			'A company using PostgreSQL on-premise as the database for a customer-facing application is migra to the AWS cloud. The development team needs to select a high-performance Amazon database solution that offers increased throughput and minimal lock contention for this migration. Another obje of the migration is to minimize the resources needed to maintain the database server. The developmen team has designed the application to support concurrent queries and transactions and wants to ensure the database solution can support this workload. Which of the following database services would the te choose to meet these requirements?',
 		options: [
 			'A. Migrate to Amazon RDS for PostgreSQL',
