@@ -381,7 +381,7 @@ const builder = [
 		],
 		answer: [1, 3],
 		explanation: [
-			'(A). Compression might not be effective for all types of data, such as already compressed formats like images, videos, or binary data. Additionally, developing and maintaining custom compression scripts can be complex and time-consuming.',
+			"(A). Develop a custom script to compress S3 object files' size. Compression might not be effective for all types of data, such as already compressed formats like images, videos, or binary data. Additionally, developing and maintaining custom compression scripts can be complex and time-consuming.",
 			'(B). S3 Standard-IA offers a lower storage cost compared to S3 Standard, making it a cost-effective choice for objects that are not frequently accessed. It allows you to reduce storage costs without compromising data quality, as the data is still readily available when needed.',
 			"(C). Snowball is designed for data transfer and migration, not for reducing storage costs of existing objects in S3. It's not a suitable solution for this specific cost optimization task.",
 			'(D). The S3 Glacier Flexible Retrieval storage class offers very low storage costs for archival data. By using a lifecycle policy, you can automatically move older, infrequently accessed data to this storage class, reducing storage costs significantly. It allows you to save on storage costs while maintaining data quality, as the data can still be retrieved when needed.',
