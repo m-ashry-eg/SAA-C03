@@ -409,7 +409,7 @@ manage, and deploy Docker container images.
   - **Container Image Registry**: ECR is a private Docker image registry, which means it allows you to securely store and manage your container images.
   
   - **Integration with Other AWS Services**: ECR seamlessly integrates with other AWS services, making it easy to deploy containerized applications on services like ECS
-  (elastic Container Service) and EKS (Elastic Kubernetes Service).
+  (Elastic Container Service) and EKS (Elastic Kubernetes Service).
   
   - **Immutable Image Tagging**: Once an image is pushed to ECR, its tags are immutable. This ensures that the image content remains consistent over time.
   
