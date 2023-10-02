@@ -1430,7 +1430,7 @@ secure, transparent, and immutable ledger for tracking changes to data.
 Amazon Timestream is a fully managed, serverless, and purpose-built time-series database service provided by Amazon Web Services (AWS). It is designed to handle high volumes 
 of data points collected over time, making it well-suited for IoT applications, industrial telemetry, and operational monitoring.
 
-## Application Integration
+## Analytics and Application Integration
 
 ### Amazon Simple Queue Service (SQS)
 
