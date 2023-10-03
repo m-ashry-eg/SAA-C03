@@ -1690,18 +1690,6 @@ Amazon Kinesis Data Firehose is a fully managed service provided by AWS that mak
   - **Delivery Destinations**: After processing and optionally transforming the data, Kinesis Data Firehose can deliver it to various destinations, 
   including Amazon S3, Amazon Redshift, Amazon ElasticSearch, and others.
 
-- #### Kinesis Data Firehose Valid Destinations
-
-  - HTTP Endpoints
-  
-  - Splunk
-  
-  - Redshift
-  
-  - ElasticSearch
-  
-  - Simple Storage Service (S3)
-
 - #### Kinesis Data Firehose Integration with Lambda
 
   - **Dynamic Data transformation**: Integration with AWS Lambda allows for dynamic data transformation before it reaches its final destination.
@@ -1730,6 +1718,18 @@ Amazon Kinesis Data Firehose is a fully managed service provided by AWS that mak
   
   - **Integration with AWS Ecosystem**: Data stored in S3 can be easily integrated with other AWS services. For example, you can use AWS Glue 
   for data preparation and ETL (Extract, Transform, Load) process, Amazon Athena for querying, or Amazon Redshift for data warehousing.
+
+- #### Kinesis Data Firehose Valid Destinations
+
+  - HTTP Endpoints
+  
+  - Splunk
+  
+  - Redshift
+  
+  - ElasticSearch
+  
+  - Simple Storage Service (S3)
 
 - #### Kinesis Data Firehose Use Cases
 
