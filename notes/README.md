@@ -159,7 +159,7 @@ It is designed to make web-scale cloud computing easier for developers.
   
   - **User Data Source**: Bootstrapping scripts are provided through the “User Data” field when launching an EC2 instance. 
   
-  - **Special Metadata URL**: EC2 instances can access special metadata at ‘http://169.254.169.254/latest/user-data’ , which contains the user data provided during instance launch. 
+  - **Special Metadata URL**: EC2 instances can access special metadata at ‘http://169.254.169.254/latest/user-data/’ , which contains the user data provided during instance launch. 
   
   - **Limited Security**: While User Data is a convenient way to automate instance setup, it’s important to note that it’s not secure for storing sensitive information like
   passwords or long-term credentials. For secure storage of sensitive data, AWS provided services like Parameter Store or Secrets Manager.
