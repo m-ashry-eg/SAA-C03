@@ -1585,8 +1585,6 @@ distributed application components.
   - **Message Size**: The size of the message being sent can affect the cost, particularly if it exceeds the free tier limits. Keep in mind that there are limits on the
   maximum message size for each protocol.
 
-## Analytics and Application Integration
-
 ### Amazon Kinesis Data Streams
 
 Amazon Kinesis Data Streams is a fully managed, scalable, and durable real-time data streaming service. It can ingest streaming data from a variety of sources, including web servers, 
