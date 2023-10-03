@@ -130,6 +130,18 @@ It is designed to make web-scale cloud computing easier for developers.
   - **Block Storage**: [Elastic Block Store (EBS)](#amazon-elastic-block-store-ebs).
   
   - **Network File System (NFS)**: [Elastic File System (EFS)](#amazon-elastic-file-system-efs).
+ 
+- #### EC2 Placement Group Types
+
+  - **Cluster Placement Group**: This type of placement group is designed for applications that benefit from low-latency network performance or require a tightly coupled group
+  of instances. Instances in a cluster placement group are placed in close proximity to each other within a single Availability Zone.
+  
+  - **Partition Placement Group**: This type of placement group is designed for large distributed and replicated workloads, such as big data applications that use a scale-out
+  architecture. Instances in a partition placement group are spread across many partitions in ne AZ only, each with its own rack and network switch.
+  
+  - **Spread Placement Group**: This type of placement group is recommended for applications that have a small number of critical instances that should be kept separate from
+  each other. Instances in a spread placement group are placed on distinct underlying hardware to reduce the risk of simultaneous failures. Instances in a spread placement group
+  can span across multiple AZs.
     
 - #### EC2 Termination Protection
 
@@ -165,64 +177,14 @@ It is designed to make web-scale cloud computing easier for developers.
   passwords or long-term credentials. For secure storage of sensitive data, AWS provided services like Parameter Store or Secrets Manager.
 
 - #### Instance Metadata Service
-
-  - ##### Instance Metadata Service Characteristics
  
-    - **Definition**: The Instance Metadata Service (IMDS) provides an HTTP endpoint from which an EC2 instance can retrieve a wealth of information about itself, including
-    metadata and user data.
-    
-    - **Access URL**: THE IMDS can be accessed locally by making an HTTP request for the following URL: ‘http://169.254.169.254/latest/’.
-    
-    - **Availability**: The IMDS is available for all EC2 Instances, regardless of the operating system or configuration.
+  - **Definition**: The Instance Metadata Service (IMDS) provides an HTTP endpoint from which an EC2 instance can retrieve a wealth of information about itself, including
+  metadata and user data.
+  
+  - **Access URL**: THE IMDS can be accessed locally by making an HTTP request for the following URL: ‘http://169.254.169.254/latest/’.
+  
+  - **Availability**: The IMDS is available for all EC2 Instances, regardless of the operating system or configuration.
    
-  - ##### Instance Metadata Service Categories
- 
-    - http://169.254.169.254/latest/ami-id
-    
-    - http://169.254.169.254/latest/ami-launch-index
-    
-    - http://169.254.169.254/latest/ami-manifest-path
-    
-    - http://169.254.169.254/latest/block-device-mapping/
-    
-    - http://169.254.169.254/latest/events/
-    
-    - http://169.254.169.254/latest/hostname
-    
-    - http://169.254.169.254/latest/iam/
-    
-    - http://169.254.169.254/latest/instance-action
-    
-    - http://169.254.169.254/latest/instance-id
-    
-    - http://169.254.169.254/latest/instance-type
-    
-    - http://169.254.169.254/latest/local-hostname
-    
-    - http://169.254.169.254/latest/local-ipv4
-    
-    - http://169.254.169.254/latest/mac
-    
-    - http://169.254.169.254/latest/metrics/
-    
-    - http://169.254.169.254/latest/network/
-    
-    - http://169.254.169.254/latest/placement/
-    
-    - http://169.254.169.254/latest/profile
-    
-    - http://169.254.169.254/latest/public-hostname
-    
-    - http://169.254.169.254/latest/public-ipv4
-    
-    - http://169.254.169.254/latest/public-keys/
-    
-    - http://169.254.169.254/latest/reservation-id
-    
-    - http://169.254.169.254/latest/security-groups
-    
-    - http://169.254.169.254/latest/services/
-
 ## Serverless Computing
    
 ### Amazon Lambda
