@@ -1650,6 +1650,13 @@ mobile apps, and IoT devices. Kinesis Streams can then process the data in real 
     - **Retention Period**: The retention period defines how long data records are retained in the stream. Records that are older than the specified
     retention period are automatically deleted.
 
+- #### Amazon Kinesis Data Streams vs. Amazon SQS
+
+  - **Kinesis Data Streams**: Consider Kinesis Data Streams for high-throughput, continuous data streams that necessitate real-time processing or analysis.
+  
+  - **SQS**: Opt for SQS when you prioritize utmost reliability, asynchronous processing, and message durability, especially in situations where components 
+  must be loosely connected within a distributed system.
+
 - #### Kinesis Data Streams Use Cases
 
   - **Scalability**: Kinesis Data Streams is highly scalable. It can handle large volumes of data, up to petabytes per day. This makes it a good choice for 
@@ -1661,10 +1668,3 @@ mobile apps, and IoT devices. Kinesis Streams can then process the data in real 
   - **Multiple Sources**: Kinesis Data Streams can ingest data from a variety of sources, such as website clickstreams, database event streams, financial 
   transactions, social media feeds, IT logs, and location-tracking events. This makes it a good choice for applications that need to process data from 
   multiple sources.
-
-- #### Amazon Kinesis Data Streams vs. Amazon SQS
-
-  - **Kinesis Data Streams**: Consider Kinesis Data Streams for high-throughput, continuous data streams that necessitate real-time processing or analysis.
-  
-  - **SQS**: Opt for SQS when you prioritize utmost reliability, asynchronous processing, and message durability, especially in situations where components 
-  must be loosely connected within a distributed system.
