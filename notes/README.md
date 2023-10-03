@@ -1766,6 +1766,21 @@ gain insight from high-volume, continuous streams of data from various sources, 
   - **Ingests from Kinesis Data Streams or Firehose**: Kinesis Data Analytics seamlessly integrates with both Kinesis Data Streams and Kinesis Data Firehose, enabling you 
   to process data from these sources in real time.
 
+- #### Kinesis Data Analytics Components
+
+  - **Kinesis Data Streams**: This is the source of your streaming data. It allows you to continuously capture and store data in real-time.
+ 
+  - **Application Code**: You can write SQL or Java code to process and analyze the data. Kinesis Data Analytics provides a SQL-based language for processing
+  data streams, and it also supports Java for more complex processing logic.
+ 
+  - **In-Application Streams**: These are intermediate streams that you can use to store and process data within your application. They allow you to perform
+  operations like filtering, aggregation, and transformation on the incoming data.
+ 
+  - **Data Pumps**: These are responsible for ingesting data from the source (Kinesis Data Streams) and sending it to the application for processing.
+ 
+  - **Application Outputs**: These define where the processed data will be sent after it has been analyzed. This could be another Kinesis Data Stream, a Kinesis Data
+  Firehose delivery stream, or a Lambda function.
+
 - #### Kinesis Data Analytics Use Case
 
   - **Real-Time Data Analytics**: By combining Kinesis Data Analytics with Kinesis Data Firehose services, you can perform real-time data analytics on the incoming streaming data. 
