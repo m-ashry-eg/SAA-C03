@@ -1576,16 +1576,6 @@ distributed application components.
   - **Consideration**: Each batch can contain up to 10 messages.
   
   - **Use Case**: Ingesting large sets of data in batches for processing or storage; Sending notifications to multiple recipients simultaneously.
- 
-- #### SQS Billing
-
-  - **Pricing Model**: SQS uses a pay-as-you-go pricing model. You are billed based on the number of requests you make to the service and the amount of data transferred.
-  
-  - **Requests Pricing**: SQS charges for each API request you make. This includes sending messages, receiving messages, deleting messages, and other actions. There 
-  are different requests types with varying costs.
-  
-  - **Standard vs. FIFO**: There may be a slight difference in pricing between Standard and FIFO (First-In-First-Out) queues. FIFO queues offer additional features 
-  and guarantees that may affect pricing.
 
 ### Amazon Simple Notification Service (SNS)
 
@@ -1615,18 +1605,66 @@ distributed application components.
   
   - **How it works**: When a message in an SNS topic fails to be delivered to a subscriber after multiple retries, SNS can be configures to send that message to a designated DLQ. 
   This allows for further analysis and troubleshooting.
-
-- #### SNS Billing
-
-  - **Pricing Model**: SNS is a pay-as-you-go service, which means you are charged based on your usage. There are no upfront fees or long-term commitments.
-  
-  - **Free Tier**: AWS offers a free tier for SNS that includes a certain number of monthly requests and data transfer out. This is designed to give you an opportunity to
-  try out the service at no cost.
-  
-  - **Requests**: Charges are incurred for each message delivered or requested.
-  
-  - **Data Transfer**: This includes the data transferred out of SNS to endpoints like SMS, email, mobile push, etc.
   
   - **Message Size**: The size of the message being sent can affect the cost, particularly if it exceeds the free tier limits. Keep in mind that there are limits on the
   maximum message size for each protocol.
 
+## Analytics and Application Integration
+
+### Amazon Kinesis Data Streams
+
+Amazon Kinesis Data Streams is a fully managed, scalable, and durable real-time data streaming service. It can ingest streaming data from a variety of sources, including web servers, 
+mobile apps, and IoT devices. Kinesis Streams can then process the data in real time or store it for later analysis.
+
+- #### Kinesis Data Streams Characteristics
+
+  - **Scalable**: Kinesis Data Streams uses a shard architecture to scale up or down in response to changes in data throughput. Each shard is a logical partition of a stream that can 
+  be processed independently. Kinesis Data Streams can automatically provision and manage shards based on your needs, so you don’t have to worry about running out of capacity.
+  
+  - **Highly Available and Durable**: Kinesis Data Streams is highly available and durable. It replicates data across multiple Availability Zones (AZs) in an AWS Region and stores 
+  it for 24 hours by default (up to 365 days with additional cost). This means that your data is safe and accessible even if there is a failure in one AZ.
+  
+  - **Multiple Consumers**: Multiple consumers can read data from a Kinesis Data Streams stream concurrently. This is achieved using a cursor mechanism, which ensures that each consumer 
+  only reads data that has not yet been read by another consumer.
+  
+  - **Real-Time**: Kinesis Data Streams is a real-time streaming data service, which means that data is ingested and processed as soon as it is received. This makes Kinesis Data 
+  Streams ideal for applications that require real-time insights of analytics.
+
+- #### Kinesis Data Streams Components
+
+    - **Data Stream**: This is the core component of Kinesis Data Streams. It acts as a conduit for data ingestion, where data records are ordered,
+    partitioned, and stored.
+    
+    - **Shards**: Shards are the basic building block of a Kinesis Data Stream. They are the units of throughput, and each shard can ingest up to 1 MIB
+    of data per second or 1.000 records per second.
+    
+    - **Producers**: Producers are applications or devices that push data records into a Kinesis Data Stream. These could be IoT devices, applications,
+    servers, or any source generating streaming data.
+    
+    - **Consumers**: Consumers are applications that read data from a Kinesis Data Stream. They process the data records according to their business logic.
+    Consumers can be real-time applications, analytics systems, or storage solutions.
+    
+    - **Data Records**: Data Records are the smallest unit of data that you can work with in a Kinesis Data Stream. Each record consists of a sequence
+    number, partition key, and a data blob.
+    
+    - **Retention Period**: The retention period defines how long data records are retained in the stream. Records that are older than the specified
+    retention period are automatically deleted.
+
+- #### Kinesis Data Streams Use Cases
+
+  - **Scalability**: Kinesis Data Streams is highly scalable. It can handle large volumes of data, up to petabytes per day. This makes it a good choice for 
+  applications that need to process large amounts of streaming data.
+  
+  - **Real-Time Processing**: Kinesis Data Streams can process data in real time. This makes it a good choice for applications that need to process data 
+  immediately after it is generated.
+  
+  - **Multiple Sources**: Kinesis Data Streams can ingest data from a variety of sources, such as website clickstreams, database event streams, financial 
+  transactions, social media feeds, IT logs, and location-tracking events. This makes it a good choice for applications that need to process data from 
+  multiple sources.
+
+- #### Amazon Kinesis Data Streams vs. Amazon SQS
+
+  - **Kinesis Data Streams**: Consider Kinesis Data Streams for high-throughput, continuous data streams that necessitate real-time processing or analysis.
+  
+  - **SQS**: Opt for SQS when you prioritize utmost reliability, asynchronous processing, and message durability, especially in situations where components 
+  must be loosely connected within a distributed system.
