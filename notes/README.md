@@ -150,6 +150,20 @@ It is designed to make web-scale cloud computing easier for developers.
   - **Monitoring and Notifications**: CloudWatch Alarms can be configured to send notifications (via Amazon SNS) when Auto Recovery is triggered, allowing you to stay informed
   about instance status changes.
 
+- #### Instance Bootstrapping
+
+  - **Definition**: EC2 Bootstrapping refers to the process of automatically configuring and setting up an Amazon Elastic Compute Cloud (EC2) instance when it is launched for the
+  first time. This is achieved by providing a script or a set of commands that the instance executes at launch.
+  
+  - **Execution Location**: Bootstrapping scripts are executed on an EC2 instance only at launch time.
+  
+  - **User Data Source**: Bootstrapping scripts are provided through the “User Data” field when launching an EC2 instance. 
+  
+  - **Special Metadata URL**: EC2 instances can access special metadata at ‘http://169.254.169.254/latest/user-data’ , which contains the user data provided during instance launch. 
+  
+  - **Limited Security**: While User Data is a convenient way to automate instance setup, it’s important to note that it’s not secure for storing sensitive information like
+  passwords or long-term credentials. For secure storage of sensitive data, AWS provided services like Parameter Store or Secrets Manager.
+
 - #### Instance Metadata Service
 
   - ##### Instance Metadata Service Characteristics
