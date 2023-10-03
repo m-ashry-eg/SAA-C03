@@ -141,7 +141,7 @@ It is designed to make web-scale cloud computing easier for developers.
   
   - **Spread Placement Group**: This type of placement group is recommended for applications that have a small number of critical instances that should be kept separate from
   each other. Instances in a spread placement group are placed on distinct underlying hardware to reduce the risk of simultaneous failures. Instances in a spread placement group
-  can span across multiple AZs.
+  have the unique capability to distribute across multiple Availability Zones, allowing for a maximum of up to 7 instances per Availability Zone.
     
 - #### EC2 Termination Protection
 
