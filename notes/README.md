@@ -1695,7 +1695,7 @@ Amazon Kinesis Data Firehose is a fully managed service provided by AWS that mak
   - **Data Producers**: These are the sources that generate the streaming data. They could be anything from application logs, clickstreams, IoT devices, or 
   any other source that produces continuous data.
   
-  - **Data Transformation**: Kinesis Data Firehose allows you to transform incoming data before it;s delivered to the destination. This can involve operations 
+  - **Data Transformation**: Kinesis Data Firehose allows you to transform incoming data before it's delivered to the destination. This can involve operations 
   like data format conversion, compression, or even custom transformations using AWS Lambda.
   
   - **Data Retention**: You can configure how long Firehose retains data in the stream before delivering it to the destination.
