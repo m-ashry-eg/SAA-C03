@@ -1700,7 +1700,7 @@ Amazon Kinesis Data Firehose is a fully managed service provided by AWS that mak
   
   - **Data Retention**: You can configure how long Firehose retains data in the stream before delivering it to the destination.
  
-- #### Kinesis Data Firehost Integration with Kinesis Data Streams
+- #### Kinesis Data Firehose Integration with Kinesis Data Streams
 
   - **Data Ingestion with Kinesis Data Streams**: You start by ingesting data into an Amazon Kinesis Data Stream. This stream acts as a buffer for the 
   incoming data. Applications, devices, or services can push data directly into the stream.
@@ -1713,6 +1713,18 @@ Amazon Kinesis Data Firehose is a fully managed service provided by AWS that mak
   
   - **Delivery Destinations**: After processing and optionally transforming the data, Kinesis Data Firehose can deliver it to various destinations, 
   including Amazon S3, Amazon Redshift, Amazon ElasticSearch, and others.
+
+- #### Kinesis Data Firehose Valid Destinations
+
+  - HTTP Endpoints
+  
+  - Splunk
+  
+  - Redshift
+  
+  - ElasticSearch
+  
+  - Simple Storage Service (S3)
 
 - #### Kinesis Data Firehose Integration with Lambda
 
